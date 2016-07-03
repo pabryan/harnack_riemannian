@@ -48,78 +48,80 @@
 
 \maketitle
 
-Let $(M^n,\bar{g})$ be an $n$-dimensional smooth manifold and let $F(\cdot,t)\colon M^n\hookrightarrow (N^{n+1},\hat{g})$ be a one-parameter family of smooth hypersurfaces immersions. We say that it is a solution of the $ p $-GCF if
+Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\hat{g})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\hat{g})$ is said to be a solution of the $ p $-GCF if
 \begin{align}
-\partial_tF=\xi,
+\partial_tF=\frac{p}{|p|}\xi,\quad F(\cdot,0)=F_0(\cdot).
 \end{align}
 Here $\xi $ is a smooth transverse inward-pointing vector field defined by
 \begin{align}
-\xi:=-h^{kl}\partial_l K ^{ p }\partial_kF+ K ^{ p }\nu,
+\xi:=F_{\ast}(-\operatorname{grad}_hK^p)+ K ^{ p }\nu,
 \end{align}
- where $ K $ is the Gauss curvature and $\nu$ is an inward unit normal vector. In what follows for simplicity, we set $ f = K ^{ p }.$
-Write $\bar{\Gamma}_{ij}^k$ for the Christoffel symbols of the metric $\bar{g}.$ Recall that
-\begin{align}\label{gauss equ}
-\partial^2_{ij}F^{\alpha}=\bar{\Gamma}_{ij}^k\partial_kF^{\alpha}+h_{ij}\nu^{\alpha}-\hat{\Gamma}^{ \alpha }_{\beta\gamma}F^{\beta}_iF^{\gamma}_j,
-\end{align}
-where $h_{ij}$ the second fundamental form with respect to $\nu.$
+where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector and $\operatorname{grad}_hK^{p}$ is the gradient of $K^{p}$ with respect to the second fundamental $h$ induced by $\nu.$ In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p}.$
 
-A direct calculation shows that $\partial_i\xi$ is tangential. The second fundamental form with respect to $\xi$ is defined by
-\begin{align}
-\partial_i\xi:=-\mathcal{A}_i^j\partial_jF.
+Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
+\begin{align}\label{gauss equ}
+\hat{\nabla}_YF_{\ast}(X)=F_{\ast}(\bar{\nabla}_YX)+h(X,Y)\nu.
 \end{align}
 Define the non-degenerate metric
 \begin{align}
-g_{ij}:=\frac{h_{ij}}{ f }.
+g(X,Y):=\frac{h(X,Y)}{ f }.
 \end{align}
-From the Gauss equation given by (\ref{gauss equ}) we obtain
+The second fundamental form with respect to $\xi$ is defined by
 \begin{align}
-\partial^2_{ij}F^{\alpha}=g_{ij}\xi^{\alpha}+(\Gamma_{ij}^k+\mathcal{C}_{ij}^k)\partial_kF^{\alpha}-\hat{\Gamma}^{ \alpha }_{\beta\gamma}F^{\beta}_iF^{\gamma}_j,
+\hat{\nabla}_X\xi:=-F_{\ast}(AX)
 \end{align}
-where
-\begin{align}
-\Gamma_{ij}^k=\frac{1}{2}g^{kl}\left(\partial_ig_{jl}+\partial_jg_{il}-\partial_lg_{ij}\right),
-\end{align}
-and
-\begin{align}
-\mathcal{C}_{ij}^k:=&\bar{\Gamma}_{ij}^k+\frac{1}{2}\frac{h^{kl}}{ f }\left(h_{jl}\partial_i f +h_{il}\partial_j f +h_{ij}\partial_l f \right)-\frac{1}{2}\frac{h^{kl}}{ f }\partial_ih_{jl}\\
-=&\frac{1}{2}\frac{h^{kl}}{ f }\left(h_{jl}\partial_i f +h_{il}\partial_j f +h_{ij}\partial_l f \right)-\frac{1}{2}h^{kl}h_{jl;i}.
-\end{align}
- We call the tensor $\mathcal{C}_{ij}^k$ the cubic form.
+for $X\in TM$.
 
-For a general Riemannian manifold $(M,g)$, an immersion $F\colon M^n\hookrightarrow (N^{n+1},\hat{g})$ and a vector field $\xi$ in $TN$ along $M$, i.e.,
-\[
-\xi\colon M\rightarrow TN
-\]
-the second covariant derivatives of $\xi$ with respect to the metric $g$ are given by
-\[
-\xi^{ \alpha}_{;ij}=\xi^{ \alpha }_{,ij}-\Gamma_{ij}^k\xi^{ \alpha }_k+\hat{\Gamma}^{ \alpha }_{\beta\gamma}\xi^{\beta}_iF^{\gamma}_j.
-\]
-Hence the commutator is given by
-\[
-\xi_{;ij}^{ \alpha }-\xi_{;ji}^{ \alpha }=0.
-\]
+The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
+\begin{align}\label{gauss equ2}
+\hat{\nabla}_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
+\end{align}
+Therefore, for all $X,Y\in TM$ we have
+\begin{align}
+F_{\ast}(\tilde{\nabla}_Y X)=F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W).
+\end{align}
+
+The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; therefore, $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$
+
+Define the difference tensor
+\begin{align*}
+D_YX:=\tilde{\nabla}_{Y}X-\nabla_{Y}X.
+\end{align*}
+Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $D_YX=D_XY.$
+
+Therefore, from (\ref{gauss equ3}) we get
+
+\begin{align}\label{gauss equ3}
+\operatorname{Hess}F(X,Y):=\hat{\nabla}_YF_{\ast}(X)-F_{\ast}(\nabla_YX)=F_{\ast}(D_YX)+g(X,Y)\xi.
+\end{align}
+
+The cubic tensor is defined by
+\begin{align}
+C(X,Y,Z)=g(D_XY,Z).
+\end{align}
+From (\ref{gauss equ3}) it follows that
+\begin{align}
+C(X,Y,Z)
+=-\frac{1}{2}\tilde{\nabla}_Xg(Y,Z).
+\end{align}
+Except in the case $ p =\frac{1}{n+2}$, $ C$ does not enjoy being trace free with respect to each of its two indices.
 
 
-The second covariant derivatives of $F$ and $ \xi$ with respect to the metric $g_{ij}$ are given by
+The second covariant derivatives of $ \xi$ is given by
 \begin{align}
-F_{;ij}^{\alpha}=\partial^2_{ij}F^{\alpha}-\Gamma_{ij}^k\partial_kF^{\alpha}+\hat{\Gamma}^{ \alpha }_{\beta\gamma}F^{\beta}_iF^{\gamma}_j=g_{ij}\xi+\mathcal{C}_{ij}^k\partial_kF^{\alpha},
+\operatorname{Hess}\xi(X,Y)&=\hat{\nabla}_Y\xi_{\ast}(X)-\xi_{\ast}(\nabla_YX)\\
+&=-\hat{\nabla}_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(D_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(D_{Y}AX)-g(A X,Y)\xi.\nonumber
 \end{align}
+On the other hand,
 \begin{align}
-\xi_{;ij}=-\mathcal{A}_{i;k}^j\partial_kF-\mathcal{A}_{ij}\xi^{\alpha}-\mathcal{A}_i^k\mathcal{C}_{kj}^l\partial_lF.
+\widehat{Rm}(X,Y,\xi)&=\hat{\nabla}^2_{X,Y}\xi-\hat{\nabla}^2_{Y,X}\xi\\
+&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\xi_{\ast}(\hat{\nabla}_YX-\hat{\nabla}_XY+\nabla_XY-\nabla_YX)\nonumber\\
+&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X).\nonumber
 \end{align}
-Since $\xi_{;ij}=\xi_{;ji},$ looking at the normal component of $\xi$ shows that $\mathcal{A}_{ij}=\mathcal{A}_{ji},$ and also looking at the tangential components yields the following Codazzi equations
-\begin{align}
-\mathcal{A}^k_{j;i}-\mathcal{A}^k_{i;j}&=\mathcal{A}_i^l\mathcal{C}_{lj}^k-\mathcal{A}^l_j\mathcal{C}_{li}^k\\
-\mathcal{A}_{jk;i}-\mathcal{A}_{ik;j}&=\mathcal{A}_i^l\mathcal{C}_{ljk}-\mathcal{A}_j^l\mathcal{C}_{lik}.
-\end{align}
-Considering the third derivatives of $F$ and using the  commuting covariant derivatives of tensor imply that
-\begin{align}
-\mathcal{C}_{ikj}=\mathcal{C}_{ijk},
-\end{align}
-and thus the cubic form is totally symmetric in all three indices. %Furthermore, the cubic form satisfies
-%\begin{align}
-%\mathcal{C}_{ijl;k}-\mathcal{C}_{ikl;j}=\frac{1}{2}g_{ij}\mathcal{A}_{kl}-\frac{1}{2}g_{ik}\mathcal{A}_{jl}+\frac{1}{2}g_{lj}\mathcal{A}_{ki}-\frac{1}{2}g_{lk}\mathcal{A}_{ji}.
-%\end{align}
+
 \begin{lemma}
 \begin{align}
 \partial_t\nu=0,
@@ -128,14 +130,14 @@ and thus the cubic form is totally symmetric in all three indices. %Furthermore,
 \partial_t f = p  \mathcal{H} f ,
 \end{align}
 \begin{align}
-\partial_tg_{ij}=-\mathcal{A}_{ij}- p  \mathcal{H}g_{ij},
+\partial_tg_{ij}=-\frac{p}{|p|}(\mathcal{A}_{ij}+p  \mathcal{H}g_{ij}),
 \end{align}
 \begin{align}
-\partial_t\xi=- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi,
+\partial_t\xi=- |p|(g^{ij}\partial_i\mathcal{H}\partial_jF- \mathcal{H}\xi),
 \end{align}
 %\begin{align}
-%\partial_t \mathcal{C}_{ijm}=&- p  \mathcal{H}\mathcal{C}_{ijm}+\frac{ p }{2}(\partial_i\mathcal{H}g_{jm}+\partial_j\mathcal{H}g_{im}+\partial_m\mathcal{H}g_{ij})\\
-%&-\frac{1}{2}(\mathcal{A}_{ij;m}-\mathcal{A}_m^l\mathcal{C}_{lij})-\frac{1}{2}\mathcal{A}_i^l\mathcal{C}_{ljm}-\frac{1}{2}\mathcal{A}_j^l\mathcal{C}_{lim}-\frac{1}{2}\mathcal{A}_m^l\mathcal{C}_{lij}.
+%\partial_t  C _{ijm}=&- p  \mathcal{H} C _{ijm}+\frac{ p }{2}(\partial_i\mathcal{H}g_{jm}+\partial_j\mathcal{H}g_{im}+\partial_m\mathcal{H}g_{ij})\\
+%&-\frac{1}{2}(\mathcal{A}_{ij;m}-\mathcal{A}_m^l C _{lij})-\frac{1}{2}\mathcal{A}_i^l C _{ljm}-\frac{1}{2}\mathcal{A}_j^l C _{lim}-\frac{1}{2}\mathcal{A}_m^l C _{lij}.
 %\end{align}
 Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij}\mathcal{A}_{ij}=\sum \mathcal{A}_i^i.$
 \end{lemma}
@@ -144,34 +146,27 @@ Since $\partial_t \nu$ is tangential, we need only to calculate
 \begin{align*}
 \partial_t\nu&=\langle \partial_t\nu,\partial_iF\rangle \bar{g}^{ij}\partial_jF\\
 &=-\langle \nu,\partial^2_{ti}F\rangle \bar{g}^{ij}\partial_jF\\
-&=-\langle \nu,-\mathcal{A}_i^k\partial_kF\rangle \bar{g}^{ij}\partial_jF=0.
+&=\frac{p}{|p|}\langle \nu,\mathcal{A}_i^k\partial_kF\rangle \bar{g}^{ij}\partial_jF=0.
 \end{align*}
-To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\det(\bar{g}_{ij})$ and $\det(h_{ij}).$
+To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}_{ij}$ and $h_{ij}.$
 \begin{align*}
 \partial_t \bar{g}_{ij}&=\partial_t \langle \partial_iF,\partial_jF\rangle\\
 &=\langle \partial_{ti}^2F,\partial_jF\rangle+\langle \partial_{tj}^2F,\partial_iF\rangle\\
-&=-\mathcal{A}_{i}^k\bar{g}_{kj}-\mathcal{A}_{j}^k\bar{g}_{ki}.
+&=-\frac{p}{|p|}(\mathcal{A}_{i}^k\bar{g}_{kj}+\mathcal{A}_{j}^k\bar{g}_{ki}).
 \end{align*}
-Thus
-\begin{align*}
-\partial_t\det (\bar{g}_{ij})&=\det (\bar{g}_{ij})\bar{g}^{ij}\partial_t\bar{g}_{ij}\\
-&=\det (\bar{g}_{ij})\bar{g}^{ij}
-(\mathcal{A}_{i}^k\bar{g}_{kj}+\mathcal{A}_{j}^k\bar{g}_{ki})\\
-&=2\det (\bar{g}_{ij})\mathcal{H}.
-\end{align*}
+
 On the other hand, by $h_{ij}=\langle \partial_{ij}^2F, \nu\rangle$ and $\partial_t\nu=0$ we have
 \begin{align*}
 \partial_t h_{ij}&=\langle\partial^3_{tij}F,\nu\rangle\\
-&=\langle\partial^3_{ij}\xi,\nu\rangle\\
-&=\langle \partial_i(-\mathcal{A}_j^k\partial_kF),\nu\rangle\\
-&=-\mathcal{A}_i^kh_{kj}=- f  \mathcal{A}_{ij}.
-\end{align*}
-This in turn implies that $\partial_t\det(h_{ij})=-\det(h_{ij})\mathcal{H}.$
+&=\frac{p}{|p|}\langle\partial^2_{ij}\xi,\nu\rangle\\
+&=\frac{p}{|p|}\langle \partial_i(-\mathcal{A}_j^k\partial_kF),\nu\rangle\\
+&=-\frac{p}{|p|}\mathcal{A}_i^kh_{kj}=-\frac{p}{|p|} f  \mathcal{A}_{ij}\end{align*}
+
 Thus
 \begin{align*}
-\partial_t K =\partial_t\left(\frac{\det(h_{ij})}{\det(\bar{g}_{ij})}\right)=\mathcal{H} K \Rightarrow \partial_t  f = p  \mathcal{H} f .
+\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}=\frac{p}{|p|}K\mathcal{H}.
 \end{align*}
-The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $ and $h_{ij}.$ The evolution equation of $\xi$ follows from the evolution equations of $g_{ij}, F,  f ,\nu.$ %Next we proceed to calculate the evolution equation of $\mathcal{C}_{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
+The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $ and $h_{ij}.$ The evolution equation of $\xi$ follows from the evolution equations of $g_{ij}, F,  f ,\nu.$ %Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
 %\begin{align*}
 %\partial_t\Gamma_{ij}^k=-\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}(\mathcal{A}^k_{j;i}+\mathcal{A}^k_{i;j}-g^{kl}\mathcal{A}_{ij;l}).
 %\end{align*}
@@ -182,25 +177,25 @@ The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $
 %\end{align*}
 %We may also calculate $\partial_tF_{;ij}$ in a different way:
 %\begin{align*}
-%\partial_tF_{;ij}=&\partial_t(g_{ij}\xi+\mathcal{C}_{ij}^k\partial_kF)\\
+%\partial_tF_{;ij}=&\partial_t(g_{ij}\xi+ C _{ij}^k\partial_kF)\\
 %=&\left(- p  \mathcal{H}g_{ij}-\mathcal{A}_{ij}\right)\xi+g_{ij}(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi)\\
-%&+(\partial_t \mathcal{C}_{ij}^k)\partial_kF-\mathcal{C}_{ij}^l\mathcal{A}_l^k\partial_kF.
+%&+(\partial_t  C _{ij}^k)\partial_kF- C _{ij}^l\mathcal{A}_l^k\partial_kF.
 %\end{align*}
 %Putting these together gives
 %\begin{align*}
-%\partial_t \mathcal{C}_{ij}^k=&-\frac{1}{2}\mathcal{A}^l_{i}\mathcal{C}_{lj}^k-\frac{1}{2}\mathcal{A}_j^l\mathcal{C}_{li}^k-\frac{1}{2}g^{kl}\mathcal{A}_{ij;l}+\mathcal{C}_{ij}^l\mathcal{A}_l^k+ p  g_{ij}g^{kl}\partial_l\mathcal{H}\\
+%\partial_t C _{ij}^k=&-\frac{1}{2}\mathcal{A}^l_{i} C _{lj}^k-\frac{1}{2}\mathcal{A}_j^l C _{li}^k-\frac{1}{2}g^{kl}\mathcal{A}_{ij;l}+ C _{ij}^l\mathcal{A}_l^k+ p  g_{ij}g^{kl}\partial_l\mathcal{H}\\
 %&+\frac{ p }{2}(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}).
 %\end{align*}
-%To obtain the evolution equation of $\mathcal{C}_{ijk}$ note that
-%$\partial_t\mathcal{C}_{ijl}=\partial_t(g_{kl}\mathcal{C}_{ij}^k).$
+%To obtain the evolution equation of $ C _{ijk}$ note that
+%$\partial_t C _{ijl}=\partial_t(g_{kl} C _{ij}^k).$
 \end{proof}
 %\begin{lemma} The following identities hold
 %\begin{align*}
-%\Delta \mathcal{C}_{ilm}=&\frac{1}{2}g_{im}\partial_l\mathcal{H}+\frac{1}{2}g_{lm}\partial_i\mathcal{H}+\frac{1}{2}g_{il}\partial_m\mathcal{H}\\
-%&+\frac{n+2}{2}(\mathcal{A}_m^k\mathcal{C}_{kil}-\mathcal{A}_{il;m})+\frac{1}{2}\mathcal{H}\mathcal{C}_{ilm}\\
-%&-2\mathcal{C}_{ik}^r\mathcal{C}_{mr}^p\mathcal{C}_{pl}^k+\mathcal{C}_{im}^r\mathcal{C}_{kr}^p\mathcal{C}_{pl}^k+\mathcal{C}_{lm}^r\mathcal{C}_{kr}^p\mathcal{C}_{pi}^k+\mathcal{C}_{jm}^r\mathcal{C}_{rp}^j\mathcal{C}_{il}^p\\
+%\Delta  C _{ilm}=&\frac{1}{2}g_{im}\partial_l\mathcal{H}+\frac{1}{2}g_{lm}\partial_i\mathcal{H}+\frac{1}{2}g_{il}\partial_m\mathcal{H}\\
+%&+\frac{n+2}{2}(\mathcal{A}_m^k C _{kil}-\mathcal{A}_{il;m})+\frac{1}{2}\mathcal{H} C _{ilm}\\
+%&-2 C _{ik}^r C _{mr}^p C _{pl}^k+ C _{im}^r C _{kr}^p C _{pl}^k+ C _{lm}^r C _{kr}^p C _{pi}^k+ C _{jm}^r C _{rp}^j C _{il}^p\\
 %&+\frac{ p (n+2)-1}{2}\left\{(\partial_i \ln K)_{;lm}-\frac{1}{2}g_{lm}\mathcal{A}_i^k\partial_k\ln K-\frac{1}{2}g_{im}\mathcal{A}_l^k\partial_k\ln K\right\}\\
-%&-\frac{ p (n+2)-1}{2}\left\{\mathcal{C}_{il}^p\mathcal{C}_{mp}^k\partial_k\ln K+\frac{1}{2}\mathcal{A}_{mi}\partial_l\ln K+\frac{1}{2}\mathcal{A}_{ml}\partial_i\ln K\right\},
+%&-\frac{ p (n+2)-1}{2}\left\{ C _{il}^p C _{mp}^k\partial_k\ln K+\frac{1}{2}\mathcal{A}_{mi}\partial_l\ln K+\frac{1}{2}\mathcal{A}_{ml}\partial_i\ln K\right\},
 %\end{align*}
 %and
 %\begin{align*}
@@ -208,70 +203,100 @@ The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $
 %\end{align*}
 %\end{lemma}
 %\begin{proof}
-Except in the case $ p =\frac{1}{n+2}$, $\mathcal{C}_{ijk}$ does not enjoy the luxury of being trace free with respect to each of its two indices:
-\begin{align}
-g^{ij}\mathcal{C}_{ij}^k=\frac{ p (n+2)-1}{2}g^{kl}\partial_l\ln K,\quad g^{ij}\mathcal{C}_{ijk}=\frac{ p (n+2)-1}{2}\partial_k\ln K.
-\end{align}
+
 
 %\end{proof}
 \begin{theorem} We have
 %\begin{align*}
-%\partial_t|\mathcal{C}|^2=&
+%\partial_t| C |^2=&
 %\end{align*}
 %and
 \begin{align*}
-\partial_t\mathcal{H}= p \Delta \mathcal{H}+|\mathcal{A}|^2+ p  \mathcal{H}^2+ p  g^{lk}\partial_l\mathcal{H} tr_{12}(\mathcal{C}_{ijk}).
+\partial_t\mathcal{H}= p \Delta \mathcal{H}+|\mathcal{A}|^2+ p  \mathcal{H}^2+ p  g^{lk}\partial_l\mathcal{H} tr_{12}( C _{ijk}).
 \end{align*}
 \end{theorem}
 \begin{proof}
 We will first calculate the evolution equation of $\mathcal{A}_{ij}.$ Recall that $$\partial_i\xi=-\mathcal{A}_i^k\partial_kF.$$ Thus
 \begin{align*}
-\left(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi\right)_i&=\partial_t\xi_i=-(\partial_t\mathcal{A}_i^k)\partial_kF+\mathcal{A}_i^k\mathcal{A}_j^k\partial_jF.
+\frac{p}{|p|}\left(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi\right)_i&=\partial_t\xi_i=-(\partial_t\mathcal{A}_i^k)\partial_kF+\frac{p}{|p|}\mathcal{A}_i^k\mathcal{A}_j^k\partial_jF.
 \end{align*}
 We calculate
 \begin{align*}
-\partial_t\mathcal{A}_i^k=\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
-g^{nm}\partial_n \mathcal{H}\mathcal{C}_{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k.
+\partial_t\mathcal{A}_i^k=\frac{p}{|p|}(\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
+g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k).
 \end{align*}
 Therefore,
 \begin{align*}
 \partial_t\mathcal{A}_{ij}&=\partial_t(\mathcal{A}_i^kg_{kj})\\
-&=\left(\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
-g^{nm}\partial_n \mathcal{H}\mathcal{C}_{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k\right)g_{kj}-\mathcal{A}_i^k
-(\mathcal{A}_{kj}+ p  \mathcal{H}g_{kj}).
+&=\frac{p}{|p|}\left(\left(\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
+g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k\right)g_{kj}-\mathcal{A}_i^k
+(\mathcal{A}_{kj}+ p  \mathcal{H}g_{kj})\right).
 \end{align*}
 Rearranging terms gives
-\[\partial_t \mathcal{A}_{ij}= p  \mathcal{H}_{;ij}+ p \partial_l\mathcal{H} \mathcal{C}_{ij}^l\]
+\[\partial_t \mathcal{A}_{ij}= |p|  (\mathcal{H}_{;ij}+  \partial_l\mathcal{H}  C _{ij}^l)\]
 Therefore,
 \begin{align*}
-\partial_t\mathcal{H}&=g^{ij}( p  \mathcal{H}_{;ij}+ p  \partial_l \mathcal{H}\mathcal{C}^l_{ij})+(\mathcal{A}^{ij}+ p  \mathcal{H}g^{ij})\mathcal{A}_{ij}\\
-&= p \Delta \mathcal{H}+|\mathcal{A}|^2+ p  \mathcal{H}^2+ p  g^{lk}\partial_l\mathcal{H} tr_{12}(\mathcal{C}_{ijk}).
+\partial_t\mathcal{H}&=|p|g^{ij}( \mathcal{H}_{;ij}+  \partial_l \mathcal{H} C ^l_{ij})+\frac{p}{|p|}(\mathcal{A}^{ij}+ p  \mathcal{H}g^{ij})\mathcal{A}_{ij}\\
+&= |p| \Delta \mathcal{H}+\frac{p}{|p|}|\mathcal{A}|^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} tr_{12}( C _{ijk}).
 \end{align*}
 \end{proof}
 \begin{theorem}
-\[\partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)\geq 0.\]
+\[\left\{
+  \begin{array}{ll}
+    \partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
+    \partial_t \left(K^{ p }t^{\frac{n p }{n |p| -1}}\right)>0, & -\frac{1}{n}<p<0.
+  \end{array}
+\right.
+\]
 \end{theorem}
 \begin{proof}
+Suppose $p>0.$
 By Lemma 1 we have
 \begin{align*}
 \partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)&= p  t^{\frac{n p }{n p +1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n p +1}\right).
 \end{align*}
-Thus it suffices to show that $X:=t\mathcal{H}+\frac{n}{n p +1}$ is always positive:
+Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n p +1}$ is always positive:
 \begin{align*}
-\partial_t X&= p \Delta X+ p  g^{lk}\partial_lX tr_{12}(\mathcal{C}_{ijk})+\mathcal{H}+t|\mathcal{A}|^2+ p  t \mathcal{H}^2\\
-&\geq  p \Delta X+ p  g^{lk}\partial_lX tr_{12}(\mathcal{C}_{ijk})+\mathcal{H}+(\frac{n p +1}{n})t \mathcal{H}^2\\
-&= p \Delta X+ p  g^{lk}\partial_lX tr_{12}(\mathcal{C}_{ijk})+\frac{(n p +1)}{n}\mathcal{H}X.
+\partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+t|\mathcal{A}|^2+  tp \mathcal{H}^2\\
+&\geq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
+&= p \Delta Q+ p  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
 \end{align*}
+Therefore, by the maximum principle, $Q$ is always positive.
+
+
+Suppose $-\frac{1}{n}<p<0.$ We have
+\begin{align*}
+\partial_t \left(K^{ p }t^{\frac{n p }{n |p| -1}}\right)&= p  t^{\frac{n p }{n |p| -1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n |p| -1}\right).
+\end{align*}
+Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n |p| -1}$ is always negative:
+\begin{align*}
+\partial_t Q&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}-t|\mathcal{A}|^2+ |p|  t \mathcal{H}^2\\
+&\leq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+\frac{n |p| -1}{n}t \mathcal{H}^2\\
+&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\frac{n |p| -1}{n}\mathcal{H}Q.
+\end{align*}
+Therefore, by the maximum principle, $Q$ is negative positive.
 \end{proof}
-To get the usual Harnack estimate, we note if we define a time-dependent diffeomorphism $\theta: M^n\to M^n$ by
+\begin{corollary}
+The only compact strictly convex ancient solutions of the $p$-GCF for $-\frac{1}{n}<p<0$ are shrinking spheres.
+\end{corollary}
+\begin{proof}
+In the previous theorem we have shown 
+that $t\mathcal{H}+\frac{n}{n |p| -1}<0$. Therefore, for any $N>0$ we have
+\[\mathcal{H}(\cdot,t)+\frac{n}{(n |p| -1)(t-N)}<0\]
+for all $t\in [N,\infty).$
+Allowing $N\to -\infty$ implies that compact strictly convex ancient solutions satisfy $\mathcal{H}\leq 0.$ A direct calculation shows that
+\[\mathcal{H}=h^{ij}(\nabla_{ij}^2K^p+g_{ij}K^{p}).\]
+Here $g$ and $\nabla$ are the standard metric and connection of the unit sphere. The normalized solutions must converge forward in time to a self-similar solutions satisfying $\langle F,\nu \rangle=K^{p}$; therefore, $\mathcal{H}(\cdot,t)\geq 0$ if $t$ large enough. Since the hypersurfaces are strictly convex, we conclude that  $\mathcal{H}\equiv 0$ if $t$ large enough and so the hypersurfaces are spheres.
+\end{proof}
+To get the usual Harnack estimate, we note if we define a time-dependent diffeomorphism $\varphi: M^n\to M^n$ by
 \begin{align}
-\partial_t\theta^k=h^{kl}\partial_l K^{ p },
+\partial_t\varphi^k=h^{kl}\partial_l K^{ p },
 \end{align}
-then $\bar{F}(x,t):=F(\theta(x,t),t):M^{n}\to R^{n+1}$ satisfies
+then $\bar{F}(x,t):=F(\varphi(x,t),t):M^{n}\to R^{n+1}$ satisfies
 \begin{align}
 \partial_t\bar{F}=\bar{K}^{ p }\nu,
 \end{align}
-where $\bar{K}(x,t):=K(\theta(x,t),t)$. So we have
+where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 \begin{align}
 \partial_t\bar{K}^{ p }-h^{kl}\partial_k\bar{K}^{ p }\partial_l\bar{K}^{ p }+\frac{n p }{(n p +1)t}\geq 0.
 \end{align}
@@ -279,22 +304,22 @@ where $\bar{K}(x,t):=K(\theta(x,t),t)$. So we have
 
  We mention that the cubic form is totally symmetric in all three indices and is trace free with respect to each of  two indices.
 
-Define \[P_{ij}:=\nabla_i\nabla_jS^{-1}+g_{ij}S^{-1},\]
-where $g_{ij}$ and $\nabla$ are the metric and the connection of the unit sphere and $S^{-1}$ is the Gauss curvature considered as a function on the unit sphere. First, we would like to calculate the evolution equation of $P_{ij}.$
+Define \[P_{ij}:=\tilde{\nabla}_i\tilde{\nabla}_jS^{-1}+g_{ij}S^{-1},\]
+where $g_{ij}$ and $\tilde{\nabla}$ are the metric and the connection of the unit sphere and $S^{-1}$ is the Gauss curvature considered as a function on the unit sphere. First, we would like to calculate the evolution equation of $P_{ij}.$
 To do so, we recall that
-\[\mathfrak{r}_{ij}=\nabla_i\nabla_jh+g_{ij}h\]
+\[\mathfrak{r}_{ij}=\tilde{\nabla}_i\tilde{\nabla}_jh+g_{ij}h\]
 \[\partial_th=-S^{-1},\]
 \[S=\det(\mathfrak{r}_{ij})/\det(g_{ij}),\]
 \[\partial_t \mathfrak{r}_{ij}=-P_{ij},\]
 \[\partial_t S^{-1}=S^{-1}\mathfrak{r}^{kl}P_{kl}.\]
 Thus we may calculate
 \begin{align*}
-\partial_tP_{aj}=&\nabla_a\nabla_j(S^{-1}\mathfrak{r}^{kl}P_{kl})+
+\partial_tP_{aj}=&\tilde{\nabla}_a\tilde{\nabla}_j(S^{-1}\mathfrak{r}^{kl}P_{kl})+
 g_{aj}S^{-1}\mathfrak{r}^{kl}P_{kl}\\
-=&\nabla_a(\mathfrak{r}^{kl}P_{kl}\nabla_jS^{-1}+S^{-1}P_{kl}\nabla_j\mathfrak{r}^{kl}+S^{-1}\mathfrak{r}^{kl}\nabla_jP_{kl})+g_{aj}S^{-1}\mathfrak{r}^{kl}P_{kl}\\
-=&\mathfrak{r}^{kl}P_{kl}P_{aj}+\mathfrak{r}^{kl}\nabla_aP_{kl}\nabla_jS^{-1}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\nabla_jS^{-1}\nabla_a\mathfrak{r}_{rs}\\
-&+S^{-1}P_{kl}\nabla_a\nabla_j\mathfrak{r}^{kl}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\nabla_j\mathfrak{r}_{rs}\nabla_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\nabla_aP_{kl}\nabla_j\mathfrak{r}_{rs}\\
-&+S^{-1}\mathfrak{r}^{kl}\nabla_a\nabla_jP_{kl}+\mathfrak{r}^{kl}\nabla_jP_{kl}\nabla_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\nabla_jP_{kl}\nabla_a\mathfrak{r}_{rs}.
+=&\tilde{\nabla}_a(\mathfrak{r}^{kl}P_{kl}\tilde{\nabla}_jS^{-1}+S^{-1}P_{kl}\tilde{\nabla}_j\mathfrak{r}^{kl}+S^{-1}\mathfrak{r}^{kl}\tilde{\nabla}_jP_{kl})+g_{aj}S^{-1}\mathfrak{r}^{kl}P_{kl}\\
+=&\mathfrak{r}^{kl}P_{kl}P_{aj}+\mathfrak{r}^{kl}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_jS^{-1}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\tilde{\nabla}_jS^{-1}\tilde{\nabla}_a\mathfrak{r}_{rs}\\
+&+S^{-1}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_j\mathfrak{r}^{kl}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\tilde{\nabla}_j\mathfrak{r}_{rs}\tilde{\nabla}_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_j\mathfrak{r}_{rs}\\
+&+S^{-1}\mathfrak{r}^{kl}\tilde{\nabla}_a\tilde{\nabla}_jP_{kl}+\mathfrak{r}^{kl}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_a\mathfrak{r}_{rs}.
 \end{align*}
 
 \begin{align*}
@@ -307,9 +332,9 @@ $Q_j^i:=\mathfrak{r}^{ia}P_{aj}.$
 \partial_t Q_j^i=(Q^2)_i^j+\mathfrak{r}^{ia}\partial_tP_{aj}
 \end{align*}
 \begin{align*}
-\\mathfrak{r}artial_tP_{aj}=&S^{-2}S^{kl}P_{kl}g_{aj}-6S^{-4}S^{kl}P_{kl}\nabla_aS\nabla_jS-2S^{-3}S^{kl}P_{kl}\nabla_a\nabla_jS\\
-&-2S^{-3}S^{kl,mn}P_{kl}\nabla_a\mathfrak{r}_{mn}\nabla_jS-2S^{-3}S^{kl}\nabla_aP_{kl}\nabla_jS\\
-&-2S^{-3}S^{kl,mn}\nabla_j\mathfrak{r}_{mn}P_{kl}\nabla_aS+S^{-2}S^{kl,mn,rs}P_{kl}\nabla_j\mathfrak{r}_{mn}\nabla_a\mathfrak{r}_{rs}\\
-&+S^{-2}S^{kl,mn}\nabla_aP_{kl}\nabla_j\mathfrak{r}_{mn}+S^{-2}S^{kl,mn}P_{kl}\nabla_a\nabla_j\mathfrak{r}_{mn}\\
-&-2S^{-3}S^{kl}\nabla_jP_{kl}\nabla_aS+S^{-2}S^{kl,mn}\nabla_jP_{kl}\nabla_a\mathfrak{r}_{mn}+S^{-2}S^{kl}\nabla_a\nabla_jP_{kl}.
+\\mathfrak{r}artial_tP_{aj}=&S^{-2}S^{kl}P_{kl}g_{aj}-6S^{-4}S^{kl}P_{kl}\tilde{\nabla}_aS\tilde{\nabla}_jS-2S^{-3}S^{kl}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_jS\\
+&-2S^{-3}S^{kl,mn}P_{kl}\tilde{\nabla}_a\mathfrak{r}_{mn}\tilde{\nabla}_jS-2S^{-3}S^{kl}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_jS\\
+&-2S^{-3}S^{kl,mn}\tilde{\nabla}_j\mathfrak{r}_{mn}P_{kl}\tilde{\nabla}_aS+S^{-2}S^{kl,mn,rs}P_{kl}\tilde{\nabla}_j\mathfrak{r}_{mn}\tilde{\nabla}_a\mathfrak{r}_{rs}\\
+&+S^{-2}S^{kl,mn}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_j\mathfrak{r}_{mn}+S^{-2}S^{kl,mn}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_j\mathfrak{r}_{mn}\\
+&-2S^{-3}S^{kl}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_aS+S^{-2}S^{kl,mn}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_a\mathfrak{r}_{mn}+S^{-2}S^{kl}\tilde{\nabla}_a\tilde{\nabla}_jP_{kl}.
 \end{align*} 
