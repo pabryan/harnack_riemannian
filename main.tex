@@ -47,7 +47,6 @@
 \end{abstract}
 
 \maketitle
-
 Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\hat{g})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\hat{g})$ is said to be a solution of the $ p $-GCF if
 \begin{align}
 \partial_tF=\frac{p}{|p|}\xi,\quad F(\cdot,0)=F_0(\cdot).
@@ -127,63 +126,67 @@ On the other hand,
 \partial_t\nu=0,
 \end{align}
 \begin{align}
-\partial_t f = p  \mathcal{H} f ,
+\partial_t f =|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\cdot,\xi,\cdot,\nu))),
 \end{align}
 \begin{align}
-\partial_tg_{ij}=-\frac{p}{|p|}(\mathcal{A}_{ij}+p  \mathcal{H}g_{ij}),
+\partial_tg_{ij}=-\frac{p}{|p|}( A _{ij}+p  \mathcal{H}g_{ij}),
 \end{align}
 \begin{align}
 \partial_t\xi=- |p|(g^{ij}\partial_i\mathcal{H}\partial_jF- \mathcal{H}\xi),
 \end{align}
 %\begin{align}
 %\partial_t  C _{ijm}=&- p  \mathcal{H} C _{ijm}+\frac{ p }{2}(\partial_i\mathcal{H}g_{jm}+\partial_j\mathcal{H}g_{im}+\partial_m\mathcal{H}g_{ij})\\
-%&-\frac{1}{2}(\mathcal{A}_{ij;m}-\mathcal{A}_m^l C _{lij})-\frac{1}{2}\mathcal{A}_i^l C _{ljm}-\frac{1}{2}\mathcal{A}_j^l C _{lim}-\frac{1}{2}\mathcal{A}_m^l C _{lij}.
+%&-\frac{1}{2}( A _{ij;m}- A _m^l C _{lij})-\frac{1}{2} A _i^l C _{ljm}-\frac{1}{2} A _j^l C _{lim}-\frac{1}{2} A _m^l C _{lij}.
 %\end{align}
-Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij}\mathcal{A}_{ij}=\sum \mathcal{A}_i^i.$
+Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij} A _{ij}=\sum  A _i^i.$
 \end{lemma}
 \begin{proof}
 Since $\partial_t \nu$ is tangential, we need only to calculate
 \begin{align*}
 \partial_t\nu&=\langle \partial_t\nu,\partial_iF\rangle \bar{g}^{ij}\partial_jF\\
 &=-\langle \nu,\partial^2_{ti}F\rangle \bar{g}^{ij}\partial_jF\\
-&=\frac{p}{|p|}\langle \nu,\mathcal{A}_i^k\partial_kF\rangle \bar{g}^{ij}\partial_jF=0.
+&=\frac{p}{|p|}\langle \nu, A _i^k\partial_kF\rangle \bar{g}^{ij}\partial_jF=0.
 \end{align*}
 To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}_{ij}$ and $h_{ij}.$
 \begin{align*}
 \partial_t \bar{g}_{ij}&=\partial_t \langle \partial_iF,\partial_jF\rangle\\
 &=\langle \partial_{ti}^2F,\partial_jF\rangle+\langle \partial_{tj}^2F,\partial_iF\rangle\\
-&=-\frac{p}{|p|}(\mathcal{A}_{i}^k\bar{g}_{kj}+\mathcal{A}_{j}^k\bar{g}_{ki}).
+&=-\frac{p}{|p|}( A _{i}^k\bar{g}_{kj}+ A _{j}^k\bar{g}_{ki}).
 \end{align*}
 
-On the other hand, by $h_{ij}=\langle \partial_{ij}^2F, \nu\rangle$ and $\partial_t\nu=0$ we have
-\begin{align*}
-\partial_t h_{ij}&=\langle\partial^3_{tij}F,\nu\rangle\\
-&=\frac{p}{|p|}\langle\partial^2_{ij}\xi,\nu\rangle\\
-&=\frac{p}{|p|}\langle \partial_i(-\mathcal{A}_j^k\partial_kF),\nu\rangle\\
-&=-\frac{p}{|p|}\mathcal{A}_i^kh_{kj}=-\frac{p}{|p|} f  \mathcal{A}_{ij}\end{align*}
 
-Thus
+
+Using $h(X,Y)=\langle \hat{\nabla}_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
 \begin{align*}
-\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}=\frac{p}{|p|}K\mathcal{H}.
+\partial_t h(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \hat{\nabla}_{Y}X,\nu\rangle\\
+&=\frac{p}{|p|}\langle \hat{\nabla}_{\xi}\hat{\nabla}_{Y}X,\nu\rangle\\
+&=\frac{p}{|p|}\langle \hat{\nabla}_{X}\hat{\nabla}_{Y}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
+&=-\frac{p}{|p|}\langle \hat{\nabla}_{X}AY,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
+&=\frac{p}{|p|}\langle AY,\hat{\nabla}_{X}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
+&=-\frac{p}{|p|} f  g(A(Y),X)+\frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle.
+\end{align*}
+Therefore, using $\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}$ we get
+\begin{align*}
+\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\operatorname{tr}_h (\widehat{Rm}(\cdot,\xi,\cdot,\nu)))\Rightarrow \partial_tf=|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\cdot,\xi,\cdot,\nu))).
 \end{align*}
 The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $ and $h_{ij}.$ The evolution equation of $\xi$ follows from the evolution equations of $g_{ij}, F,  f ,\nu.$ %Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
 %\begin{align*}
-%\partial_t\Gamma_{ij}^k=-\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}(\mathcal{A}^k_{j;i}+\mathcal{A}^k_{i;j}-g^{kl}\mathcal{A}_{ij;l}).
+%\partial_t\Gamma_{ij}^k=-\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}( A ^k_{j;i}+ A ^k_{i;j}-g^{kl} A _{ij;l}).
 %\end{align*}
 %Thus
 %\begin{align*}
 %\partial_tF_{;ij}&=(\partial_tF)_{;ij}-(\partial_t\Gamma_{ij}^k)\partial_kF\\
-%&=\xi_{;ij}+\left\{\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}(\mathcal{A}^k_{j;i}+\mathcal{A}^k_{i;j}+g^{kl}\mathcal{A}_{ij;l})\right\}\partial_kF.
+%&=\xi_{;ij}+\left\{\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}( A ^k_{j;i}+ A ^k_{i;j}+g^{kl} A _{ij;l})\right\}\partial_kF.
 %\end{align*}
 %We may also calculate $\partial_tF_{;ij}$ in a different way:
 %\begin{align*}
 %\partial_tF_{;ij}=&\partial_t(g_{ij}\xi+ C _{ij}^k\partial_kF)\\
-%=&\left(- p  \mathcal{H}g_{ij}-\mathcal{A}_{ij}\right)\xi+g_{ij}(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi)\\
-%&+(\partial_t  C _{ij}^k)\partial_kF- C _{ij}^l\mathcal{A}_l^k\partial_kF.
+%=&\left(- p  \mathcal{H}g_{ij}- A _{ij}\right)\xi+g_{ij}(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi)\\
+%&+(\partial_t  C _{ij}^k)\partial_kF- C _{ij}^l A _l^k\partial_kF.
 %\end{align*}
 %Putting these together gives
 %\begin{align*}
-%\partial_t C _{ij}^k=&-\frac{1}{2}\mathcal{A}^l_{i} C _{lj}^k-\frac{1}{2}\mathcal{A}_j^l C _{li}^k-\frac{1}{2}g^{kl}\mathcal{A}_{ij;l}+ C _{ij}^l\mathcal{A}_l^k+ p  g_{ij}g^{kl}\partial_l\mathcal{H}\\
+%\partial_t C _{ij}^k=&-\frac{1}{2} A ^l_{i} C _{lj}^k-\frac{1}{2} A _j^l C _{li}^k-\frac{1}{2}g^{kl} A _{ij;l}+ C _{ij}^l A _l^k+ p  g_{ij}g^{kl}\partial_l\mathcal{H}\\
 %&+\frac{ p }{2}(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}).
 %\end{align*}
 %To obtain the evolution equation of $ C _{ijk}$ note that
@@ -192,14 +195,14 @@ The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $
 %\begin{lemma} The following identities hold
 %\begin{align*}
 %\Delta  C _{ilm}=&\frac{1}{2}g_{im}\partial_l\mathcal{H}+\frac{1}{2}g_{lm}\partial_i\mathcal{H}+\frac{1}{2}g_{il}\partial_m\mathcal{H}\\
-%&+\frac{n+2}{2}(\mathcal{A}_m^k C _{kil}-\mathcal{A}_{il;m})+\frac{1}{2}\mathcal{H} C _{ilm}\\
+%&+\frac{n+2}{2}( A _m^k C _{kil}- A _{il;m})+\frac{1}{2}\mathcal{H} C _{ilm}\\
 %&-2 C _{ik}^r C _{mr}^p C _{pl}^k+ C _{im}^r C _{kr}^p C _{pl}^k+ C _{lm}^r C _{kr}^p C _{pi}^k+ C _{jm}^r C _{rp}^j C _{il}^p\\
-%&+\frac{ p (n+2)-1}{2}\left\{(\partial_i \ln K)_{;lm}-\frac{1}{2}g_{lm}\mathcal{A}_i^k\partial_k\ln K-\frac{1}{2}g_{im}\mathcal{A}_l^k\partial_k\ln K\right\}\\
-%&-\frac{ p (n+2)-1}{2}\left\{ C _{il}^p C _{mp}^k\partial_k\ln K+\frac{1}{2}\mathcal{A}_{mi}\partial_l\ln K+\frac{1}{2}\mathcal{A}_{ml}\partial_i\ln K\right\},
+%&+\frac{ p (n+2)-1}{2}\left\{(\partial_i \ln K)_{;lm}-\frac{1}{2}g_{lm} A _i^k\partial_k\ln K-\frac{1}{2}g_{im} A _l^k\partial_k\ln K\right\}\\
+%&-\frac{ p (n+2)-1}{2}\left\{ C _{il}^p C _{mp}^k\partial_k\ln K+\frac{1}{2} A _{mi}\partial_l\ln K+\frac{1}{2} A _{ml}\partial_i\ln K\right\},
 %\end{align*}
 %and
 %\begin{align*}
-%\Delta \mathcal{A}_{ij}=&
+%\Delta  A _{ij}=&
 %\end{align*}
 %\end{lemma}
 %\begin{proof}
@@ -212,39 +215,39 @@ The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $
 %\end{align*}
 %and
 \begin{align*}
-\partial_t\mathcal{H}= p \Delta \mathcal{H}+|\mathcal{A}|^2+ p  \mathcal{H}^2+ p  g^{lk}\partial_l\mathcal{H} tr_{12}( C _{ijk}).
+\partial_t\mathcal{H}= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
 \end{align*}
 \end{theorem}
 \begin{proof}
-We will first calculate the evolution equation of $\mathcal{A}_{ij}.$ Recall that $$\partial_i\xi=-\mathcal{A}_i^k\partial_kF.$$ Thus
+We will first calculate the evolution equation of $ A _{ij}.$ Recall that $$\partial_i\xi=- A _i^k\partial_kF.$$ Thus
 \begin{align*}
-\frac{p}{|p|}\left(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi\right)_i&=\partial_t\xi_i=-(\partial_t\mathcal{A}_i^k)\partial_kF+\frac{p}{|p|}\mathcal{A}_i^k\mathcal{A}_j^k\partial_jF.
+\frac{p}{|p|}\left(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi\right)_i&=\partial_t\xi_i=-(\partial_t A _i^k)\partial_kF+\frac{p}{|p|} A _i^k A _j^k\partial_jF.
 \end{align*}
 We calculate
 \begin{align*}
-\partial_t\mathcal{A}_i^k=\frac{p}{|p|}(\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
-g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k).
+\partial_t A _i^k=\frac{p}{|p|}( A _i^m A _m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
+g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H} A _i^k).
 \end{align*}
 Therefore,
 \begin{align*}
-\partial_t\mathcal{A}_{ij}&=\partial_t(\mathcal{A}_i^kg_{kj})\\
-&=\frac{p}{|p|}\left(\left(\mathcal{A}_i^m\mathcal{A}_m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
-g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H}\mathcal{A}_i^k\right)g_{kj}-\mathcal{A}_i^k
-(\mathcal{A}_{kj}+ p  \mathcal{H}g_{kj})\right).
+\partial_t A _{ij}&=\partial_t( A _i^kg_{kj})\\
+&=\frac{p}{|p|}\left(\left( A _i^m A _m^k+ p  \mathcal{H}_{;mi}g^{mk}+ p
+g^{nm}\partial_n \mathcal{H} C _{mi}^k+ p  \mathcal{H} A _i^k\right)g_{kj}- A _i^k
+( A _{kj}+ p  \mathcal{H}g_{kj})\right).
 \end{align*}
 Rearranging terms gives
-\[\partial_t \mathcal{A}_{ij}= |p|  (\mathcal{H}_{;ij}+  \partial_l\mathcal{H}  C _{ij}^l)\]
+\[\partial_t  A _{ij}= |p|  (\mathcal{H}_{;ij}+  \partial_l\mathcal{H}  C _{ij}^l)\]
 Therefore,
 \begin{align*}
-\partial_t\mathcal{H}&=|p|g^{ij}( \mathcal{H}_{;ij}+  \partial_l \mathcal{H} C ^l_{ij})+\frac{p}{|p|}(\mathcal{A}^{ij}+ p  \mathcal{H}g^{ij})\mathcal{A}_{ij}\\
-&= |p| \Delta \mathcal{H}+\frac{p}{|p|}|\mathcal{A}|^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} tr_{12}( C _{ijk}).
+\partial_t\mathcal{H}&=|p|g^{ij}( \mathcal{H}_{;ij}+  \partial_l \mathcal{H} C ^l_{ij})+\frac{p}{|p|}( A ^{ij}+ p  \mathcal{H}g^{ij}) A _{ij}\\
+&= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
 \end{align*}
 \end{proof}
 \begin{theorem}
 \[\left\{
   \begin{array}{ll}
     \partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
-    \partial_t \left(K^{ p }t^{\frac{n p }{n |p| -1}}\right)>0, & -\frac{1}{n}<p<0.
+    \partial_t \left(K^{ p }t^{\frac{n |p| }{n |p| -1}}\right)<0, & -\frac{1}{n}<p<0.
   \end{array}
 \right.
 \]
@@ -257,22 +260,22 @@ By Lemma 1 we have
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n p +1}$ is always positive:
 \begin{align*}
-\partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+t|\mathcal{A}|^2+  tp \mathcal{H}^2\\
-&\geq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
-&= p \Delta Q+ p  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
+\partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t| A |^2+  tp \mathcal{H}^2\\
+&\geq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
+&= p \Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
 \end{align*}
 Therefore, by the maximum principle, $Q$ is always positive.
 
 
 Suppose $-\frac{1}{n}<p<0.$ We have
 \begin{align*}
-\partial_t \left(K^{ p }t^{\frac{n p }{n |p| -1}}\right)&= p  t^{\frac{n p }{n |p| -1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n |p| -1}\right).
+\partial_t \left(K^{ p }t^{\frac{n |p| }{n |p| -1}}\right)&= |p|  t^{\frac{n |p| }{n |p| -1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n |p| -1}\right).
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n |p| -1}$ is always negative:
 \begin{align*}
-\partial_t Q&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}-t|\mathcal{A}|^2+ |p|  t \mathcal{H}^2\\
-&\leq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\mathcal{H}+\frac{n |p| -1}{n}t \mathcal{H}^2\\
-&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ tr_{12}( C _{ijk})+\frac{n |p| -1}{n}\mathcal{H}Q.
+\partial_t Q&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}-t| A |^2+ |p|  t \mathcal{H}^2\\
+&\leq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+\frac{n |p| -1}{n}t \mathcal{H}^2\\
+&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\frac{n |p| -1}{n}\mathcal{H}Q.
 \end{align*}
 Therefore, by the maximum principle, $Q$ is negative positive.
 \end{proof}
@@ -280,7 +283,7 @@ Therefore, by the maximum principle, $Q$ is negative positive.
 The only compact strictly convex ancient solutions of the $p$-GCF for $-\frac{1}{n}<p<0$ are shrinking spheres.
 \end{corollary}
 \begin{proof}
-In the previous theorem we have shown 
+In the previous theorem we have shown
 that $t\mathcal{H}+\frac{n}{n |p| -1}<0$. Therefore, for any $N>0$ we have
 \[\mathcal{H}(\cdot,t)+\frac{n}{(n |p| -1)(t-N)}<0\]
 for all $t\in [N,\infty).$
