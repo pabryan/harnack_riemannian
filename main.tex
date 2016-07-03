@@ -55,7 +55,11 @@ Here $\xi $ is a smooth transverse inward-pointing vector field defined by
 \begin{align}
 \xi:=F_{\ast}(-\operatorname{grad}_hK^p)+ K ^{ p }\nu,
 \end{align}
-where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector and $\operatorname{grad}_hK^{p}$ is the gradient of $K^{p}$ with respect to the second fundamental $h$ induced by $\nu.$ In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p}.$
+where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector and $\operatorname{grad}_hK^{p}$ is the gradient of $K^{p}$ with respect to the second fundamental $h$ induced by $\nu,$ namely
+\[
+h(X, \operatorname{grad}_h K^p) = X(K^p)
+\]
+for all vectors $X$ tangent to $M$. In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p} = - \operatorname{grad}_h f.$
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
@@ -69,7 +73,17 @@ The second fundamental form with respect to $\xi$ is defined by
 \begin{align}
 \hat{\nabla}_X\xi:=-F_{\ast}(AX)
 \end{align}
-for $X\in TM$.
+for $X\in TM$. Note that
+\begin{align*}
+\hat{\nabla}_X \xi &= \hat{\nabla}_X (F_{\ast}(W) + f \nu) \\
+&= \hat{\nabla}_X F_{\ast}(W) + X(f)\nu + f \hat{\nabla}_X \nu \\
+&= F_{\ast}(\bar{\nabla}_X W) - h(X, W) \nu + X(f) \nu + f \hat{\nabla}_X \nu \\
+&= F_{\ast} (\bar{\nabla}_X W) + f \hat{\nabla}_X \nu,
+\end{align*}
+which is tangential since $\nu$ has unit length. Thus,
+\[
+AX = \bar{\nabla}_X W + f F_{\ast}^{-1} \hat{\nabla}_X \nu.
+\]
 
 The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
 \begin{align}\label{gauss equ2}
@@ -88,7 +102,7 @@ D_YX:=\tilde{\nabla}_{Y}X-\nabla_{Y}X.
 \end{align*}
 Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $D_YX=D_XY.$
 
-Therefore, from (\ref{gauss equ3}) we get
+Therefore, from (\ref{gauss equ2}) we get
 
 \begin{align}\label{gauss equ3}
 \operatorname{Hess}F(X,Y):=\hat{\nabla}_YF_{\ast}(X)-F_{\ast}(\nabla_YX)=F_{\ast}(D_YX)+g(X,Y)\xi.
@@ -108,7 +122,7 @@ Except in the case $ p =\frac{1}{n+2}$, $ C$ does not enjoy being trace free wit
 
 The second covariant derivatives of $ \xi$ is given by
 \begin{align}
-\operatorname{Hess}\xi(X,Y)&=\hat{\nabla}_Y\xi_{\ast}(X)-\xi_{\ast}(\nabla_YX)\\
+\operatorname{Hess}\xi(X,Y)&=\hat{\nabla}_Y\hat{\nabla}_X\xi-\hat{\nabla}_{\nabla_YX}\xi\\
 &=-\hat{\nabla}_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
 &=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
 &=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(D_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
@@ -117,7 +131,7 @@ The second covariant derivatives of $ \xi$ is given by
 On the other hand,
 \begin{align}
 \widehat{Rm}(X,Y,\xi)&=\hat{\nabla}^2_{X,Y}\xi-\hat{\nabla}^2_{Y,X}\xi\\
-&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\xi_{\ast}(\hat{\nabla}_YX-\hat{\nabla}_XY+\nabla_XY-\nabla_YX)\nonumber\\
+&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\hat{\nabla}_{\hat{\nabla}_YX-\hat{\nabla}_XY}\xi-\hat{\nabla}_{\nabla_XY-\nabla_YX}\xi\nonumber\\
 &=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X).\nonumber
 \end{align}
 
