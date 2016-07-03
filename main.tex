@@ -59,7 +59,9 @@ where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector and $\
 \[
 h(X, \operatorname{grad}_h K^p) = X(K^p)
 \]
-for all vectors $X$ tangent to $M$. In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p} = - \operatorname{grad}_h f.$
+for all vectors $X$ tangent to $M$.
+
+We make use of the theory of affine immersions as described in \cite{MR1311248}. In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p} = - \operatorname{grad}_h f.$
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
@@ -89,9 +91,10 @@ The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
 \begin{align}\label{gauss equ2}
 \hat{\nabla}_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
 \end{align}
-Therefore, for all $X,Y\in TM$ we have
+This connection is well defined (i.e. $F_{\ast}(\tilde{\nabla}_Y X)$ is tangent to $F(M)$) since for all $X,Y\in TM$ we have
 \begin{align}
-F_{\ast}(\tilde{\nabla}_Y X)=F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W).
+F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nu - g(X, Y) (F_{\ast}(W) + f \nu) \\
+&= F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W) \nonumber.
 \end{align}
 
 The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; therefore, $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$
@@ -317,6 +320,10 @@ where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 \begin{align}
 \partial_t\bar{K}^{ p }-h^{kl}\partial_k\bar{K}^{ p }\partial_l\bar{K}^{ p }+\frac{n p }{(n p +1)t}\geq 0.
 \end{align}
+
+\bibliographystyle{amsplain}
+\bibliography{Bibliography.bib}
+
 \end{document}
 
  We mention that the cubic form is totally symmetric in all three indices and is trace free with respect to each of  two indices.
