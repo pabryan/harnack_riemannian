@@ -47,21 +47,23 @@
 \end{abstract}
 
 \maketitle
-Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\hat{g})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\hat{g})$ is said to be a solution of the $ p $-GCF if
+Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\hat{g})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\hat{g})$ is said to be a solution of the anisotropic $ p $-GCF if
 \begin{align}
 \partial_tF=\frac{p}{|p|}\xi,\quad F(\cdot,0)=F_0(\cdot).
 \end{align}
 Here $\xi $ is a smooth transverse inward-pointing vector field defined by
 \begin{align}
-\xi:=F_{\ast}(-\operatorname{grad}_hK^p)+ K ^{ p }\nu,
+\xi:=F_{\ast}(-\operatorname{grad}_h(\varphi(\nu)K^p))+\varphi(\nu) K^{ p }\nu,
 \end{align}
-where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector and $\operatorname{grad}_hK^{p}$ is the gradient of $K^{p}$ with respect to the second fundamental $h$ induced by $\nu,$ namely
+where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector, $\varphi$ is a smooth function defined on the unit sphere, and $\operatorname{grad}_h(\varphi(\nu)K^p)$ is the gradient of $\varphi(\nu)K^p$ with respect to the second fundamental $h$ induced by $\nu,$ namely
 \[
-h(X, \operatorname{grad}_h K^p) = X(K^p)
+h(X, \operatorname{grad}_h (\varphi(\nu)K^p)) = X(\varphi(\nu)K^p)
 \]
 for all vectors $X$ tangent to $M$.
 
-We make use of the theory of affine immersions as described in \cite{MR1311248}. In what follows for simplicity, we set $ f = K ^{ p }$ and $W:=-\operatorname{grad}_hK^{p} = - \operatorname{grad}_h f.$
+We make use of the theory of affine immersions as described in \cite{MR1311248}. 
+\section{structure equations}
+In what follows for simplicity, we set $ f = \varphi(\nu)K^p$ and $W:=-\operatorname{grad}_h(\varphi(\nu)K^p) = - \operatorname{grad}_h f.$
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
@@ -84,7 +86,7 @@ for $X\in TM$. Note that
 \end{align*}
 which is tangential since $\nu$ has unit length. Thus,
 \[
-AX = \bar{\nabla}_X W + f F_{\ast}^{-1} \hat{\nabla}_X \nu.
+AX =- \bar{\nabla}_X W - f F_{\ast}^{-1} \hat{\nabla}_X \nu.
 \]
 
 The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
@@ -111,17 +113,81 @@ Therefore, from (\ref{gauss equ2}) we get
 \operatorname{Hess}F(X,Y):=\hat{\nabla}_YF_{\ast}(X)-F_{\ast}(\nabla_YX)=F_{\ast}(D_YX)+g(X,Y)\xi.
 \end{align}
 
+Let us recall the \emph{structure equations} of an affine immersion (see the proof of \cite[Section II, Theorem 2.1]{MR1311248} adjusted to include the ambient curvature $\widehat{Rm}$ or \cite[p. 197 equations (N1.6)--(N1.9)]{MR1311248} in the codimension one case):
+
+\begin{align}
+\label{eq:structure1}
+\widehat{Rm} (X, Y) Z =& Rm(X, Y) Z + g(X, Z) A Y - g(Y, Z)A X \\
+&+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \xi \nonumber,\\
+\label{eq:sturcture2}
+\widehat{Rm} (X, Y) \xi &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\xi.
+\end{align}
+
 The cubic tensor is defined by
 \begin{align}
-C(X,Y,Z)=g(D_XY,Z).
+C(X,Y,Z) = (\tilde{\nabla}_X g) (Y,Z).
 \end{align}
-From (\ref{gauss equ3}) it follows that
-\begin{align}
-C(X,Y,Z)
-=-\frac{1}{2}\tilde{\nabla}_Xg(Y,Z).
-\end{align}
-Except in the case $ p =\frac{1}{n+2}$, $ C$ does not enjoy being trace free with respect to each of its two indices.
+Except in the case $ p =\frac{1}{n+2}$, $ C$ does not enjoy being trace free with respect to each of its two slots.
 
+We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}
+
+\begin{lemma}
+\[
+C(X, Y, Z) =  -2g(D_Z Y, X).
+\]
+\end{lemma}
+
+\begin{proof}
+Since $g$ is symmetric, $C(X, Y, Z) = C(X, Z, Y)$:
+\[
+\begin{split}
+C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z, Y) \\
+&= \tilde{\nabla}_X \left[g(Y, Z) - g(Z, Y)\right] \\
+&\quad - g(\tilde{\nabla}_X Y, Z) - g(Y, \tilde{\nabla}_X Z) + g(\tilde{\nabla}_X Z, Y) + g(Z, \tilde{\nabla}_X Y) \\
+&= 0.
+\end{split}
+\]
+
+But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: using the structure equations,
+\[
+C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
+\]
+where the superscript $\xi$ denotes the $\xi$ component in the decomposition $T_{F(x)}N \simeq F_{\ast}(T_xM) \oplus \mathbb{R} \xi(x)$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
+\begin{equation}
+\label{eq:cubic_permutation1}
+C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\xi}.
+\end{equation}
+On the other hand, since $D_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $D_X$ to $g$ as a derivation gives,
+\[
+(D_X g) (Y, Z) = D_X g(Y, Z) -g(D_X Y, Z) - g(Y, D_X Z) = -g(D_X Y, Z) - g(Y, D_X Z).
+\]
+Now using $\nabla g \equiv 0$, gives
+\begin{equation}
+\label{eq:cubic_identity}
+C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (D_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(D_X Y, Z) - g(Y, D_X Z).
+\end{equation}
+
+Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_identity} and the symmetric of $C$ in the second two slots we obtain,
+\begin{align*}
+-g(D_X Y, Z) - g(Y, D_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(D_Z Y, X) - g(Y, D_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+\end{align*}
+Since $D_X Z = D_Z X$ this yields,
+\[
+-g(D_X Y, Z) = - g(D_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+\]
+
+Applying this symmetry to $g(D_X Z, Y)$ yields,
+\begin{equation}
+\begin{split}
+C(X, Y, Z) &= -g(D_X Z, Y) - g(D_Z Y, X) + \left[\hat{Rm}(Y, Z) X + \hat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(D_Y Z, X) - g(D_Z Y, X) \\
+&\quad + \left[\hat{Rm}(Y, Z) X + \hat{Rm}(X, Y)Z + \hat{Rm}(Z, X) Y + \hat{Rm}(Y, Z)X\right]^\xi \\
+&= - 2g(D_Y Z, X) + \left[\widehat{Rm}(Y, Z)X\right]^{\xi}
+\end{split}
+\end{equation}
+where we used the first Bianchi identity for the last three terms in the last line. The claim now follows from the symmetry of $C$ in $Y,Z$ and anti-symmetry of $\hat{Rm}$ in $Y,Z$.
+\end{proof}
 
 The second covariant derivatives of $ \xi$ is given by
 \begin{align}
@@ -133,23 +199,25 @@ The second covariant derivatives of $ \xi$ is given by
 \end{align}
 On the other hand,
 \begin{align}
-\widehat{Rm}(X,Y,\xi)&=\hat{\nabla}^2_{X,Y}\xi-\hat{\nabla}^2_{Y,X}\xi\\
+\widehat{Rm}(X,Y)\xi&=\hat{\nabla}^2_{X,Y}\xi-\hat{\nabla}^2_{Y,X}\xi\\
 &=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\hat{\nabla}_{\hat{\nabla}_YX-\hat{\nabla}_XY}\xi-\hat{\nabla}_{\nabla_XY-\nabla_YX}\xi\nonumber\\
 &=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X).\nonumber
 \end{align}
-
+\section{evolution equations}
 \begin{lemma}
 \begin{align}
 \partial_t\nu=0,
 \end{align}
 \begin{align}
-\partial_t f =|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\cdot,\xi,\cdot,\nu))),
+\partial_t f =|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
 \end{align}
 \begin{align}
-\partial_tg_{ij}=-\frac{p}{|p|}( A _{ij}+p  \mathcal{H}g_{ij}),
+\partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&-
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).\nonumber
 \end{align}
 \begin{align}
-\partial_t\xi=- |p|(g^{ij}\partial_i\mathcal{H}\partial_jF- \mathcal{H}\xi),
+\partial_t\xi=%- |p|(g^{ij}\partial_i\mathcal{H}\partial_jF- \mathcal{H}\xi),
 \end{align}
 %\begin{align}
 %\partial_t  C _{ijm}=&- p  \mathcal{H} C _{ijm}+\frac{ p }{2}(\partial_i\mathcal{H}g_{jm}+\partial_j\mathcal{H}g_{im}+\partial_m\mathcal{H}g_{ij})\\
@@ -158,17 +226,17 @@ On the other hand,
 Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij} A _{ij}=\sum  A _i^i.$
 \end{lemma}
 \begin{proof}
-Since $\partial_t \nu$ is tangential, we need only to calculate
+Since $\partial_t \nu$ is tangential, and
 \begin{align*}
-\partial_t\nu&=\langle \partial_t\nu,\partial_iF\rangle \bar{g}^{ij}\partial_jF\\
-&=-\langle \nu,\partial^2_{ti}F\rangle \bar{g}^{ij}\partial_jF\\
-&=\frac{p}{|p|}\langle \nu, A _i^k\partial_kF\rangle \bar{g}^{ij}\partial_jF=0.
+-\langle \partial_t\nu,X\rangle=&\langle \nu,\hat{\nabla}_{\xi}X\rangle-\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
+=&\langle \nu,\hat{\nabla}_{X}\xi\rangle\\
+=&\langle \nu,-AX\rangle=0.
 \end{align*}
-To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}_{ij}$ and $h_{ij}.$
+To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}$ and $h.$
 \begin{align*}
-\partial_t \bar{g}_{ij}&=\partial_t \langle \partial_iF,\partial_jF\rangle\\
-&=\langle \partial_{ti}^2F,\partial_jF\rangle+\langle \partial_{tj}^2F,\partial_iF\rangle\\
-&=-\frac{p}{|p|}( A _{i}^k\bar{g}_{kj}+ A _{j}^k\bar{g}_{ki}).
+\partial_t \bar{g}(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle X,Y\rangle\\
+&=\langle \hat{\nabla}_X\xi,Y\rangle+\langle \hat{\nabla}_Y\xi,X\rangle\\
+&=-\bar{g}( AX,Y)-\bar{g}(X,AY).
 \end{align*}
 
 
@@ -177,16 +245,33 @@ Using $h(X,Y)=\langle \hat{\nabla}_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we ca
 \begin{align*}
 \partial_t h(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \hat{\nabla}_{Y}X,\nu\rangle\\
 &=\frac{p}{|p|}\langle \hat{\nabla}_{\xi}\hat{\nabla}_{Y}X,\nu\rangle\\
-&=\frac{p}{|p|}\langle \hat{\nabla}_{X}\hat{\nabla}_{Y}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
-&=-\frac{p}{|p|}\langle \hat{\nabla}_{X}AY,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
-&=\frac{p}{|p|}\langle AY,\hat{\nabla}_{X}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle\\
-&=-\frac{p}{|p|} f  g(A(Y),X)+\frac{p}{|p|}\langle \widehat{Rm}(Y,\xi)X,\nu\rangle.
+&=\frac{p}{|p|}\langle \hat{\nabla}_{Y}\hat{\nabla}_{X}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&=-\frac{p}{|p|}\langle \hat{\nabla}_{Y}AX,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&=\frac{p}{|p|}\langle AX,\hat{\nabla}_{Y}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&=-\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle.
 \end{align*}
 Therefore, using $\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}$ we get
 \begin{align*}
-\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\operatorname{tr}_h (\widehat{Rm}(\cdot,\xi,\cdot,\nu)))\Rightarrow \partial_tf=|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\cdot,\xi,\cdot,\nu))).
+\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\operatorname{tr}_h (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
 \end{align*}
-The evolution equation of $g_{ij}$ follows from the evolution equations of $ f $ and $h_{ij}.$ The evolution equation of $\xi$ follows from the evolution equations of $g_{ij}, F,  f ,\nu.$ %Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
+Thus
+\begin{align}
+ \partial_tf&=|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\nonumber\\
+&= |p|(f\mathcal{H}+f\operatorname{tr} (\widehat{Rm}(\nu,\cdot,\cdot,\nu))+\operatorname{tr} (\widehat{Rm}(W,\cdot,\cdot,\nu))).
+\end{align}
+The evolution equation of $g$ follows from the evolution equations of $ f $ and $h:$
+\begin{align*}
+\partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&-
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
+\end{align*}
+
+The evolution equation of $\xi$ follows from the evolution equations of $g, F,  f ,\nu:$ 
+
+
+
+
+%Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
 %\begin{align*}
 %\partial_t\Gamma_{ij}^k=-\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}( A ^k_{j;i}+ A ^k_{i;j}-g^{kl} A _{ij;l}).
 %\end{align*}
@@ -263,8 +348,8 @@ Therefore,
 \begin{theorem}
 \[\left\{
   \begin{array}{ll}
-    \partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
-    \partial_t \left(K^{ p }t^{\frac{n |p| }{n |p| -1}}\right)<0, & -\frac{1}{n}<p<0.
+    \partial_t \left(\varphi(\nu)K^pt^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
+    \partial_t \left(\varphi(\nu)K^pt^{\frac{n |p| }{n |p| -1}}\right)<0, & -\frac{1}{n}<p<0.
   \end{array}
 \right.
 \]
@@ -273,12 +358,12 @@ Therefore,
 Suppose $p>0.$
 By Lemma 1 we have
 \begin{align*}
-\partial_t \left(K^{ p }t^{\frac{n p }{n p +1}}\right)&= p  t^{\frac{n p }{n p +1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n p +1}\right).
+\partial_t \left(ft^{\frac{n p }{n p +1}}\right)&= p  t^{\frac{n p }{n p +1}-1}f\left(t\mathcal{H}+\frac{n}{n p +1}\right).
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n p +1}$ is always positive:
 \begin{align*}
 \partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t| A |^2+  tp \mathcal{H}^2\\
-&\geq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
+&\geq  p \Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
 &= p \Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
 \end{align*}
 Therefore, by the maximum principle, $Q$ is always positive.
@@ -286,7 +371,7 @@ Therefore, by the maximum principle, $Q$ is always positive.
 
 Suppose $-\frac{1}{n}<p<0.$ We have
 \begin{align*}
-\partial_t \left(K^{ p }t^{\frac{n |p| }{n |p| -1}}\right)&= |p|  t^{\frac{n |p| }{n |p| -1}-1}K^{ p }\left(t\mathcal{H}+\frac{n}{n |p| -1}\right).
+\partial_t \left(ft^{\frac{n |p| }{n |p| -1}}\right)&= |p|  t^{\frac{n |p| }{n |p| -1}-1}f\left(t\mathcal{H}+\frac{n}{n |p| -1}\right).
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n |p| -1}$ is always negative:
 \begin{align*}
@@ -301,12 +386,12 @@ The only compact strictly convex ancient solutions of the $p$-GCF for $-\frac{1}
 \end{corollary}
 \begin{proof}
 In the previous theorem we have shown
-that $t\mathcal{H}+\frac{n}{n |p| -1}<0$. Therefore, for any $N>0$ we have
+that $t\mathcal{H}+\frac{n}{n |p| -1}<0$. So for any $N<0$ we have
 \[\mathcal{H}(\cdot,t)+\frac{n}{(n |p| -1)(t-N)}<0\]
 for all $t\in [N,\infty).$
 Allowing $N\to -\infty$ implies that compact strictly convex ancient solutions satisfy $\mathcal{H}\leq 0.$ A direct calculation shows that
 \[\mathcal{H}=h^{ij}(\nabla_{ij}^2K^p+g_{ij}K^{p}).\]
-Here $g$ and $\nabla$ are the standard metric and connection of the unit sphere. The normalized solutions must converge forward in time to a self-similar solutions satisfying $\langle F,\nu \rangle=K^{p}$; therefore, $\mathcal{H}(\cdot,t)\geq 0$ if $t$ large enough. Since the hypersurfaces are strictly convex, we conclude that  $\mathcal{H}\equiv 0$ if $t$ large enough and so the hypersurfaces are spheres.
+Here $g$ and $\nabla$ are the standard metric and connection of the unit sphere. The normalized solutions must converge forward in time to a self-similar solution satisfying $-\langle F,\nu \rangle=K^{p}$; therefore, $\mathcal{H}(\cdot,t)\geq 0$ if $t$ is large enough. Since the hypersurfaces are strictly convex, we conclude that  $\mathcal{H}\equiv 0$ if $t$ large enough and so the hypersurfaces are spheres.
 \end{proof}
 To get the usual Harnack estimate, we note if we define a time-dependent diffeomorphism $\varphi: M^n\to M^n$ by
 \begin{align}
