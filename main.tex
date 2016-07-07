@@ -133,7 +133,7 @@ We have the following useful lemma for $C$ (see also \cite[Section II, Propositi
 
 \begin{lemma}
 \[
-C(X, Y, Z) =  -2g(D_Z Y, X).
+C(X, Y, Z) =  -2g(D_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
 \]
 \end{lemma}
 
@@ -163,30 +163,37 @@ On the other hand, since $D_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 
 \]
 Now using $\nabla g \equiv 0$, gives
 \begin{equation}
-\label{eq:cubic_identity}
+\label{eq:cubic_derivation_identity}
 C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (D_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(D_X Y, Z) - g(Y, D_X Z).
 \end{equation}
 
-Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_identity} and the symmetric of $C$ in the second two slots we obtain,
-\begin{align*}
--g(D_X Y, Z) - g(Y, D_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} and the symmetric of $C$ in the second two slots we obtain,
+\begin{equation}
+\label{eq:cubic_identity}
+\begin{split} 
+C(X, Y, Z) &= -g(D_X Y, Z) - g(Y, D_X Z) \\
+&= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
 &= -g(D_Z Y, X) - g(Y, D_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
-\end{align*}
+\end{split}
+\end{equation}
 Since $D_X Z = D_Z X$ this yields,
 \[
 -g(D_X Y, Z) = - g(D_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
 \]
-
-Applying this symmetry to $g(D_X Z, Y)$ yields,
+When applied to $g(D_X Z, Y)$ we obtain
+\[
+-g(D_Z X, Y) = - g(D_X Z, Y) = - g(D_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
+\]
+Finally, upon substitution of this identity into equation \eqref{eq:cubic_identity} we complete the proof with,
 \begin{equation}
 \begin{split}
-C(X, Y, Z) &= -g(D_X Z, Y) - g(D_Z Y, X) + \left[\hat{Rm}(Y, Z) X + \hat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(D_Y Z, X) - g(D_Z Y, X) \\
-&\quad + \left[\hat{Rm}(Y, Z) X + \hat{Rm}(X, Y)Z + \hat{Rm}(Z, X) Y + \hat{Rm}(Y, Z)X\right]^\xi \\
-&= - 2g(D_Y Z, X) + \left[\widehat{Rm}(Y, Z)X\right]^{\xi}
+C(X, Y, Z) &= -g(D_Z Y, X) - g(D_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(D_Z Y, X) - g(D_Y Z, X) \\
+&\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi \\
+&= - 2g(D_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
 \end{split}
 \end{equation}
-where we used the first Bianchi identity for the last three terms in the last line. The claim now follows from the symmetry of $C$ in $Y,Z$ and anti-symmetry of $\hat{Rm}$ in $Y,Z$.
+where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
 \end{proof}
 
 The second covariant derivatives of $ \xi$ is given by
@@ -203,13 +210,15 @@ On the other hand,
 &=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\hat{\nabla}_{\hat{\nabla}_YX-\hat{\nabla}_XY}\xi-\hat{\nabla}_{\nabla_XY-\nabla_YX}\xi\nonumber\\
 &=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X).\nonumber
 \end{align}
+
 \section{evolution equations}
+
 \begin{lemma}
 \begin{align}
 \partial_t\nu=0,
 \end{align}
 \begin{align}
-\partial_t f =|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
+\partial_t f = |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
 \end{align}
 \begin{align}
 \partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
@@ -266,9 +275,62 @@ The evolution equation of $g$ follows from the evolution equations of $ f $ and 
 |p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
 \end{align*}
 
-The evolution equation of $\xi$ follows from the evolution equations of $g, F,  f ,\nu:$ 
+Lastly, we compute the evolution of $\xi = -\operatorname{grad}_h f +  f \nu$.
+\[
+\begin{split}
+\hat{\nabla}_{\xi}\xi &= -\hat{\nabla}_{\xi} \left(\operatorname{grad}_h f\right) + (\partial_t f) \nu \\
+&= -\hat{\nabla}_{\xi}\left(\operatorname{grad}_h f\right) + |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu
+\end{split}
+\]
+Now we use the defining equation for $\operatorname{grad}_h f$,
+\[
+X(f) = h(\operatorname{grad}_h f, X) = g(\operatorname{grad}_h \ln f, X)
+\]
+recalling that $g = (1/f)h$. We then compute
+\[
+\begin{split}
+\hat{\nabla}_{\xi} \left(X(f)\right) &= \hat{\nabla}_{\xi} \left(g(\operatorname{grad}_h \ln f, X)\right) \\
+&= (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  \hat{\nabla}_{\xi} X).
+\end{split}
+\]
+Rearranging gives,
+\[
+\begin{split}
+-g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) &= -\hat{\nabla}_{\xi} \left(X(f)\right) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  \hat{\nabla}_{\xi} X) \\
+&= X(\partial_t f) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  A(X))
+\end{split}
+\]
+The first term is,
+\[
+\begin{split}
+X(\partial_t f) &= X\left[|p|(f\mathcal{H} + \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\right] \\
+&= |p| h(f \operatorname{grad}_h \mathcal{H} + \mathcal{H} \operatorname{grad}_h f, X) + |p| h(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X)
+\end{split}
+\]
+whilst the second terms is
+\[
+\begin{split}
+(\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) &= -\frac{p}{|p|} g(A(\operatorname{grad}_h \ln f), X)  -
+|p|g(\operatorname{grad}_h \ln f, X) \mathcal{H} \\
+&\quad + \frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + \frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) g(\operatorname{grad}_h \ln f, X)\\
+\end{split}
+\]
 
-
+Therefore,
+\[
+\begin{split}
+- \hat{\nabla}_{\xi} \operatorname{grad}_h \ln f &= |p| f \operatorname{grad}_h \mathcal{H} + \mathcal{H} \operatorname{grad}_h f - \frac{p}{|p|} A(\operatorname{grad}_h \ln f)  -
+|p|\operatorname{grad}_h \ln f \mathcal{H} \\
+\end{split}
+\]
+There are also these terms which I need to sort out:
+\[
+\begin{split}
+g(\operatorname{grad}_h \ln f,  A(X)) \\
++ \frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + \frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))g(\operatorname{grad}_h \ln f, X) \\
++ |p| \operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right) 
+\end{split}
+\]
 
 
 %Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
