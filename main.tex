@@ -252,7 +252,7 @@ To calculate the evolution equation of $ f $, we need first to calculate the evo
 
 Using $h(X,Y)=\langle \hat{\nabla}_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
 \begin{align*}
-\partial_t h(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \hat{\nabla}_{Y}X,\nu\rangle\\
+\partial_t [h(X,Y)] &= \hat{\nabla}_{\frac{\partial}{\partial t}}\langle \hat{\nabla}_{Y}X,\nu\rangle\\
 &=\frac{p}{|p|}\langle \hat{\nabla}_{\xi}\hat{\nabla}_{Y}X,\nu\rangle\\
 &=\frac{p}{|p|}\langle \hat{\nabla}_{Y}\hat{\nabla}_{X}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
 &=-\frac{p}{|p|}\langle \hat{\nabla}_{Y}AX,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
@@ -270,65 +270,125 @@ Thus
 \end{align}
 The evolution equation of $g$ follows from the evolution equations of $ f $ and $h:$
 \begin{align*}
-\partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+\partial_t [g(X,Y)] = &-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
 &-
 |p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
 \end{align*}
 
-Lastly, we compute the evolution of $\xi = -\operatorname{grad}_h f +  f \nu$.
+We also compute
 \[
+\begin{split}
+(\hat{\nabla}_{\xi} h) (X, Y) &= \partial_t[h(X, Y)] - h(\hat{\nabla}_\xi X, Y) - h(X, \hat{\nabla}_\xi Y) \\
+&= -\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + fg(AX, Y) + fg(X, AY) \\
+&= \left(2-\frac{p}{|p|}\right) f  g(A(X),Y) + \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle - f \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
+\end{split}
+\]
+with the last line coming from the structure equation \eqref{eq:sturcture2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots. For the metric $g$, we have
+\[
+\begin{split}
+(\hat{\nabla}_{\xi} g) (X, Y) &= \partial_t[g(X, Y)] - g(\hat{\nabla}_\xi X, Y) - g(X, \hat{\nabla}_\xi Y) \\
+&= -\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle \\
+&-
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \\
+&\quad + g(AX, Y) + g(X, AY) \\
+&= \left(2 -\frac{p}{|p|}\right) g(A(X),Y) -
+|p|\mathcal{H} g(X,Y) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,Y)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,Y)\right] - \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
+\end{split}
+\]
+
+Lastly, we compute the evolution of $\xi = -\operatorname{grad}_h f +  f \nu$.
+\begin{equation}
+\label{eq:dt_transverse_productrule}
 \begin{split}
 \hat{\nabla}_{\xi}\xi &= -\hat{\nabla}_{\xi} \left(\operatorname{grad}_h f\right) + (\partial_t f) \nu \\
 &= -\hat{\nabla}_{\xi}\left(\operatorname{grad}_h f\right) + |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu
 \end{split}
-\]
+\end{equation}
 Now we use the defining equation for $\operatorname{grad}_h f$,
 \[
-X(f) = h(\operatorname{grad}_h f, X) = g(\operatorname{grad}_h \ln f, X)
+X(\ln f) = \frac{1}{f} h(\operatorname{grad}_h f, X) = g(\operatorname{grad}_h f, X)
 \]
-recalling that $g = (1/f)h$. We then compute
+We then compute
 \[
 \begin{split}
-\hat{\nabla}_{\xi} \left(X(f)\right) &= \hat{\nabla}_{\xi} \left(g(\operatorname{grad}_h \ln f, X)\right) \\
-&= (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  \hat{\nabla}_{\xi} X).
+\hat{\nabla}_{\xi} \left(X(\ln f)\right) &= \hat{\nabla}_{\xi} \left[g(\operatorname{grad}_h f, X)\right] \\
+&= (\hat{\nabla}_{\xi} g) (\operatorname{grad}_h f, X) + g(\hat{\nabla}_{\xi} \operatorname{grad}_h f, X) + g(\operatorname{grad}_h f,  \hat{\nabla}_{\xi} X).
 \end{split}
 \]
 Rearranging gives,
-\[
+\begin{equation}
+\label{eq:dt_transversegradient_structure}
 \begin{split}
--g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) &= -\hat{\nabla}_{\xi} \left(X(f)\right) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  \hat{\nabla}_{\xi} X) \\
-&= X(\partial_t f) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) + g(\operatorname{grad}_h \ln f,  A(X))
+-g(\hat{\nabla}_{\xi} \operatorname{grad}_h f, X) &= -\hat{\nabla}_{\xi} \left(X(\ln f)\right) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h f, X) + g(\operatorname{grad}_h,  \hat{\nabla}_{\xi} X) \\
+&= -X(\partial_t \ln f) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h f, X) - g(\operatorname{grad}_h f,  A(X))
 \end{split}
-\]
-The first term is,
-\[
-\begin{split}
-X(\partial_t f) &= X\left[|p|(f\mathcal{H} + \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\right] \\
-&= |p| h(f \operatorname{grad}_h \mathcal{H} + \mathcal{H} \operatorname{grad}_h f, X) + |p| h(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X)
-\end{split}
-\]
-whilst the second terms is
-\[
-\begin{split}
-(\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h \ln f, X) &= -\frac{p}{|p|} g(A(\operatorname{grad}_h \ln f), X)  -
-|p|g(\operatorname{grad}_h \ln f, X) \mathcal{H} \\
-&\quad + \frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + \frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) g(\operatorname{grad}_h \ln f, X)\\
-\end{split}
-\]
+\end{equation}
 
-Therefore,
+The first term of equation \eqref{eq:dt_transversegradient_structure} is,
 \[
 \begin{split}
-- \hat{\nabla}_{\xi} \operatorname{grad}_h \ln f &= |p| f \operatorname{grad}_h \mathcal{H} + \mathcal{H} \operatorname{grad}_h f - \frac{p}{|p|} A(\operatorname{grad}_h \ln f)  -
-|p|\operatorname{grad}_h \ln f \mathcal{H} \\
+-X(\partial_t \ln f) &= -X\left[|p|(\mathcal{H} + \frac{1}{f} \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\right] \\
+&= -|p| h(\operatorname{grad}_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f^2} h(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - \frac{|p|}{f} h(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&= -|p| fg(\operatorname{grad}_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X),
 \end{split}
 \]
-There are also these terms which I need to sort out:
+Using the symmetry of $\hat{\nabla}_{\xi}$, the late two terms of equation \eqref{eq:dt_transversegradient_structure} are
 \[
 \begin{split}
-g(\operatorname{grad}_h \ln f,  A(X)) \\
-+ \frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + \frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))g(\operatorname{grad}_h \ln f, X) \\
-+ |p| \operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right) 
+(\hat{\nabla}_{\xi} g) (X, \operatorname{grad}_h f) - g(\operatorname{grad}_h f, A(X)) &= \left(1 -\frac{p}{|p|}\right) g(\operatorname{grad}_h f, A(X)) -
+|p|\mathcal{H} g(\operatorname{grad}_h f, X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,\operatorname{grad}_h f)\right] \\
+&\quad - \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi} \\
+&= g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
+|p|\mathcal{H} \operatorname{grad}_h f, X\right) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}
+\end{split}
+\]
+upon using the structure equation \eqref{eq:sturcture2} to get the second line.
+
+Therefore we may rewrite \eqref{eq:dt_transversegradient_structure} as
+\begin{equation}
+\label{eq:dt_transversegradient_structure2}
+\begin{split}
+-g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) &= -|p| fg(\operatorname{grad}_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
+|p|\mathcal{H} \operatorname{grad}_h f, X\right) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi} \\
+&= g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
+|p|\mathcal{H} \operatorname{grad}_h f -|p| f \operatorname{grad}_h \mathcal{H}, X\right) \\
+&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}
+\end{split}
+\end{equation}
+
+Since this is true for any $X$, this uniquely determines $-\hat{\nabla}_{\xi} \operatorname{grad}_h f$, and upon substitution into equation \eqref{eq:dt_transverse_productrule2} we obtain
+\begin{equation}
+\label{eq:dt_transverse_productrule2}
+\begin{split}
+\hat{\nabla}_{\xi}\xi &= -\hat{\nabla}_{\xi}\left(\operatorname{grad}_h f\right) + |p|(f\mathcal{H} + \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu \\
+&=  \left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) +
+|p|\left[f \mathcal{H} - \mathcal{H} \operatorname{grad}_h f - f \operatorname{grad}_h\mathcal{H}\right] + R
+\end{split}
+\end{equation}
+where $R$ satisfies,
+\[
+\begin{split}
+g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}.
 \end{split}
 \]
 
