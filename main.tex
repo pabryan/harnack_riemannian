@@ -213,10 +213,25 @@ On the other hand,
 
 \section{evolution equations}
 
+Perhaps the most important aspect of our approach is the following lemma, exhibiting a crucial property of our chosen parametrisation.
+
 \begin{lemma}
 \begin{align}
 \partial_t\nu=0,
 \end{align}
+\end{lemma}
+
+\begin{proof}
+$\partial_t \nu$ is tangential, and
+\begin{align*}
+-\langle \partial_t\nu,X\rangle=&\langle \nu,\hat{\nabla}_{\xi}X\rangle-\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
+=&\langle \nu,\hat{\nabla}_{X}\xi\rangle\\
+=&\langle \nu,-AX\rangle=0.
+\end{align*}
+\end{proof}
+
+The next lemma contains other basic evolution equations.
+\begin{lemma}
 \begin{align}
 \partial_t f = |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
 \end{align}
@@ -225,30 +240,16 @@ On the other hand,
 &-
 |p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).\nonumber
 \end{align}
-\begin{align}
-\partial_t\xi=%- |p|(g^{ij}\partial_i\mathcal{H}\partial_jF- \mathcal{H}\xi),
-\end{align}
-%\begin{align}
-%\partial_t  C _{ijm}=&- p  \mathcal{H} C _{ijm}+\frac{ p }{2}(\partial_i\mathcal{H}g_{jm}+\partial_j\mathcal{H}g_{im}+\partial_m\mathcal{H}g_{ij})\\
-%&-\frac{1}{2}( A _{ij;m}- A _m^l C _{lij})-\frac{1}{2} A _i^l C _{ljm}-\frac{1}{2} A _j^l C _{lim}-\frac{1}{2} A _m^l C _{lij}.
-%\end{align}
 Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij} A _{ij}=\sum  A _i^i.$
 \end{lemma}
+
 \begin{proof}
-Since $\partial_t \nu$ is tangential, and
-\begin{align*}
--\langle \partial_t\nu,X\rangle=&\langle \nu,\hat{\nabla}_{\xi}X\rangle-\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
-=&\langle \nu,\hat{\nabla}_{X}\xi\rangle\\
-=&\langle \nu,-AX\rangle=0.
-\end{align*}
 To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}$ and $h.$
 \begin{align*}
 \partial_t \bar{g}(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle X,Y\rangle\\
 &=\langle \hat{\nabla}_X\xi,Y\rangle+\langle \hat{\nabla}_Y\xi,X\rangle\\
 &=-\bar{g}( AX,Y)-\bar{g}(X,AY).
 \end{align*}
-
-
 
 Using $h(X,Y)=\langle \hat{\nabla}_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
 \begin{align*}
@@ -268,6 +269,7 @@ Thus
  \partial_tf&=|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\nonumber\\
 &= |p|(f\mathcal{H}+f\operatorname{tr} (\widehat{Rm}(\nu,\cdot,\cdot,\nu))+\operatorname{tr} (\widehat{Rm}(W,\cdot,\cdot,\nu))).
 \end{align}
+
 The evolution equation of $g$ follows from the evolution equations of $ f $ and $h:$
 \begin{align*}
 \partial_t [g(X,Y)] = &-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
@@ -283,7 +285,9 @@ We also compute
 &= \left(2-\frac{p}{|p|}\right) f  g(A(X),Y) + \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle - f \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
 \end{split}
 \]
-with the last line coming from the structure equation \eqref{eq:sturcture2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots. For the metric $g$, we have
+with the last line coming from the structure equation \eqref{eq:sturcture2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots.
+
+For the metric $g$, we have
 \[
 \begin{split}
 (\hat{\nabla}_{\xi} g) (X, Y) &= \partial_t[g(X, Y)] - g(\hat{\nabla}_\xi X, Y) - g(X, \hat{\nabla}_\xi Y) \\
@@ -297,8 +301,27 @@ with the last line coming from the structure equation \eqref{eq:sturcture2} and 
 \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,Y)\right] - \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
 \end{split}
 \]
+\end{proof}
 
-Lastly, we compute the evolution of $\xi = -\operatorname{grad}_h f +  f \nu$.
+Next, we compute the evolution of $\xi = -\operatorname{grad}_h f + f \nu$. This is somewhat more involved than the previous lemma.
+
+\begin{lemma}
+\[
+\hat{\nabla}_{\xi} \xi = \left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) +
+|p|\mathcal{H}\xi - |p| f \operatorname{grad}_h\mathcal{H} + R
+\]
+where $R$ satisfies,
+\[
+\begin{split}
+g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}.
+\end{split}
+\]
+\end{lemma}
+
+\begin{proof}
 \begin{equation}
 \label{eq:dt_transverse_productrule}
 \begin{split}
@@ -435,6 +458,9 @@ g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\
 
 
 %\end{proof}
+
+For the purpose of obtaining a Harnack inequality, the main ingredient turns out to be the evolution of the affine mean curvature $\mathcal{H}$.
+
 \begin{theorem} We have
 %\begin{align*}
 %\partial_t| C |^2=&
@@ -469,6 +495,9 @@ Therefore,
 &= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
 \end{align*}
 \end{proof}
+
+\section{The Harnack Inequality}
+
 \begin{theorem}
 \[\left\{
   \begin{array}{ll}
