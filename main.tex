@@ -416,56 +416,11 @@ g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\
 &\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}.
 \end{split}
 \]
-
-
-%Next we proceed to calculate the evolution equation of $ C _{ijk}.$ To do so, in a normal coordinates with  $\partial_kg_{ij}=\Gamma_{ij}^k=0$, using the evolution equation of $g_{ij}$ we calculate the evolution equation of $\partial_t\Gamma_{ij}^j:$
-%\begin{align*}
-%\partial_t\Gamma_{ij}^k=-\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}( A ^k_{j;i}+ A ^k_{i;j}-g^{kl} A _{ij;l}).
-%\end{align*}
-%Thus
-%\begin{align*}
-%\partial_tF_{;ij}&=(\partial_tF)_{;ij}-(\partial_t\Gamma_{ij}^k)\partial_kF\\
-%&=\xi_{;ij}+\left\{\frac{ p }{2}\left(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}\right)-\frac{1}{2}( A ^k_{j;i}+ A ^k_{i;j}+g^{kl} A _{ij;l})\right\}\partial_kF.
-%\end{align*}
-%We may also calculate $\partial_tF_{;ij}$ in a different way:
-%\begin{align*}
-%\partial_tF_{;ij}=&\partial_t(g_{ij}\xi+ C _{ij}^k\partial_kF)\\
-%=&\left(- p  \mathcal{H}g_{ij}- A _{ij}\right)\xi+g_{ij}(- p  g^{ij}\partial_i\mathcal{H}\partial_jF+ p  \mathcal{H}\xi)\\
-%&+(\partial_t  C _{ij}^k)\partial_kF- C _{ij}^l A _l^k\partial_kF.
-%\end{align*}
-%Putting these together gives
-%\begin{align*}
-%\partial_t C _{ij}^k=&-\frac{1}{2} A ^l_{i} C _{lj}^k-\frac{1}{2} A _j^l C _{li}^k-\frac{1}{2}g^{kl} A _{ij;l}+ C _{ij}^l A _l^k+ p  g_{ij}g^{kl}\partial_l\mathcal{H}\\
-%&+\frac{ p }{2}(\partial_i\mathcal{H}\delta_j^k+\partial_j\mathcal{H}\delta_i^k-g^{kl}\partial_lg_{ij}).
-%\end{align*}
-%To obtain the evolution equation of $ C _{ijk}$ note that
-%$\partial_t C _{ijl}=\partial_t(g_{kl} C _{ij}^k).$
 \end{proof}
-%\begin{lemma} The following identities hold
-%\begin{align*}
-%\Delta  C _{ilm}=&\frac{1}{2}g_{im}\partial_l\mathcal{H}+\frac{1}{2}g_{lm}\partial_i\mathcal{H}+\frac{1}{2}g_{il}\partial_m\mathcal{H}\\
-%&+\frac{n+2}{2}( A _m^k C _{kil}- A _{il;m})+\frac{1}{2}\mathcal{H} C _{ilm}\\
-%&-2 C _{ik}^r C _{mr}^p C _{pl}^k+ C _{im}^r C _{kr}^p C _{pl}^k+ C _{lm}^r C _{kr}^p C _{pi}^k+ C _{jm}^r C _{rp}^j C _{il}^p\\
-%&+\frac{ p (n+2)-1}{2}\left\{(\partial_i \ln K)_{;lm}-\frac{1}{2}g_{lm} A _i^k\partial_k\ln K-\frac{1}{2}g_{im} A _l^k\partial_k\ln K\right\}\\
-%&-\frac{ p (n+2)-1}{2}\left\{ C _{il}^p C _{mp}^k\partial_k\ln K+\frac{1}{2} A _{mi}\partial_l\ln K+\frac{1}{2} A _{ml}\partial_i\ln K\right\},
-%\end{align*}
-%and
-%\begin{align*}
-%\Delta  A _{ij}=&
-%\end{align*}
-%\end{lemma}
-%\begin{proof}
-
-
-%\end{proof}
 
 For the purpose of obtaining a Harnack inequality, the main ingredient turns out to be the evolution of the affine mean curvature $\mathcal{H}$.
 
 \begin{theorem} We have
-%\begin{align*}
-%\partial_t| C |^2=&
-%\end{align*}
-%and
 \begin{align*}
 \partial_t\mathcal{H}= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
 \end{align*}
@@ -534,18 +489,7 @@ Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n |p| -1}$ is always neg
 \end{align*}
 Therefore, by the maximum principle, $Q$ is negative positive.
 \end{proof}
-\begin{corollary}
-The only compact strictly convex ancient solutions of the $p$-GCF for $-\frac{1}{n}<p<0$ are shrinking spheres.
-\end{corollary}
-\begin{proof}
-In the previous theorem we have shown
-that $t\mathcal{H}+\frac{n}{n |p| -1}<0$. So for any $N<0$ we have
-\[\mathcal{H}(\cdot,t)+\frac{n}{(n |p| -1)(t-N)}<0\]
-for all $t\in [N,\infty).$
-Allowing $N\to -\infty$ implies that compact strictly convex ancient solutions satisfy $\mathcal{H}\leq 0.$ A direct calculation shows that
-\[\mathcal{H}=h^{ij}(\nabla_{ij}^2K^p+g_{ij}K^{p}).\]
-Here $g$ and $\nabla$ are the standard metric and connection of the unit sphere. The normalized solutions must converge forward in time to a self-similar solution satisfying $-\langle F,\nu \rangle=K^{p}$; therefore, $\mathcal{H}(\cdot,t)\geq 0$ if $t$ is large enough. Since the hypersurfaces are strictly convex, we conclude that  $\mathcal{H}\equiv 0$ if $t$ large enough and so the hypersurfaces are spheres.
-\end{proof}
+
 To get the usual Harnack estimate, we note if we define a time-dependent diffeomorphism $\varphi: M^n\to M^n$ by
 \begin{align}
 \partial_t\varphi^k=h^{kl}\partial_l K^{ p },
@@ -563,40 +507,3 @@ where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 \bibliography{Bibliography.bib}
 
 \end{document}
-
- We mention that the cubic form is totally symmetric in all three indices and is trace free with respect to each of  two indices.
-
-Define \[P_{ij}:=\tilde{\nabla}_i\tilde{\nabla}_jS^{-1}+g_{ij}S^{-1},\]
-where $g_{ij}$ and $\tilde{\nabla}$ are the metric and the connection of the unit sphere and $S^{-1}$ is the Gauss curvature considered as a function on the unit sphere. First, we would like to calculate the evolution equation of $P_{ij}.$
-To do so, we recall that
-\[\mathfrak{r}_{ij}=\tilde{\nabla}_i\tilde{\nabla}_jh+g_{ij}h\]
-\[\partial_th=-S^{-1},\]
-\[S=\det(\mathfrak{r}_{ij})/\det(g_{ij}),\]
-\[\partial_t \mathfrak{r}_{ij}=-P_{ij},\]
-\[\partial_t S^{-1}=S^{-1}\mathfrak{r}^{kl}P_{kl}.\]
-Thus we may calculate
-\begin{align*}
-\partial_tP_{aj}=&\tilde{\nabla}_a\tilde{\nabla}_j(S^{-1}\mathfrak{r}^{kl}P_{kl})+
-g_{aj}S^{-1}\mathfrak{r}^{kl}P_{kl}\\
-=&\tilde{\nabla}_a(\mathfrak{r}^{kl}P_{kl}\tilde{\nabla}_jS^{-1}+S^{-1}P_{kl}\tilde{\nabla}_j\mathfrak{r}^{kl}+S^{-1}\mathfrak{r}^{kl}\tilde{\nabla}_jP_{kl})+g_{aj}S^{-1}\mathfrak{r}^{kl}P_{kl}\\
-=&\mathfrak{r}^{kl}P_{kl}P_{aj}+\mathfrak{r}^{kl}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_jS^{-1}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\tilde{\nabla}_jS^{-1}\tilde{\nabla}_a\mathfrak{r}_{rs}\\
-&+S^{-1}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_j\mathfrak{r}^{kl}-\mathfrak{r}^{kr}\mathfrak{r}^{ls}P_{kl}\tilde{\nabla}_j\mathfrak{r}_{rs}\tilde{\nabla}_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_j\mathfrak{r}_{rs}\\
-&+S^{-1}\mathfrak{r}^{kl}\tilde{\nabla}_a\tilde{\nabla}_jP_{kl}+\mathfrak{r}^{kl}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_aS^{-1}-S^{-1}\mathfrak{r}^{kr}\mathfrak{r}^{ls}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_a\mathfrak{r}_{rs}.
-\end{align*}
-
-\begin{align*}
-\partial_t \mathfrak{r}^{ia}=\mathfrak{r}^{ic}\mathfrak{r}^{ab}P_{bc}.
-\end{align*}
-Next we would like to calculate the evolution equation
-of
-$Q_j^i:=\mathfrak{r}^{ia}P_{aj}.$
-\begin{align*}
-\partial_t Q_j^i=(Q^2)_i^j+\mathfrak{r}^{ia}\partial_tP_{aj}
-\end{align*}
-\begin{align*}
-\\mathfrak{r}artial_tP_{aj}=&S^{-2}S^{kl}P_{kl}g_{aj}-6S^{-4}S^{kl}P_{kl}\tilde{\nabla}_aS\tilde{\nabla}_jS-2S^{-3}S^{kl}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_jS\\
-&-2S^{-3}S^{kl,mn}P_{kl}\tilde{\nabla}_a\mathfrak{r}_{mn}\tilde{\nabla}_jS-2S^{-3}S^{kl}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_jS\\
-&-2S^{-3}S^{kl,mn}\tilde{\nabla}_j\mathfrak{r}_{mn}P_{kl}\tilde{\nabla}_aS+S^{-2}S^{kl,mn,rs}P_{kl}\tilde{\nabla}_j\mathfrak{r}_{mn}\tilde{\nabla}_a\mathfrak{r}_{rs}\\
-&+S^{-2}S^{kl,mn}\tilde{\nabla}_aP_{kl}\tilde{\nabla}_j\mathfrak{r}_{mn}+S^{-2}S^{kl,mn}P_{kl}\tilde{\nabla}_a\tilde{\nabla}_j\mathfrak{r}_{mn}\\
-&-2S^{-3}S^{kl}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_aS+S^{-2}S^{kl,mn}\tilde{\nabla}_jP_{kl}\tilde{\nabla}_a\mathfrak{r}_{mn}+S^{-2}S^{kl}\tilde{\nabla}_a\tilde{\nabla}_jP_{kl}.
-\end{align*} 
