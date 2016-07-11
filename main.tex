@@ -59,22 +59,24 @@
 \end{abstract}
 
 \maketitle
-Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\ip{}{})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\ip{}{})$ is said to be a solution of the anisotropic $ p $-GCF if
+Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\ip{}{})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\ip{}{})$ is said to be a solution of the $f$-curvature flow if
 \begin{align}
-\partial_tF=\frac{p}{|p|}\xi,\quad F(\cdot,0)=F_0(\cdot).
+\partial_tF = \xi,\quad F(\cdot, 0) = F_0(\cdot).
 \end{align}
 Here $\xi $ is a smooth transverse inward-pointing vector field defined by
 \begin{align}
-\xi:=F_{\ast}(-\grad_h(\varphi(\nu)K^p))+\varphi(\nu) K^{ p }\nu,
+\xi := -F_{\ast}\grad_h f + f\nu,
 \end{align}
-where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector, $\varphi$ is a smooth function defined on the unit sphere, and $\grad_h(\varphi(\nu)K^p)$ is the gradient of $\varphi(\nu)K^p$ with respect to the second fundamental $h$ induced by $\nu,$ namely
+where $f$ is a smooth, positive, strictly increasing and symmetric function of the principle curvatures, $\nu$ is a smooth inner unit normal vector field, and $\grad_h f$ is the gradient of $f$ with respect to the second fundamental $h$ induced by $\nu,$ namely
 \[
-h(X, \grad_h (\varphi(\nu)K^p)) = X(\varphi(\nu)K^p)
+h(X, \grad_h f) = X(f)
 \]
-for all vectors $X$ tangent to $M$.
+for all vectors $X$ tangent to $M$. In what follows, for convenience, we set $W := -\grad_h f$ so that $\xi = F_{\ast} W + f \nu$.
+
 
 \section{structure equations}
-We make use of the theory of affine immersions as described in \cite{MR1311248}. In what follows for simplicity, we set $ f = \varphi(\nu)K^p$ and $W:=-\grad_h(\varphi(\nu)K^p) = - \grad_h f.$
+
+We make use of the theory of affine immersions as described in \cite{MR1311248}.
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
