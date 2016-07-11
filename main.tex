@@ -20,6 +20,18 @@
 \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\ip}[2]{\ensuremath{\langle{#1},{#2}\rangle}}
+
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Rm}{Rm}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\ric}{Ric}
+\DeclareMathOperator{\diff}{K}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\RR}{\mathbb{R}}
+
+
 \numberwithin{equation}{section}
 
 \newcommand{\blankbox}[2]{%
@@ -47,70 +59,73 @@
 \end{abstract}
 
 \maketitle
-Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\hat{g})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\hat{g})$ is said to be a solution of the anisotropic $ p $-GCF if
+Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\ip{}{})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\ip{}{})$ is said to be a solution of the anisotropic $ p $-GCF if
 \begin{align}
 \partial_tF=\frac{p}{|p|}\xi,\quad F(\cdot,0)=F_0(\cdot).
 \end{align}
 Here $\xi $ is a smooth transverse inward-pointing vector field defined by
 \begin{align}
-\xi:=F_{\ast}(-\operatorname{grad}_h(\varphi(\nu)K^p))+\varphi(\nu) K^{ p }\nu,
+\xi:=F_{\ast}(-\grad_h(\varphi(\nu)K^p))+\varphi(\nu) K^{ p }\nu,
 \end{align}
-where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector, $\varphi$ is a smooth function defined on the unit sphere, and $\operatorname{grad}_h(\varphi(\nu)K^p)$ is the gradient of $\varphi(\nu)K^p$ with respect to the second fundamental $h$ induced by $\nu,$ namely
+where $ K $ is the Gauss curvature, $\nu$ is an inward unit normal vector, $\varphi$ is a smooth function defined on the unit sphere, and $\grad_h(\varphi(\nu)K^p)$ is the gradient of $\varphi(\nu)K^p$ with respect to the second fundamental $h$ induced by $\nu,$ namely
 \[
-h(X, \operatorname{grad}_h (\varphi(\nu)K^p)) = X(\varphi(\nu)K^p)
+h(X, \grad_h (\varphi(\nu)K^p)) = X(\varphi(\nu)K^p)
 \]
 for all vectors $X$ tangent to $M$.
 
-We make use of the theory of affine immersions as described in \cite{MR1311248}. 
 \section{structure equations}
-In what follows for simplicity, we set $ f = \varphi(\nu)K^p$ and $W:=-\operatorname{grad}_h(\varphi(\nu)K^p) = - \operatorname{grad}_h f.$
+We make use of the theory of affine immersions as described in \cite{MR1311248}. In what follows for simplicity, we set $ f = \varphi(\nu)K^p$ and $W:=-\grad_h(\varphi(\nu)K^p) = - \grad_h f.$
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
-\hat{\nabla}_YF_{\ast}(X)=F_{\ast}(\bar{\nabla}_YX)+h(X,Y)\nu.
+\D_YF_{\ast}(X)=F_{\ast}(\bar{\nabla}_YX)+h(X,Y)\nu.
 \end{align}
-Define the non-degenerate metric
+Define the non-degenerate metric, referred to here as the \emph{affine metric},
 \begin{align}
 g(X,Y):=\frac{h(X,Y)}{ f }.
 \end{align}
-The second fundamental form with respect to $\xi$ is defined by
-\begin{align}
-\hat{\nabla}_X\xi:=-F_{\ast}(AX)
-\end{align}
-for $X\in TM$. Note that
+Note that
 \begin{align*}
-\hat{\nabla}_X \xi &= \hat{\nabla}_X (F_{\ast}(W) + f \nu) \\
-&= \hat{\nabla}_X F_{\ast}(W) + X(f)\nu + f \hat{\nabla}_X \nu \\
-&= F_{\ast}(\bar{\nabla}_X W) - h(X, \operatorname{grad}_h f) \nu + X(f) \nu + f \hat{\nabla}_X \nu \\
-&= F_{\ast} (\bar{\nabla}_X W) + f \hat{\nabla}_X \nu,
+\D_X \xi &= \D_X (F_{\ast}(W) + f \nu) \\
+&= \D_X F_{\ast}(W) + X(f)\nu + f \D_X \nu \\
+&= F_{\ast}(\bar{\nabla}_X W) - h(X, \grad_h f) \nu + X(f) \nu + f \D_X \nu \\
+&= F_{\ast} (\bar{\nabla}_X W) + f \D_X \nu,
 \end{align*}
-which is tangential since $\nu$ has unit length. Thus,
+which is tangential since $\nu$ has unit length. Thus, we may define an endomorphism of $TM$, the \emph{affine shape operator} $A$ with respect to $\xi$, by
+\begin{align}
+\D_X\xi := -F_{\ast}(A(X))
+\end{align}
+for $X\in TM$. Equivalently,
 \[
-AX =- \bar{\nabla}_X W - f F_{\ast}^{-1} \hat{\nabla}_X \nu.
+A(X) =- \bar{\nabla}_X W - f F_{\ast}^{-1} \D_X \nu.
 \]
+We also define the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
+\[
+B(X, Y) = g(A(X), Y).
+\]
+In general, the presence of ambient curvature $\widehat{\Rm}$ implies that $A$ is not self-adjoint with respect to $g$ (see \eqref{eq:structure2} below).
 
 The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
 \begin{align}\label{gauss equ2}
-\hat{\nabla}_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
+\D_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
 \end{align}
 This connection is well defined (i.e. $F_{\ast}(\tilde{\nabla}_Y X)$ is tangent to $F(M)$) since for all $X,Y\in TM$ we have
 \begin{align}
 F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nu - g(X, Y) (F_{\ast}(W) + f \nu) \\
 &= F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W) \nonumber.
 \end{align}
+In other words, $\tilde{\nabla}_Y X$ is the uniquely determined tangential component of $D_Y F_{\ast} X$ in the splitting $F^{\ast} TN \simeq TM \oplus \RR \xi$ where $\RR\xi$ denotes the line bundle over $M$ determined by $\xi$ and $F^{\ast} TN$ denotes the pull-back bundle of $TN$ by $F$.
 
-The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; therefore, $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$
+The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; that is $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$ Define the difference tensor
+\begin{equation}
+\label{eq:difftensor}
+\diff_YX := \tilde{\nabla}_{Y}X - \nabla_{Y}X.
+\end{equation}
+Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $\diff$ is symmetric: $\diff_YX = \diff_XY.$
 
-Define the difference tensor
-\begin{align*}
-D_YX:=\tilde{\nabla}_{Y}X-\nabla_{Y}X.
-\end{align*}
-Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $D_YX=D_XY.$
-
-Therefore, from (\ref{gauss equ2}) we get
-
+From (\ref{gauss equ2}) we get,
 \begin{align}\label{gauss equ3}
-\operatorname{Hess}F(X,Y):=\hat{\nabla}_YF_{\ast}(X)-F_{\ast}(\nabla_YX)=F_{\ast}(D_YX)+g(X,Y)\xi.
+\hess F(X,Y):=\D_YF_{\ast}(X)-F_{\ast}(\nabla_YX) = F_{\ast}(\diff_YX) + g(X,Y)\xi.
 \end{align}
 
 Let us recall the \emph{structure equations} of an affine immersion (see the proof of \cite[Section II, Theorem 2.1]{MR1311248} adjusted to include the ambient curvature $\widehat{Rm}$ or \cite[p. 197 equations (N1.6)--(N1.9)]{MR1311248} in the codimension one case):
@@ -119,26 +134,25 @@ Let us recall the \emph{structure equations} of an affine immersion (see the pro
 \label{eq:structure1}
 \widehat{Rm} (X, Y) Z =& Rm(X, Y) Z + g(X, Z) A Y - g(Y, Z)A X \\
 &+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \xi \nonumber,\\
-\label{eq:sturcture2}
+\label{eq:structure2}
 \widehat{Rm} (X, Y) \xi &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\xi.
 \end{align}
 
-The cubic tensor is defined by
+The \emph{cubic tensor} is defined by
 \begin{align}
 C(X,Y,Z) = (\tilde{\nabla}_X g) (Y,Z).
 \end{align}
-Except in the case $ p =\frac{1}{n+2}$, $ C$ does not enjoy being trace free with respect to each of its two slots.
 
-We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}
+We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}):
 
 \begin{lemma}
 \[
-C(X, Y, Z) =  -2g(D_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
+C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
 \]
 \end{lemma}
 
 \begin{proof}
-Since $g$ is symmetric, $C(X, Y, Z) = C(X, Z, Y)$:
+First, since $g$ is symmetric, $C(X, Y, Z) = C(X, Z, Y)$:
 \[
 \begin{split}
 C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z, Y) \\
@@ -152,45 +166,44 @@ But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: us
 \[
 C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
 \]
-where the superscript $\xi$ denotes the $\xi$ component in the decomposition $T_{F(x)}N \simeq F_{\ast}(T_xM) \oplus \mathbb{R} \xi(x)$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
+where the superscript $\xi$ denotes the $\xi$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \xi$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
 \begin{equation}
 \label{eq:cubic_permutation1}
 C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\xi}.
 \end{equation}
-On the other hand, since $D_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $D_X$ to $g$ as a derivation gives,
+On the other hand, since $\diff_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $\diff_X$ to $g$ as a derivation gives,
 \[
-(D_X g) (Y, Z) = D_X g(Y, Z) -g(D_X Y, Z) - g(Y, D_X Z) = -g(D_X Y, Z) - g(Y, D_X Z).
+(\diff_X g) (Y, Z) = \diff_X (g(Y, Z)) - g(\diff_X Y, Z) - g(Y, \diff_X Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
 \]
 Now using $\nabla g \equiv 0$, gives
 \begin{equation}
 \label{eq:cubic_derivation_identity}
-C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (D_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(D_X Y, Z) - g(Y, D_X Z).
+C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (\diff_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
 \end{equation}
 
-Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} and the symmetric of $C$ in the second two slots we obtain,
+Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} we obtain,
 \begin{equation}
 \label{eq:cubic_identity}
 \begin{split} 
-C(X, Y, Z) &= -g(D_X Y, Z) - g(Y, D_X Z) \\
-&= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(D_Z Y, X) - g(Y, D_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+-g(\diff_X Y, Z) - g(Y, \diff_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(\diff_Z Y, X) - g(Y, \diff_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
 \end{split}
 \end{equation}
-Since $D_X Z = D_Z X$ this yields,
+Since $\diff_X Z = \diff_Z X$ this yields,
 \[
--g(D_X Y, Z) = - g(D_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+-g(\diff_X Y, Z) = - g(\diff_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
 \]
-When applied to $g(D_X Z, Y)$ we obtain
+When applied to $g(\diff_X Z, Y)$ we obtain
 \[
--g(D_Z X, Y) = - g(D_X Z, Y) = - g(D_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
+-g(\diff_Z X, Y) = - g(\diff_X Z, Y) = - g(\diff_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
 \]
 Finally, upon substitution of this identity into equation \eqref{eq:cubic_identity} we complete the proof with,
 \begin{equation}
 \begin{split}
-C(X, Y, Z) &= -g(D_Z Y, X) - g(D_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(D_Z Y, X) - g(D_Y Z, X) \\
+C(X, Y, Z) &= -g(\diff_Z Y, X) - g(\diff_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(\diff_Z Y, X) - g(\diff_Y Z, X) \\
 &\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi \\
-&= - 2g(D_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
+&= - 2g(\diff_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
 \end{split}
 \end{equation}
 where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
@@ -198,17 +211,18 @@ where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
 
 The second covariant derivatives of $ \xi$ is given by
 \begin{align}
-\operatorname{Hess}\xi(X,Y)&=\hat{\nabla}_Y\hat{\nabla}_X\xi-\hat{\nabla}_{\nabla_YX}\xi\\
-&=-\hat{\nabla}_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
+\hess\xi(X,Y)&=\D_Y\D_X\xi-\D_{\nabla_YX}\xi\\
+&=-\D_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
 &=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(D_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(D_{Y}AX)-g(A X,Y)\xi.\nonumber
+&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi.\nonumber
 \end{align}
-On the other hand,
+
+On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \xi$ is not symmetric:
 \begin{align}
-\widehat{Rm}(X,Y)\xi&=\hat{\nabla}^2_{X,Y}\xi-\hat{\nabla}^2_{Y,X}\xi\\
-&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X)-\hat{\nabla}_{\hat{\nabla}_YX-\hat{\nabla}_XY}\xi-\hat{\nabla}_{\nabla_XY-\nabla_YX}\xi\nonumber\\
-&=\operatorname{Hess}\xi(X,Y)-\operatorname{Hess}\xi(Y,X).\nonumber
+\widehat{Rm}(X,Y)\xi&=\D^2_{X,Y}\xi-\D^2_{Y,X}\xi\\
+&=\hess\xi(X,Y)-\hess\xi(Y,X)-\D_{\D_YX-\D_XY}\xi-\D_{\nabla_XY-\nabla_YX}\xi\nonumber\\
+&=\hess\xi(X,Y)-\hess\xi(Y,X).\nonumber
 \end{align}
 
 \section{evolution equations}
@@ -224,8 +238,8 @@ Perhaps the most important aspect of our approach is the following lemma, exhibi
 \begin{proof}
 $\partial_t \nu$ is tangential, and
 \begin{align*}
--\langle \partial_t\nu,X\rangle=&\langle \nu,\hat{\nabla}_{\xi}X\rangle-\hat{\nabla}_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
-=&\langle \nu,\hat{\nabla}_{X}\xi\rangle\\
+-\langle \partial_t\nu,X\rangle=&\langle \nu,\D_{\xi}X\rangle-\D_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
+=&\langle \nu,\D_{X}\xi\rangle\\
 =&\langle \nu,-AX\rangle=0.
 \end{align*}
 \end{proof}
@@ -233,12 +247,12 @@ $\partial_t \nu$ is tangential, and
 The next lemma contains other basic evolution equations.
 \begin{lemma}
 \begin{align}
-\partial_t f = |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
+\partial_t f = |p|(f\mathcal{H}+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
 \end{align}
 \begin{align}
 \partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
 &-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).\nonumber
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).\nonumber
 \end{align}
 Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij} A _{ij}=\sum  A _i^i.$
 \end{lemma}
@@ -246,77 +260,77 @@ Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathc
 \begin{proof}
 To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}$ and $h.$
 \begin{align*}
-\partial_t \bar{g}(X,Y)&=\hat{\nabla}_{\frac{\partial}{\partial t}}\langle X,Y\rangle\\
-&=\langle \hat{\nabla}_X\xi,Y\rangle+\langle \hat{\nabla}_Y\xi,X\rangle\\
+\partial_t \bar{g}(X,Y)&=\D_{\frac{\partial}{\partial t}}\langle X,Y\rangle\\
+&=\langle \D_X\xi,Y\rangle+\langle \D_Y\xi,X\rangle\\
 &=-\bar{g}( AX,Y)-\bar{g}(X,AY).
 \end{align*}
 
-Using $h(X,Y)=\langle \hat{\nabla}_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
+Using $h(X,Y)=\langle \D_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
 \begin{align*}
-\partial_t [h(X,Y)] &= \hat{\nabla}_{\frac{\partial}{\partial t}}\langle \hat{\nabla}_{Y}X,\nu\rangle\\
-&=\frac{p}{|p|}\langle \hat{\nabla}_{\xi}\hat{\nabla}_{Y}X,\nu\rangle\\
-&=\frac{p}{|p|}\langle \hat{\nabla}_{Y}\hat{\nabla}_{X}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&=-\frac{p}{|p|}\langle \hat{\nabla}_{Y}AX,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&=\frac{p}{|p|}\langle AX,\hat{\nabla}_{Y}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+\partial_t [h(X,Y)] &= \D_{\frac{\partial}{\partial t}}\langle \D_{Y}X,\nu\rangle\\
+&=\frac{p}{|p|}\langle \D_{\xi}\D_{Y}X,\nu\rangle\\
+&=\frac{p}{|p|}\langle \D_{Y}\D_{X}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&=-\frac{p}{|p|}\langle \D_{Y}AX,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
+&=\frac{p}{|p|}\langle AX,\D_{Y}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
 &=-\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle.
 \end{align*}
 Therefore, using $\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}$ we get
 \begin{align*}
-\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\operatorname{tr}_h (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
+\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\Tr_h (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
 \end{align*}
 Thus
 \begin{align}
- \partial_tf&=|p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\nonumber\\
-&= |p|(f\mathcal{H}+f\operatorname{tr} (\widehat{Rm}(\nu,\cdot,\cdot,\nu))+\operatorname{tr} (\widehat{Rm}(W,\cdot,\cdot,\nu))).
+ \partial_tf&=|p|(f\mathcal{H}+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\nonumber\\
+&= |p|(f\mathcal{H}+f\Tr (\widehat{Rm}(\nu,\cdot,\cdot,\nu))+\Tr (\widehat{Rm}(W,\cdot,\cdot,\nu))).
 \end{align}
 
 The evolution equation of $g$ follows from the evolution equations of $ f $ and $h:$
 \begin{align*}
 \partial_t [g(X,Y)] = &-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
 &-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
 \end{align*}
 
 We also compute
 \[
 \begin{split}
-(\hat{\nabla}_{\xi} h) (X, Y) &= \partial_t[h(X, Y)] - h(\hat{\nabla}_\xi X, Y) - h(X, \hat{\nabla}_\xi Y) \\
+(\D_{\xi} h) (X, Y) &= \partial_t[h(X, Y)] - h(\D_\xi X, Y) - h(X, \D_\xi Y) \\
 &= -\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + fg(AX, Y) + fg(X, AY) \\
 &= \left(2-\frac{p}{|p|}\right) f  g(A(X),Y) + \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle - f \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
 \end{split}
 \]
-with the last line coming from the structure equation \eqref{eq:sturcture2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots.
+with the last line coming from the structure equation \eqref{eq:structure2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots.
 
 For the metric $g$, we have
 \[
 \begin{split}
-(\hat{\nabla}_{\xi} g) (X, Y) &= \partial_t[g(X, Y)] - g(\hat{\nabla}_\xi X, Y) - g(X, \hat{\nabla}_\xi Y) \\
+(\D_{\xi} g) (X, Y) &= \partial_t[g(X, Y)] - g(\D_\xi X, Y) - g(X, \D_\xi Y) \\
 &= -\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle \\
 &-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \\
+|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \\
 &\quad + g(AX, Y) + g(X, AY) \\
 &= \left(2 -\frac{p}{|p|}\right) g(A(X),Y) -
 |p|\mathcal{H} g(X,Y) \\
 &\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,Y)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,Y)\right] - \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,Y)\right] - \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
 \end{split}
 \]
 \end{proof}
 
-Next, we compute the evolution of $\xi = -\operatorname{grad}_h f + f \nu$. This is somewhat more involved than the previous lemma.
+Next, we compute the evolution of $\xi = -\grad_h f + f \nu$. This is somewhat more involved than the previous lemma.
 
 \begin{lemma}
 \[
-\hat{\nabla}_{\xi} \xi = \left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) +
-|p|\mathcal{H}\xi - |p| f \operatorname{grad}_h\mathcal{H} + R
+\D_{\xi} \xi = \left[1 -\frac{p}{|p|}\right] A(\grad_h f) +
+|p|\mathcal{H}\xi - |p| f \grad_h\mathcal{H} + R
 \]
 where $R$ satisfies,
 \[
 \begin{split}
-g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
-&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}.
+g(R - |p| \Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - |p| g(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\grad_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi}.
 \end{split}
 \]
 \end{lemma}
@@ -325,95 +339,95 @@ g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\
 \begin{equation}
 \label{eq:dt_transverse_productrule}
 \begin{split}
-\hat{\nabla}_{\xi}\xi &= -\hat{\nabla}_{\xi} \left(\operatorname{grad}_h f\right) + (\partial_t f) \nu \\
-&= -\hat{\nabla}_{\xi}\left(\operatorname{grad}_h f\right) + |p|(f\mathcal{H}+\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu
+\D_{\xi}\xi &= -\D_{\xi} \left(\grad_h f\right) + (\partial_t f) \nu \\
+&= -\D_{\xi}\left(\grad_h f\right) + |p|(f\mathcal{H}+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu
 \end{split}
 \end{equation}
-Now we use the defining equation for $\operatorname{grad}_h f$,
+Now we use the defining equation for $\grad_h f$,
 \[
-X(\ln f) = \frac{1}{f} h(\operatorname{grad}_h f, X) = g(\operatorname{grad}_h f, X)
+X(\ln f) = \frac{1}{f} h(\grad_h f, X) = g(\grad_h f, X)
 \]
 We then compute
 \[
 \begin{split}
-\hat{\nabla}_{\xi} \left(X(\ln f)\right) &= \hat{\nabla}_{\xi} \left[g(\operatorname{grad}_h f, X)\right] \\
-&= (\hat{\nabla}_{\xi} g) (\operatorname{grad}_h f, X) + g(\hat{\nabla}_{\xi} \operatorname{grad}_h f, X) + g(\operatorname{grad}_h f,  \hat{\nabla}_{\xi} X).
+\D_{\xi} \left(X(\ln f)\right) &= \D_{\xi} \left[g(\grad_h f, X)\right] \\
+&= (\D_{\xi} g) (\grad_h f, X) + g(\D_{\xi} \grad_h f, X) + g(\grad_h f,  \D_{\xi} X).
 \end{split}
 \]
 Rearranging gives,
 \begin{equation}
 \label{eq:dt_transversegradient_structure}
 \begin{split}
--g(\hat{\nabla}_{\xi} \operatorname{grad}_h f, X) &= -\hat{\nabla}_{\xi} \left(X(\ln f)\right) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h f, X) + g(\operatorname{grad}_h,  \hat{\nabla}_{\xi} X) \\
-&= -X(\partial_t \ln f) + (\hat{\nabla}_{\xi} g) (\operatorname(\operatorname{grad}_h f, X) - g(\operatorname{grad}_h f,  A(X))
+-g(\D_{\xi} \grad_h f, X) &= -\D_{\xi} \left(X(\ln f)\right) + (\D_{\xi} g) ((\grad_h f, X) + g(\grad_h,  \D_{\xi} X) \\
+&= -X(\partial_t \ln f) + (\D_{\xi} g) ((\grad_h f, X) - g(\grad_h f,  A(X))
 \end{split}
 \end{equation}
 
 The first term of equation \eqref{eq:dt_transversegradient_structure} is,
 \[
 \begin{split}
--X(\partial_t \ln f) &= -X\left[|p|(\mathcal{H} + \frac{1}{f} \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\right] \\
-&= -|p| h(\operatorname{grad}_h \mathcal{H}, X) \\
-&\quad + |p|\frac{1}{f^2} h(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - \frac{|p|}{f} h(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
-&= -|p| fg(\operatorname{grad}_h \mathcal{H}, X) \\
-&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X),
+-X(\partial_t \ln f) &= -X\left[|p|(\mathcal{H} + \frac{1}{f} \Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\right] \\
+&= -|p| h(\grad_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f^2} h(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - \frac{|p|}{f} h(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&= -|p| fg(\grad_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f} g(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - |p| g(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X),
 \end{split}
 \]
-Using the symmetry of $\hat{\nabla}_{\xi}$, the late two terms of equation \eqref{eq:dt_transversegradient_structure} are
+Using the symmetry of $\D_{\xi}$, the late two terms of equation \eqref{eq:dt_transversegradient_structure} are
 \[
 \begin{split}
-(\hat{\nabla}_{\xi} g) (X, \operatorname{grad}_h f) - g(\operatorname{grad}_h f, A(X)) &= \left(1 -\frac{p}{|p|}\right) g(\operatorname{grad}_h f, A(X)) -
-|p|\mathcal{H} g(\operatorname{grad}_h f, X) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,\operatorname{grad}_h f)\right] \\
-&\quad - \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi} \\
-&= g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
-|p|\mathcal{H} \operatorname{grad}_h f, X\right) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
-&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}
+(\D_{\xi} g) (X, \grad_h f) - g(\grad_h f, A(X)) &= \left(1 -\frac{p}{|p|}\right) g(\grad_h f, A(X)) -
+|p|\mathcal{H} g(\grad_h f, X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,\grad_h f)\right] \\
+&\quad - \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi} \\
+&= g\left(\left[1 -\frac{p}{|p|}\right] A(\grad_h f) -
+|p|\mathcal{H} \grad_h f, X\right) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\grad_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi}
 \end{split}
 \]
-upon using the structure equation \eqref{eq:sturcture2} to get the second line.
+upon using the structure equation \eqref{eq:structure2} to get the second line.
 
 Therefore we may rewrite \eqref{eq:dt_transversegradient_structure} as
 \begin{equation}
 \label{eq:dt_transversegradient_structure2}
 \begin{split}
--g(\hat{\nabla}_{\xi} \operatorname{grad}_h \ln f, X) &= -|p| fg(\operatorname{grad}_h \mathcal{H}, X) \\
-&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
-&\quad + g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
-|p|\mathcal{H} \operatorname{grad}_h f, X\right) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
-&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi} \\
-&= g\left(\left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) -
-|p|\mathcal{H} \operatorname{grad}_h f -|p| f \operatorname{grad}_h \mathcal{H}, X\right) \\
-&\quad + |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
-&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}
+-g(\D_{\xi} \grad_h \ln f, X) &= -|p| fg(\grad_h \mathcal{H}, X) \\
+&\quad + |p|\frac{1}{f} g(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - |p| g(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + g\left(\left[1 -\frac{p}{|p|}\right] A(\grad_h f) -
+|p|\mathcal{H} \grad_h f, X\right) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\grad_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi} \\
+&= g\left(\left[1 -\frac{p}{|p|}\right] A(\grad_h f) -
+|p|\mathcal{H} \grad_h f -|p| f \grad_h \mathcal{H}, X\right) \\
+&\quad + |p|\frac{1}{f} g(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - |p| g(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\grad_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi}
 \end{split}
 \end{equation}
 
-Since this is true for any $X$, this uniquely determines $-\hat{\nabla}_{\xi} \operatorname{grad}_h f$, and upon substitution into equation \eqref{eq:dt_transverse_productrule2} we obtain
+Since this is true for any $X$, this uniquely determines $-\D_{\xi} \grad_h f$, and upon substitution into equation \eqref{eq:dt_transverse_productrule2} we obtain
 \begin{equation}
 \label{eq:dt_transverse_productrule2}
 \begin{split}
-\hat{\nabla}_{\xi}\xi &= -\hat{\nabla}_{\xi}\left(\operatorname{grad}_h f\right) + |p|(f\mathcal{H} + \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu \\
-&= \left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) +
-|p|\left[f \mathcal{H} - \mathcal{H} \operatorname{grad}_h f - f \operatorname{grad}_h\mathcal{H}\right] + R \\
-&= \left[1 -\frac{p}{|p|}\right] A(\operatorname{grad}_h f) +
-|p|\mathcal{H}\xi - |p| f \operatorname{grad}_h\mathcal{H} + R
+\D_{\xi}\xi &= -\D_{\xi}\left(\grad_h f\right) + |p|(f\mathcal{H} + \Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu \\
+&= \left[1 -\frac{p}{|p|}\right] A(\grad_h f) +
+|p|\left[f \mathcal{H} - \mathcal{H} \grad_h f - f \grad_h\mathcal{H}\right] + R \\
+&= \left[1 -\frac{p}{|p|}\right] A(\grad_h f) +
+|p|\mathcal{H}\xi - |p| f \grad_h\mathcal{H} + R
 \end{split}
 \end{equation}
 where $R$ satisfies,
 \[
 \begin{split}
-g(R - |p| \operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\operatorname{grad}_h f, X) - |p| g(\operatorname{grad}_h \operatorname{tr} \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\operatorname{grad}_h f)X,\nu\rangle -
-\operatorname{tr} (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\operatorname{grad}_h f, X)\right] \\
-&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \operatorname{grad}_h f)\xi\right]^{\xi}.
+g(R - |p| \Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \nu, X) &= |p|\frac{1}{f} g(\Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right)\grad_h f, X) - |p| g(\grad_h \Tr \left(\widehat{Rm}(\xi, \cdot, \cdot, \nu)\right), X) \\
+&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,\grad_h f)X,\nu\rangle -
+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(\grad_h f, X)\right] \\
+&\quad  -\frac{p}{|p|} \left[\widehat{Rm}(X, \grad_h f)\xi\right]^{\xi}.
 \end{split}
 \]
 \end{proof}
@@ -422,7 +436,7 @@ For the purpose of obtaining a Harnack inequality, the main ingredient turns out
 
 \begin{theorem} We have
 \begin{align*}
-\partial_t\mathcal{H}= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
+\partial_t\mathcal{H}= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \Tr_{12}( C _{ijk}).
 \end{align*}
 \end{theorem}
 \begin{proof}
@@ -447,7 +461,7 @@ Rearranging terms gives
 Therefore,
 \begin{align*}
 \partial_t\mathcal{H}&=|p|g^{ij}( \mathcal{H}_{;ij}+  \partial_l \mathcal{H} C ^l_{ij})+\frac{p}{|p|}( A ^{ij}+ p  \mathcal{H}g^{ij}) A _{ij}\\
-&= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \operatorname{tr}_{12}( C _{ijk}).
+&= |p| \Delta \mathcal{H}+\frac{p}{|p|}| A |^2+ |p|  \mathcal{H}^2+ |p|  g^{lk}\partial_l\mathcal{H} \Tr_{12}( C _{ijk}).
 \end{align*}
 \end{proof}
 
@@ -470,9 +484,9 @@ By Lemma 1 we have
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n p +1}$ is always positive:
 \begin{align*}
-\partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t| A |^2+  tp \mathcal{H}^2\\
-&\geq  p \Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
-&= p \Delta Q+ p  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
+\partial_t Q&= p\Delta Q+ p  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\mathcal{H}+t| A |^2+  tp \mathcal{H}^2\\
+&\geq  p \Delta Q+ p  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\mathcal{H}+t\frac{n p +1}{n} \mathcal{H}^2\\
+&= p \Delta Q+ p  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\frac{n p +1}{n}\mathcal{H}Q.
 \end{align*}
 Therefore, by the maximum principle, $Q$ is always positive.
 
@@ -483,9 +497,9 @@ Suppose $-\frac{1}{n}<p<0.$ We have
 \end{align*}
 Thus it suffices to show that $Q:=t\mathcal{H}+\frac{n}{n |p| -1}$ is always negative:
 \begin{align*}
-\partial_t Q&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}-t| A |^2+ |p|  t \mathcal{H}^2\\
-&\leq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\mathcal{H}+\frac{n |p| -1}{n}t \mathcal{H}^2\\
-&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \operatorname{tr}_{12}( C _{ijk})+\frac{n |p| -1}{n}\mathcal{H}Q.
+\partial_t Q&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\mathcal{H}-t| A |^2+ |p|  t \mathcal{H}^2\\
+&\leq  |p| \Delta Q+ |p|  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\mathcal{H}+\frac{n |p| -1}{n}t \mathcal{H}^2\\
+&= |p| \Delta Q+ |p|  g^{lk}\partial_lQ \Tr_{12}( C _{ijk})+\frac{n |p| -1}{n}\mathcal{H}Q.
 \end{align*}
 Therefore, by the maximum principle, $Q$ is negative positive.
 \end{proof}
