@@ -265,77 +265,36 @@ On the other hand,
 and the result follows since $\bar{g} = F^{\ast} \ip{}{}$.
 \end{proof}
 
-The next lemma contains other basic evolution equations.
+The next lemma contains other basic evolution equations. It will be convenient at this stage to express these equations in terms of $u = \partial_t \ln f$.
 \begin{lemma}
-\begin{align}
-\partial_t f = |p|(f\mathcal{H}+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))),
-\end{align}
-\begin{align}
-\partial_tg(X,Y)=&-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).\nonumber
-\end{align}
-Here $\mathcal{H}$ is the mean curvature associated with $\xi;$ that is, $\mathcal{H}=g^{ij} A _{ij}=\sum  A _i^i.$
+\begin{align*}
+(\D_t h) (X, Y) &= f B(Y, X) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f B(X, Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu},\\
+(\D_t g) (X, Y) &= ,\\
+(\D_t \grad_h f) &= ,\\
+\D_t \xi &= ,\\
+\D_t A &= .
+\end{align*}
 \end{lemma}
 
 \begin{proof}
-To calculate the evolution equation of $ f $, we need first to calculate the evolution equation of $\bar{g}$ and $h.$
-\begin{align*}
-\partial_t \bar{g}(X,Y)&=\D_{\frac{\partial}{\partial t}}\langle X,Y\rangle\\
-&=\langle \D_X\xi,Y\rangle+\langle \D_Y\xi,X\rangle\\
-&=-\bar{g}( AX,Y)-\bar{g}(X,AY).
-\end{align*}
-
-Using $h(X,Y)=\langle \D_{Y}X, \nu\rangle$ and $\partial_t\nu=0$ we calculate
-\begin{align*}
-\partial_t [h(X,Y)] &= \D_{\frac{\partial}{\partial t}}\langle \D_{Y}X,\nu\rangle\\
-&=\frac{p}{|p|}\langle \D_{\xi}\D_{Y}X,\nu\rangle\\
-&=\frac{p}{|p|}\langle \D_{Y}\D_{X}\xi,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&=-\frac{p}{|p|}\langle \D_{Y}AX,\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&=\frac{p}{|p|}\langle AX,\D_{Y}\nu\rangle+ \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&=-\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle.
-\end{align*}
-Therefore, using $\partial_t K=\frac{\partial K}{\partial h_{ij}}\partial_th_{ij}+\frac{\partial K}{\partial \bar{g}_{ij}}\partial_t\bar{g}_{ij}$ we get
-\begin{align*}
-\partial_tK=\frac{pK}{|p|}(\mathcal{H}+\Tr_h (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
-\end{align*}
-Thus
-\begin{align}
- \partial_tf&=|p|(f\mathcal{H}+\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu)))\nonumber\\
-&= |p|(f\mathcal{H}+f\Tr (\widehat{Rm}(\nu,\cdot,\cdot,\nu))+\Tr (\widehat{Rm}(W,\cdot,\cdot,\nu))).
-\end{align}
-
-The evolution equation of $g$ follows from the evolution equations of $ f $ and $h:$
-\begin{align*}
-\partial_t [g(X,Y)] = &-\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle\\
-&-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))).
-\end{align*}
-
-We also compute
+Using $h(X,Y) = \ip{\D_Y X}{\nu}$ and $\partial_t\nu = 0$, we calculate
 \[
 \begin{split}
-(\D_{\xi} h) (X, Y) &= \partial_t[h(X, Y)] - h(\D_\xi X, Y) - h(X, \D_\xi Y) \\
-&= -\frac{p}{|p|} f  g(A(X),Y)+\frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle + fg(AX, Y) + fg(X, AY) \\
-&= \left(2-\frac{p}{|p|}\right) f  g(A(X),Y) + \frac{p}{|p|}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle - f \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
+(\D_t h) (X, Y) &= \D_t (h(X, Y)) - h(\D_t X, Y) - h(X, D_t Y) \\
+&= \ip{\D_t \D_Y X}{\nu} + f g(A(X), Y) + f g(X, A(Y)) \\
+&= \ip{\D_t \D_Y X}{\nu} + f B(X, Y) + f B(Y, X).
 \end{split}
 \]
-with the last line coming from the structure equation \eqref{eq:structure2} and the anti-symmetry of $\widehat{Rm}$ in the first two slots.
-
-For the metric $g$, we have
+For the first term, using $h(X, Y) = -\ip{X}{D_Y \nu}$,
 \[
 \begin{split}
-(\D_{\xi} g) (X, Y) &= \partial_t[g(X, Y)] - g(\D_\xi X, Y) - g(X, \D_\xi Y) \\
-&= -\frac{p}{|p|}g(A(X),Y)+\frac{p}{|p|f}\langle \widehat{Rm}(\xi,Y)X,\nu\rangle \\
-&-
-|p|g(X,Y)(\mathcal{H}+\frac{1}{f}\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))) \\
-&\quad + g(AX, Y) + g(X, AY) \\
-&= \left(2 -\frac{p}{|p|}\right) g(A(X),Y) -
-|p|\mathcal{H} g(X,Y) \\
-&\quad + \frac{p}{|p|f} \left[\langle \widehat{Rm}(\xi,Y)X,\nu\rangle -
-\Tr (\widehat{Rm}(\xi,\cdot,\cdot,\nu))g(X,Y)\right] - \left[\widehat{Rm}(X, Y)\xi\right]^{\xi},
+\ip{\D_t \D_Y X}{\nu} &= \ip{\D_Y \D_{\xi} X}{\nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
+&= \D_Y \ip{\D_{\xi} X}{\nu} - \ip{\D_{\xi} X}{D_Y \nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
+&= - h(A(X), Y) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
+&= - fg(A(X), Y) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu},
 \end{split}
 \]
+giving the first expression for $\D_t h$. The second follows from the symmetry of $\D_t h$.
 \end{proof}
 
 Next, we compute the evolution of $\xi = -\grad_h f + f \nu$. This is somewhat more involved than the previous lemma.
