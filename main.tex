@@ -229,21 +229,40 @@ On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \
 
 \section{evolution equations}
 
-Perhaps the most important aspect of our approach is the following lemma, exhibiting a crucial property of our chosen parametrisation.
+Perhaps the most important aspect of our approach is the following lemma, exhibiting crucial properties of our chosen parametrisation.
 
 \begin{lemma}
 \begin{align}
-\partial_t\nu=0,
+\D_t \nu & = 0, \\
+\D_t \bar{g} &= 0.
 \end{align}
 \end{lemma}
 
 \begin{proof}
-$\partial_t \nu$ is tangential, and
-\begin{align*}
--\langle \partial_t\nu,X\rangle=&\langle \nu,\D_{\xi}X\rangle-\D_{\frac{\partial}{\partial t}}\langle \nu,X \rangle \\
-=&\langle \nu,\D_{X}\xi\rangle\\
-=&\langle \nu,-AX\rangle=0.
-\end{align*}
+As $\ip{\nu}{\nu} = 1$, $\D_{\xi} \nu$ is tangential, and for any tangent vector $X$,
+\[
+\begin{split}
+\ip{\D_{\xi} \nu}{F_{\ast} X} &= D_{\xi} \ip{\nu}{F_{\ast}X} - \ip{\nu}{D_{\xi} F_{\ast} X} \\
+&= -\ip{\nu}{\D_{X}\xi} \\
+&= \ip{\nu}{A(X)} = 0.
+\end{split}
+\]
+
+For the metric,
+\[
+\begin{split}
+\left(\D_t \bar{g}\right) (X, Y) &= \D_t (\bar{g}(X, Y)) - \bar{g}(\D_t X, Y) - \bar{g}(X, \D_t Y) \\
+&= \D_t (\bar{g}(X, Y)) + \bar{g}(A(X), Y) + \bar{g}(X, A(Y)).
+\end{split}
+\]
+On the other hand,
+\[
+\begin{split}
+\D_t (\bar{g}(X, Y)) &= \D_t \ip{F_{\ast} X}{F_{\ast} Y} \\
+&= -\ip{F_{\ast} A(X)}{F_{\ast} Y} - \ip{F_{\ast} X}{F_{\ast} A(Y)}
+\end{split}
+\]
+and the result follows since $\bar{g} = F^{\ast} \ip{}{}$.
 \end{proof}
 
 The next lemma contains other basic evolution equations.
