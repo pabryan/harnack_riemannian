@@ -269,8 +269,9 @@ The next lemma contains other basic evolution equations. It will be convenient a
 \begin{lemma}
 \begin{align*}
 (\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu},\\
-(\D_t g) (X, Y) &= ,\\
-(\D_t \grad_h f) &= ,\\
+(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.,\\
+\D_t \grad_h f &= \grad_h \D_t f + R({\grad_h f})
+\intertext{where $h(R({\grad_h f}), X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}$ for any vector field $X$,}
 \D_t \xi &= ,\\
 \D_t A &= .
 \end{align*}
@@ -289,6 +290,31 @@ Using $h(X,Y) = \ip{\D_Y X}{\nu} = -\ip{X}{D_Y \nu}$ and $\D_t\nu = 0$, we calcu
 \end{split}
 \]
 giving the first expression for $\D_t h$. The second follows from the symmetry of $\D_t h$.
+
+The metric now follows easily,
+\[
+\begin{split}
+(\D_t g) (X, Y) &= -\frac{1}{f^2} (\D_t f) h(X, Y) + \frac{1}{f} (\D_t h) (X, Y) \\
+&= -u g(X, Y) + g(X, A(Y)) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
+\end{split}
+\]
+
+To compute $\D_t \grad_h f$, we use the defining equation, $h(\grad_h f, X) = X(f) = \D_X f$ to compute,
+\[
+\begin{split}
+h(\grad_h \D_t f, X) &= \D_X \D_t f = \D_t \D_X f \\
+&=  \D_t (h(\grad_h f, X)) \\
+&= (\D_t h) (\grad_h f, X)) + h(\D_t \grad_h f, X) + h(\grad_h f, \D_t X) \\
+&= fg (\grad_h f, A(X)) + \ip{\widehat{\Rm}(\xi, \grad_h f)X}{\nu} \\
+&\quad + h(\D_t \grad_h f, X) - h(\grad_h f, A(X)) \\
+&= h(\D_t \grad_h f, X) - \ip{\widehat{\Rm}(\xi, \grad_h f)\nu}{X}.
+\end{split}
+\]
+Rearranging gives,
+\[
+h(\D_t \grad_h f - \grad_h \D_t f, X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}.
+\]
+Since this is true for any $X$, the desired result follows.
 \end{proof}
 
 Next, we compute the evolution of $\xi = -\grad_h f + f \nu$. This is somewhat more involved than the previous lemma.
