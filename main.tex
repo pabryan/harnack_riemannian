@@ -101,11 +101,11 @@ for $X\in TM$. Equivalently,
 \[
 A(X) =- \bar{\nabla}_X W - f F_{\ast}^{-1} \D_X \nu.
 \]
-We also define the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
+We also have the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
 \[
 B(X, Y) = g(A(X), Y).
 \]
-In general, the presence of ambient curvature $\widehat{\Rm}$ implies that $A$ is not self-adjoint with respect to $g$ (see \eqref{eq:structure2} below).
+In general, the presence of ambient curvature $\widehat{\Rm}$ implies that $A$ is not self-adjoint with respect to $g$ (see \eqref{eq:structure2} below), and hence $B$ is not symmetric. For this reason, we typically will not use $B$, preferring $g(A(X), Y)$ emphasising the lack of symmetry. We only mention $B$ here to emphasise the lack of symmetry, compared with the usual second fundamental form, $\bar{g}(-\D_{\nu} X, Y)$ which is symmetric, and the Weingarten map $-\D_{\nu} X$ which is thus self-adjoint with respect to $\bar{g}$.
 
 The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
 \begin{align}\label{gauss equ2}
@@ -268,7 +268,7 @@ and the result follows since $\bar{g} = F^{\ast} \ip{}{}$.
 The next lemma contains other basic evolution equations. It will be convenient at this stage to express these equations in terms of $u = \partial_t \ln f$.
 \begin{lemma}
 \begin{align*}
-(\D_t h) (X, Y) &= f B(Y, X) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f B(X, Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu},\\
+(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu},\\
 (\D_t g) (X, Y) &= ,\\
 (\D_t \grad_h f) &= ,\\
 \D_t \xi &= ,\\
@@ -277,21 +277,15 @@ The next lemma contains other basic evolution equations. It will be convenient a
 \end{lemma}
 
 \begin{proof}
-Using $h(X,Y) = \ip{\D_Y X}{\nu}$ and $\partial_t\nu = 0$, we calculate
+Using $h(X,Y) = \ip{\D_Y X}{\nu} = -\ip{X}{D_Y \nu}$ and $\D_t\nu = 0$, we calculate
 \[
 \begin{split}
 (\D_t h) (X, Y) &= \D_t (h(X, Y)) - h(\D_t X, Y) - h(X, D_t Y) \\
 &= \ip{\D_t \D_Y X}{\nu} + f g(A(X), Y) + f g(X, A(Y)) \\
-&= \ip{\D_t \D_Y X}{\nu} + f B(X, Y) + f B(Y, X).
-\end{split}
-\]
-For the first term, using $h(X, Y) = -\ip{X}{D_Y \nu}$,
-\[
-\begin{split}
-\ip{\D_t \D_Y X}{\nu} &= \ip{\D_Y \D_{\xi} X}{\nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= \D_Y \ip{\D_{\xi} X}{\nu} - \ip{\D_{\xi} X}{D_Y \nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= - h(A(X), Y) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= - fg(A(X), Y) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu},
+&= \ip{\D_Y \D_{\xi} X}{\nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} + f g(A(X), Y) + f g(X, A(Y))\\
+&= \D_Y \ip{\D_{\xi} X}{\nu} - \ip{\D_{\xi} X}{D_Y \nu} + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
+&= - h(A(X), Y) + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
+&= fg(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu},
 \end{split}
 \]
 giving the first expression for $\D_t h$. The second follows from the symmetry of $\D_t h$.
