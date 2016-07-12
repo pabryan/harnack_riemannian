@@ -268,12 +268,12 @@ and the result follows since $\bar{g} = F^{\ast} \ip{}{}$.
 The next lemma contains other basic evolution equations. It will be convenient at this stage to express these equations in terms of $u = \partial_t \ln f$.
 \begin{lemma}
 \begin{align*}
-(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu},\\
-(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.,\\
-\D_t \grad_h f &= \grad_h \D_t f + R({\grad_h f})
+(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu}, \\
+(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}, \\
+\D_t \grad_h f &= \grad_h \D_t f + R(\grad_h f) = f \grad_h u + u \grad_h f + R(\grad_h f) \\
 \intertext{where $h(R({\grad_h f}), X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}$ for any vector field $X$,}
-\D_t \xi &= ,\\
-\D_t A &= .
+\D_t \xi &= u\xi - f\grad_h u - R(\grad_h f), \\
+(\D_t A)(X) &= A^2(X) + u A(X) + \tilde{\nabla}_X (f\grad_h u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)).
 \end{align*}
 \end{lemma}
 
@@ -314,7 +314,38 @@ Rearranging gives,
 \[
 h(\D_t \grad_h f - \grad_h \D_t f, X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}.
 \]
-Since this is true for any $X$, the desired result follows.
+Since this is true for any $X$, the desired result follows. The second expression for $\D_t \grad_h f$ is obtained from,
+\[
+\grad_h \D_t f = \grad_h (f u) = f \grad_h u + u \grad_h f.
+\]
+
+The evolution of $\xi$ follows readily, using this second expression and $\D_t f = f u$:
+\[
+\begin{split}
+\D_t \xi &= \D_t (-\grad_h f + f \nu) \\
+& = -f \grad_h u - u \grad_h f + (\D_t f) \nu - R(\grad_h f) \\
+&= u\xi - f\grad_h u - R(\grad_h f).
+\end{split}
+\]
+
+Finally, for any $X$,
+\[
+\begin{split}
+(\D_t A)(X) &= \D_t (A(X)) - A(\D_t X) \\
+&= - \D_t \D_X \xi + A^2(X) \\
+&= -\D_X \D_t \xi + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
+&= -\D_X \left(u\xi - f\grad_h u - R(\grad_h f)\right) + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
+&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (f\grad_h u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)).
+\end{split}
+\]
+To finish, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
+\[
+\begin{split}
+-(\D_X u)\xi + \D_X (f\grad_h u) &= -(\D_X u)\xi + \tilde{\nabla}_X (f\grad_h u) + g(f \grad_h u, X) \xi \\
+&= \tilde{\nabla}_X (f\grad_h u) + (-X(u) + h(\grad_h u, X))\xi \\
+&= \tilde{\nabla}_X (f\grad_h u).
+\end{split}
+\]
 \end{proof}
 
 Next, we compute the evolution of $\xi = -\grad_h f + f \nu$. This is somewhat more involved than the previous lemma.
