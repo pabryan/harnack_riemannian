@@ -273,7 +273,11 @@ The next lemma contains other basic evolution equations. It will be convenient a
 \D_t \grad_h f &= \grad_h \D_t f + R(\grad_h f) = f \grad_h u + u \grad_h f + R(\grad_h f) \\
 \intertext{where $h(R({\grad_h f}), X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}$ for any vector field $X$,}
 \D_t \xi &= u\xi - f\grad_h u - R(\grad_h f), \\
-(\D_t A)(X) &= A^2(X) + u A(X) + \tilde{\nabla}_X (f\grad_h u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)).
+(\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (f\grad_h u) + \diff_X (f\grad_h u) \\
+&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)), \\
+(\D_t B) (X, Y) &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)Z +  \widehat{\Rm} (Y, Z) \grad u\right]^{\xi}.
 \end{align*}
 \end{lemma}
 
@@ -328,7 +332,7 @@ The evolution of $\xi$ follows readily, using this second expression and $\D_t f
 \end{split}
 \]
 
-Finally, for any $X$,
+Next,
 \[
 \begin{split}
 (\D_t A)(X) &= \D_t (A(X)) - A(\D_t X) \\
@@ -338,12 +342,28 @@ Finally, for any $X$,
 &= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (f\grad_h u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)).
 \end{split}
 \]
-To finish, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
+Then, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
 \[
 \begin{split}
 -(\D_X u)\xi + \D_X (f\grad_h u) &= -(\D_X u)\xi + \tilde{\nabla}_X (f\grad_h u) + g(f \grad_h u, X) \xi \\
 &= \tilde{\nabla}_X (f\grad_h u) + (-X(u) + h(\grad_h u, X))\xi \\
-&= \tilde{\nabla}_X (f\grad_h u).
+&= \nabla_X (f\grad_h u) + \diff_X (f\grad_h u).
+\end{split}
+\]
+
+\[
+\begin{split}
+(\D_t B) (X, Y) &= \D_t (B(X, Y)) - B(\D_t X, Y) - B(X, \D_t Y) \\
+&= \D_t (g(A(X), Y)) - g(A(\D_tX), Y) - g(A(X), D_t Y) \\
+&= (\D_t g)(A(X), Y) + g(\D_t(A(X)), Y) + g(A(X), \D_t Y) \\
+&\quad - g(A(\D_tX), Y) - g(A(X), D_t Y) \\
+&= (\D_t g)(A(X), Y) + g((\D_t A)(X), Y) \\
+&= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} \\
+&\quad + g(A^2(X) + u A(X) + \nabla_X \grad u + \diff_X \grad u, Y) \\
+&\quad + g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad_h f)), Y) \\
+&= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)Z +  \widehat{\Rm} (Y, Z) \grad u\right]^{\xi}.
 \end{split}
 \]
 \end{proof}
