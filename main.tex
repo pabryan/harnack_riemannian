@@ -86,6 +86,8 @@ Define the non-degenerate metric, referred to here as the \emph{affine metric},
 \begin{align}
 g(X,Y):=\frac{h(X,Y)}{ f }.
 \end{align}
+Then, for any smooth function $\varphi : M \to \RR$, $X(\varphi) = h(X, \grad_h \varphi) = g(X, f \grad_h \varphi)$ implies that, $\grad \varphi = f \grad_h \varphi$ where $\grad$ denotes the gradient with respect to $g$. In particular, $\grad_h f = \grad \ln f$ and we may also write $W = -\grad \ln f$.
+
 Note that
 \begin{align*}
 \D_X \xi &= \D_X (F_{\ast}(W) + f \nu) \\
@@ -99,9 +101,9 @@ which is tangential since $\nu$ has unit length. Thus, we may define an endomorp
 \end{align}
 for $X\in TM$. Equivalently,
 \[
-A(X) =- \bar{\nabla}_X W - f F_{\ast}^{-1} \D_X \nu.
+A(X) =- \bar{\nabla}_X W - f F_{\ast}^{-1} \D_X \nu = -\bar{\nabla}_X W + f \mathcal{W} (X)
 \]
-We also have the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
+where $\mathcal{W}$ is the usual Weingarten map (shape operator). We also have the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
 \[
 B(X, Y) = g(A(X), Y).
 \]
@@ -270,13 +272,13 @@ The next lemma contains other basic evolution equations. It will be convenient a
 \begin{align*}
 (\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu}, \\
 (\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}, \\
-\D_t \grad_h f &= \grad_h \D_t f + R(\grad_h f) = f \grad_h u + u \grad_h f + R(\grad_h f) \\
-\intertext{where $h(R({\grad_h f}), X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}$ for any vector field $X$,}
-\D_t \xi &= u\xi - f\grad_h u - R(\grad_h f), \\
-(\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (f\grad_h u) + \diff_X (f\grad_h u) \\
-&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)), \\
+\D_t \grad \ln f &= \grad u + u \grad \ln f + R(\grad \ln f) \\
+\intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}$ for any vector field $X$,}
+\D_t \xi &= u\xi - \grad u - R(\grad \ln f), \\
+(\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (\grad u) + \diff_X (\grad u) \\
+&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
 (\D_t B) (X, Y) &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad \ln f)), Y) \\
 &\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)Z +  \widehat{\Rm} (Y, Z) \grad u\right]^{\xi}.
 \end{align*}
 \end{lemma}
@@ -303,54 +305,52 @@ The metric now follows easily,
 \end{split}
 \]
 
-To compute $\D_t \grad_h f$, we use the defining equation, $h(\grad_h f, X) = X(f) = \D_X f$ to compute,
+To compute $\D_t \grad \ln f$, we use the defining equation, $g(\grad \ln f, X) = X(\ln f) = \D_X \ln f$ to compute,
 \[
 \begin{split}
-h(\grad_h \D_t f, X) &= \D_X \D_t f = \D_t \D_X f \\
-&=  \D_t (h(\grad_h f, X)) \\
-&= (\D_t h) (\grad_h f, X)) + h(\D_t \grad_h f, X) + h(\grad_h f, \D_t X) \\
-&= fg (\grad_h f, A(X)) + \ip{\widehat{\Rm}(\xi, \grad_h f)X}{\nu} \\
-&\quad + h(\D_t \grad_h f, X) - h(\grad_h f, A(X)) \\
-&= h(\D_t \grad_h f, X) - \ip{\widehat{\Rm}(\xi, \grad_h f)\nu}{X}.
+g(\grad u, X) &= g(\grad \D_t \ln f, X) = \D_X \D_t \ln f = \D_t \D_X \ln f \\
+&=  \D_t (g(\grad \ln f, X)) \\
+&= (\D_t g) (\grad \ln f, X)) + g(\D_t \grad \ln f, X) + g(\grad \ln f, \D_t X) \\
+&= -ug(\grad\ln f, X) + g(\grad \ln f, A(X)) + \frac{1}{f}\ip{\widehat{\Rm}(\xi, \grad \ln f)X}{\nu} \\
+&\quad  + g(\D_t \grad \ln f, X) - g(\grad \ln f, A(X)) \\
+&= - u g(\grad \ln f, X) + g(\D_t \grad \ln f, X) - \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad_h f)\nu}{X}.
 \end{split}
 \]
 Rearranging gives,
 \[
-h(\D_t \grad_h f - \grad_h \D_t f, X) = \ip{\widehat{\Rm}(\xi, \grad_h f) \nu}{X}.
+g(\D_t \grad \ln f - u \grad\ln f - \grad u, X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}.
 \]
-Since this is true for any $X$, the desired result follows. The second expression for $\D_t \grad_h f$ is obtained from,
-\[
-\grad_h \D_t f = \grad_h (f u) = f \grad_h u + u \grad_h f.
-\]
+Since this is true for any $X$, the desired result follows.
 
-The evolution of $\xi$ follows readily, using this second expression and $\D_t f = f u$:
+The evolution of $\xi$ follows readily,
 \[
 \begin{split}
-\D_t \xi &= \D_t (-\grad_h f + f \nu) \\
-& = -f \grad_h u - u \grad_h f + (\D_t f) \nu - R(\grad_h f) \\
-&= u\xi - f\grad_h u - R(\grad_h f).
+\D_t \xi &= \D_t (-\grad \ln f + f \nu) \\
+& = -\grad u - u \grad \ln f + (f \D_t \ln f) \nu - R(\grad \ln f) \\
+&= u\xi - \grad u - R(\grad \ln f).
 \end{split}
 \]
 
-Next,
+This allows us to compute,
 \[
 \begin{split}
 (\D_t A)(X) &= \D_t (A(X)) - A(\D_t X) \\
 &= - \D_t \D_X \xi + A^2(X) \\
 &= -\D_X \D_t \xi + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
-&= -\D_X \left(u\xi - f\grad_h u - R(\grad_h f)\right) + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
-&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (f\grad_h u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad_h f)).
+&= -\D_X \left(u\xi - \grad u - R(\grad \ln f)\right) + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
+&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (\grad u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)).
 \end{split}
 \]
 Then, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
 \[
 \begin{split}
--(\D_X u)\xi + \D_X (f\grad_h u) &= -(\D_X u)\xi + \tilde{\nabla}_X (f\grad_h u) + g(f \grad_h u, X) \xi \\
-&= \tilde{\nabla}_X (f\grad_h u) + (-X(u) + h(\grad_h u, X))\xi \\
-&= \nabla_X (f\grad_h u) + \diff_X (f\grad_h u).
+-(\D_X u)\xi + \D_X (\grad u) &= -(\D_X u)\xi + \tilde{\nabla}_X (\grad u) + g(\grad u, X) \xi \\
+&= \tilde{\nabla}_X (\grad u) \\
+&= \nabla_X (\grad u) + \diff_X (\grad u).
 \end{split}
 \]
 
+Finally, we have
 \[
 \begin{split}
 (\D_t B) (X, Y) &= \D_t (B(X, Y)) - B(\D_t X, Y) - B(X, \D_t Y) \\
@@ -360,9 +360,9 @@ Then, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ w
 &= (\D_t g)(A(X), Y) + g((\D_t A)(X), Y) \\
 &= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} \\
 &\quad + g(A^2(X) + u A(X) + \nabla_X \grad u + \diff_X \grad u, Y) \\
-&\quad + g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad_h f)), Y) \\
+&\quad + g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad \ln f)), Y) \\
 &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad \ln f)), Y) \\
 &\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)Z +  \widehat{\Rm} (Y, Z) \grad u\right]^{\xi}.
 \end{split}
 \]
