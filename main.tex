@@ -327,9 +327,9 @@ The next lemma contains the remaining essential evolution equations.
 \intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}$ for any vector field $X$,}
 \D_t \xi &= u\xi - \grad u - R(\grad \ln f), \\
 (\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (\grad u) + \diff_X (\grad u) \\
-&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
+&\quad - \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
 (\D_t B) (X, Y) &= \hess u (X, Y) + g(A(X), A(Y)) + g(A^2(X), Y) - \frac{1}{2} C(Y, X, \grad u) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} - g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
 &\quad + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\xi}.
 \end{align*}
 \end{lemma}
@@ -366,9 +366,9 @@ This allows us to compute,
 \begin{split}
 (\D_t A)(X) &= \D_t (A(X)) - A(\D_t X) \\
 &= - \D_t \D_X \xi + A^2(X) \\
-&= -\D_X \D_t \xi + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
-&= -\D_X \left(u\xi - \grad u - R(\grad \ln f)\right) + A^2(X) + \widehat{\Rm} (\xi, X) \xi \\
-&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (\grad u) + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)).
+&= -\D_X \D_t \xi + A^2(X) - \widehat{\Rm} (\xi, X) \xi \\
+&= -\D_X \left(u\xi - \grad u - R(\grad \ln f)\right) + A^2(X) - \widehat{\Rm} (\xi, X) \xi \\
+&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (\grad u) - \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)).
 \end{split}
 \]
 Then, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
@@ -390,12 +390,12 @@ Finally, we have
 &= (\D_t g)(A(X), Y) + g((\D_t A)(X), Y) \\
 &= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} \\
 &\quad + g(A^2(X) + u A(X) + \nabla_X \grad u + \diff_X \grad u, Y) \\
-&\quad + g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad \ln f)), Y) \\
+&\quad - g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad \ln f)), Y) \\
 &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) + g(\diff_x \grad u, Y) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\D_X (R(\grad_h f)) - \widehat{\Rm}(\xi, X)\xi, Y) \\
 \end{split}
 \]
-and the result follows from the symmetry of $\diff$ and \cref{lem:cubic_symmetry},
+and the result follows from the symmetry of $\diff$ and \Cref{lem:cubic_symmetry},
 \[
 \begin{split}
 g(\diff_X \grad u, Y) &= g(\diff_{\grad u} X, Y) \\
@@ -407,7 +407,7 @@ g(\diff_X \grad u, Y) &= g(\diff_{\grad u} X, Y) \\
 \begin{lemma}
 \label{lem:dtu}
 \[
-\D_t u = \Tr_{d_hf} \hess u + f\Tr_{d_h^2 f} (B, B) + \Tr_{d_h f} \sym B_A - \frac{1}{2} \Tr_{d_hf} C_{\grad u} + \Tr_{d_h f} R(B)
+\D_t u = \Tr_{d_hf} \hess u + f\Tr_{d_h^2 f} (B, B) + \Tr_{d_h f} \sym B_A - \frac{1}{2} \Tr_{d_hf} C_{\grad u} + \Tr_{d_h f} R(B),
 \]
 where
 \[
@@ -435,7 +435,7 @@ and
 \end{split}
 \]
 
-The second term maybe computed from \cref{lem:evolutions},
+The second term maybe computed from \Cref{lem:evolutions},
 \[
 \begin{split}
 d_h f(\D_t B) &= d_h f \left(\hess u + g(A(\cdot), A(\cdot)) + g(A^2(\cdot), \cdot) - \frac{1}{2} C(\cdot, \cdot, \grad u)\right) \\
