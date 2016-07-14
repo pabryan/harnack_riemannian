@@ -1,7 +1,11 @@
 \documentclass{amsart}
+
 \usepackage[ocgcolorlinks,linktoc=all]{hyperref}
 \usepackage{cancel}
+\usepackage{cleveref}
+
 \hypersetup{citecolor=blue,linkcolor=red}
+
 \newtheorem{theorem}{Theorem}
 \newtheorem*{thmA}{Theorem}
 \newtheorem*{thmB}{Theorem}
@@ -30,7 +34,8 @@
 \DeclareMathOperator{\diff}{K}
 \DeclareMathOperator{\D}{D}
 \DeclareMathOperator{\RR}{\mathbb{R}}
-
+\DeclareMathOperator{\sphere}{\mathbb{S}}
+\DeclareMathOperator{\sym}{Sym}
 
 \numberwithin{equation}{section}
 
@@ -150,6 +155,7 @@ C(X,Y,Z) = (\tilde{\nabla}_X g) (Y,Z).
 We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}):
 
 \begin{lemma}
+\label{lem:cubic_symmetry}
 \[
 C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
 \]
@@ -167,9 +173,10 @@ C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z
 \]
 
 But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: using the structure equations,
-\[
+\begin{equation}
+\label{eq:cubic_symmetry}
 C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
-\]
+\end{equation}
 where the superscript $\xi$ denotes the $\xi$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \xi$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
 \begin{equation}
 \label{eq:cubic_permutation1}
@@ -231,9 +238,19 @@ On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \
 
 \section{evolution equations}
 
-Perhaps the most important aspect of our approach is the following lemma, exhibiting crucial properties of our chosen parametrisation.
 
-\begin{lemma}
+The aim in this section is to obtain the evolution equation for
+\[
+u = \D_t \ln f.
+\]
+We begin with more elementary evolution equations, building up the pieces before the culmination in \cref{lem:dtu}. With such a goal in mind, we express our results in terms of $u$ itself.
+
+Let us just pause to note that in a Euclidean background, $N = \RR^{n+1}$, one may consider the unit normal at time $t$, as map $\nu_t : M \to \sphere^n$, which is a diffeomorphism whenever $F_t(M)$ is convex. The Gauss map parametrisation $\varphi_t: \sphere^n \to \RR^{n+1}$ \cite{MR1296393} is such that $\nu_t(\phi_t(z)) = z$ for all $z \in \sphere^n$ whence $\D_t \nu = 0$. Furthermore, the metric induced on $\sphere^n$ by the embedding $\varphi$ is simply the round metric $\bar{g}$. These two properties provide immense benefit, not only in simplifying the generally long computations associated with differential Harnack inequalities, but also by lending insight into why such long computations yield such a simple, elegant differential Harnack inequality.
+
+The Gauss map parametrisation just described is manifestly Euclidean, and given the utility of such a parametrisation, analogous results in other background spaces should be highly prized. The cornerstone of our approach is recorded in the following lemma, analogous to the Gauss map parametrisation, valid in arbitrary backgrounds.
+
+\begin{lemma}[Gauss Map Parametrisation]
+\label{lem:gaussmap}
 \begin{align}
 \D_t \nu & = 0, \\
 \D_t \bar{g} &= 0.
@@ -267,21 +284,17 @@ On the other hand,
 and the result follows since $\bar{g} = F^{\ast} \ip{}{}$.
 \end{proof}
 
-The next lemma contains other basic evolution equations. It will be convenient at this stage to express these equations in terms of $u = \partial_t \ln f$.
+Next, we compute the evolution of the affine metric, $g$.
+
 \begin{lemma}
+\label{lem:metric}
 \begin{align*}
-(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} =  f g(A(X), Y) + \ip{\widehat{\Rm}(\xi, Y) X}{\nu}, \\
-(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}, \\
-\D_t \grad \ln f &= \grad u + u \grad \ln f + R(\grad \ln f) \\
-\intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}$ for any vector field $X$,}
-\D_t \xi &= u\xi - \grad u - R(\grad \ln f), \\
-(\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (\grad u) + \diff_X (\grad u) \\
-&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
-(\D_t B) (X, Y) &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
-&\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)X +  \widehat{\Rm} (Y, X) \grad u\right]^{\xi}.
+(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu}, \\
+(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
 \end{align*}
 \end{lemma}
+
+As the left hand side of both equations is symmetric, so too is the right hand side, even though the individual terms are not themselves symmetric.
 
 \begin{proof}
 Using $h(X,Y) = \ip{\D_Y X}{\nu} = -\ip{X}{D_Y \nu}$ and $\D_t\nu = 0$, we calculate
@@ -292,10 +305,9 @@ Using $h(X,Y) = \ip{\D_Y X}{\nu} = -\ip{X}{D_Y \nu}$ and $\D_t\nu = 0$, we calcu
 &= \ip{\D_Y \D_{\xi} X}{\nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} + f g(A(X), Y) + f g(X, A(Y))\\
 &= \D_Y \ip{\D_{\xi} X}{\nu} - \ip{\D_{\xi} X}{D_Y \nu} + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
 &= - h(A(X), Y) + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= fg(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu},
+&= fg(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
 \end{split}
 \]
-giving the first expression for $\D_t h$. The second follows from the symmetry of $\D_t h$.
 
 The metric now follows easily,
 \[
@@ -304,7 +316,25 @@ The metric now follows easily,
 &= -u g(X, Y) + g(X, A(Y)) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
 \end{split}
 \]
+\end{proof}
 
+The next lemma contains the remaining essential evolution equations.
+
+\begin{lemma}
+\label{lem:evolutions}
+\begin{align*}
+\D_t \grad \ln f &= \grad u + u \grad \ln f + R(\grad \ln f) \\
+\intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}$ for any vector field $X$,}
+\D_t \xi &= u\xi - \grad u - R(\grad \ln f), \\
+(\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (\grad u) + \diff_X (\grad u) \\
+&\quad + \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
+(\D_t B) (X, Y) &= \hess u (X, Y) + g(A(X), A(Y)) + g(A^2(X), Y) - \frac{1}{2} C(Y, X, \grad u) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
+&\quad + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\xi}.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
 To compute $\D_t \grad \ln f$, we use the defining equation, $g(\grad \ln f, X) = X(\ln f) = \D_X \ln f$ to compute,
 \[
 \begin{split}
@@ -361,11 +391,60 @@ Finally, we have
 &= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} \\
 &\quad + g(A^2(X) + u A(X) + \nabla_X \grad u + \diff_X \grad u, Y) \\
 &\quad + g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad \ln f)), Y) \\
-&= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) -\frac{1}{2} C(Y, \grad u, X) \\
+&= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) + g(\diff_x \grad u, Y) \\
 &\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
-&\quad -\frac{1}{2} \left[\widehat{\Rm} (Y, \grad u)X +  \widehat{\Rm} (Y, X) \grad u\right]^{\xi}.
 \end{split}
 \]
+and the result follows from the symmetry of $\diff$ and \cref{lem:cubic_symmetry},
+\[
+\begin{split}
+g(\diff_X \grad u, Y) &= g(\diff_{\grad u} X, Y) \\
+&= -\frac{1}{2} C(Y, X, \grad u) + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\xi}.
+\end{split}
+\]
+\end{proof}
+
+\begin{lemma}
+\label{lem:dtu}
+\[
+\D_t u = \Tr_{d_hf} \hess u + f\Tr_{d_h^2 f} (B, B) + \Tr_{d_h f} \sym B_A - \frac{1}{2} \Tr_{d_hf} C_{\grad u} + \Tr_{d_h f} R(B)
+\]
+where
+\[
+\sym B_A (X, Y) = B(A(X), Y) + B(X, A(Y)), \quad C_{\grad u} (X, Y) = C(Y, X, \grad u).
+\]
+\end{lemma}
+
+\begin{proof}
+We use, $f = f(h, \bar{g})$ and
+\[
+\begin{split}
+\D_t f &= d_h f (\D_t h) + d_{\bar{g}} f(\D_t \bar{g}) = d_h f (\D_t h) \\
+&= d_h f (fB + R(h)).
+\end{split}
+\]
+Then,
+\[
+u = \frac{1}{f} \D_t f = (d_h f) (B) + \frac{1}{f} d_h f(R(h))
+\]
+and
+\[
+\begin{split}
+\D_t u &= d^2_h f (\D_t h, B) + d_h f(\D_t B) + \D_t \left(\frac{1}{f} d_h f(R(h))\right) \\
+&= f d^2_h f(B, B) + d_h f(\D_t B) + d^2_h f (R(h), B) + \D_t \left(\frac{1}{f} d_h f(R(h))\right).
+\end{split}
+\]
+
+The second term maybe computed from \cref{lem:evolutions},
+\[
+\begin{split}
+d_h f(\D_t B) &= d_h f \left(\hess u + g(A(\cdot), A(\cdot)) + g(A^2(\cdot), \cdot) - \frac{1}{2} C(\cdot, \cdot, \grad u)\right) \\
+&\quad + d_h f (R(B)) \\
+&= \Tr_{d_h f} \hess u + \Tr_{d_h f} \left[B(\cdot, A(\cdot)) + B(A(\cdot), \cdot)\right] -\frac{1}{2} \Tr_{d_h f} C(\cdot, \cdot, \grad u) \\
+&\quad + \Tr_{d_h f} R(B)
+\end{split}
+\]
+
 \end{proof}
 
 \section{The Harnack Inequality}
