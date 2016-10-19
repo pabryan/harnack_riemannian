@@ -64,24 +64,34 @@
 \end{abstract}
 
 \maketitle
-Let $M^n$ be an $n$-dimensional smooth submanifold of $(N^{n+1},\ip{}{})$ given by an embedding $F_0.$ A one-parameter family of immersions $F\colon M^n\times [0,T)\to (N^{n+1},\ip{}{})$ is said to be a solution of the $f$-curvature flow if
-\begin{align}
-\partial_tF = \xi,\quad F(\cdot, 0) = F_0(\cdot).
-\end{align}
-Here $\xi $ is a smooth transverse inward-pointing vector field defined by
-\begin{align}
-\xi := -F_{\ast}\grad_h f + f\nu,
-\end{align}
-where $f$ is a smooth, positive, strictly increasing and symmetric function of the principle curvatures, $\nu$ is a smooth inner unit normal vector field, and $\grad_h f$ is the gradient of $f$ with respect to the second fundamental $h$ induced by $\nu,$ namely
+
+\section{Introduction}
+
+Let $(N^{n+1},\ip{}{})$ be a smooth Riemannian or Lorentzian manifold. We record the distinction in \(\sigma\) with \(\sigma = 1\) in the Riemannian case, and \(\sigma = -1\) in the Lorentzian case. Let $M^n$ be a smooth, closed $n$-dimensional manifold.
+
+Let $F\colon M^n\times [0,T)\to N^{n+1}$ be a smooth, one-parameter family of strictly convex, spacelike embeddings. The term spacelike means that at each \(t\), the induced metric \(g_t = F_t^{\ast} \ip{}{}\) is Riemannian (this condition is vacuous in the \(\sigma = 1\) case). \(F\) is said to be a solution of the $f$-curvature flow if
+\begin{equation}
+\label{eq:flow}
+\partial_tF = \xi,\quad F(\cdot, 0) = F_0(\cdot),
+\end{equation}
+where $\xi $ is a smooth transverse vector field defined by
+\begin{equation}
+\label{eq:transverse_vector}
+\xi := -\sigma f\nu + F_{\ast} W, \quad W = -\grad_h f.
+\end{equation}
+Here $f$ is a smooth, positive, strictly increasing, and symmetric function of the principle curvatures, $\nu$ is a smooth unit normal vector field, and $\grad_h f$ is the gradient of $f$ with respect to the second fundamental $h$ induced by $\nu$. Namely
 \[
 h(X, \grad_h f) = X(f)
 \]
-for all vectors $X$ tangent to $M$. In what follows, for convenience, we set $W := -\grad_h f$ so that $\xi = F_{\ast} W + f \nu$.
+for all vectors $X$ tangent to $M$.
 
+The flow \eqref{eq:flow} is equivalent to,
+\[
+\partial_t \tilde{F} = -\sigma f \nu
+\]
+by letting \(\phi_t\) denote the flow of \(-W\) and defining \(\tilde{F} (x, t) = \tilde{F}(\varphi_t(x), t)\).
 
-\section{structure equations}
-
-We make use of the theory of affine immersions as described in \cite{MR1311248}.
+\section{Notation and Conventions}
 
 Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
 \begin{align}\label{gauss equ}
@@ -114,129 +124,7 @@ B(X, Y) = g(A(X), Y).
 \]
 In general, the presence of ambient curvature $\widehat{\Rm}$ implies that $A$ is not self-adjoint with respect to $g$ (see \eqref{eq:structure2} below), and hence $B$ is not symmetric. For this reason, we typically will not use $B$, preferring $g(A(X), Y)$ emphasising the lack of symmetry. We only mention $B$ here to emphasise the lack of symmetry, compared with the usual second fundamental form, $\bar{g}(-\D_{\nu} X, Y)$ which is symmetric, and the Weingarten map $-\D_{\nu} X$ which is thus self-adjoint with respect to $\bar{g}$.
 
-The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
-\begin{align}\label{gauss equ2}
-\D_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
-\end{align}
-This connection is well defined (i.e. $F_{\ast}(\tilde{\nabla}_Y X)$ is tangent to $F(M)$) since for all $X,Y\in TM$ we have
-\begin{align}
-F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nu - g(X, Y) (F_{\ast}(W) + f \nu) \\
-&= F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W) \nonumber.
-\end{align}
-In other words, $\tilde{\nabla}_Y X$ is the uniquely determined tangential component of $D_Y F_{\ast} X$ in the splitting $F^{\ast} TN \simeq TM \oplus \RR \xi$ where $\RR\xi$ denotes the line bundle over $M$ determined by $\xi$ and $F^{\ast} TN$ denotes the pull-back bundle of $TN$ by $F$.
-
-The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; that is $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$ Define the difference tensor
-\begin{equation}
-\label{eq:difftensor}
-\diff_YX := \tilde{\nabla}_{Y}X - \nabla_{Y}X.
-\end{equation}
-Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $\diff$ is symmetric: $\diff_YX = \diff_XY.$
-
-From (\ref{gauss equ2}) we get,
-\begin{align}\label{gauss equ3}
-\hess F(X,Y):=\D_YF_{\ast}(X)-F_{\ast}(\nabla_YX) = F_{\ast}(\diff_YX) + g(X,Y)\xi.
-\end{align}
-
-Let us recall the \emph{structure equations} of an affine immersion (see the proof of \cite[Section II, Theorem 2.1]{MR1311248} adjusted to include the ambient curvature $\widehat{Rm}$ or \cite[p. 197 equations (N1.6)--(N1.9)]{MR1311248} in the codimension one case):
-
-\begin{align}
-\label{eq:structure1}
-\widehat{Rm} (X, Y) Z =& Rm(X, Y) Z + g(X, Z) A Y - g(Y, Z)A X \\
-&+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \xi \nonumber,\\
-\label{eq:structure2}
-\widehat{Rm} (X, Y) \xi &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\xi.
-\end{align}
-
-The \emph{cubic tensor} is defined by
-\begin{align}
-C(X,Y,Z) = (\tilde{\nabla}_X g) (Y,Z).
-\end{align}
-
-We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}):
-
-\begin{lemma}
-\label{lem:cubic_symmetry}
-\[
-C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
-\]
-\end{lemma}
-
-\begin{proof}
-First, since $g$ is symmetric, $C(X, Y, Z) = C(X, Z, Y)$:
-\[
-\begin{split}
-C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z, Y) \\
-&= \tilde{\nabla}_X \left[g(Y, Z) - g(Z, Y)\right] \\
-&\quad - g(\tilde{\nabla}_X Y, Z) - g(Y, \tilde{\nabla}_X Z) + g(\tilde{\nabla}_X Z, Y) + g(Z, \tilde{\nabla}_X Y) \\
-&= 0.
-\end{split}
-\]
-
-But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: using the structure equations,
-\begin{equation}
-\label{eq:cubic_symmetry}
-C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
-\end{equation}
-where the superscript $\xi$ denotes the $\xi$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \xi$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
-\begin{equation}
-\label{eq:cubic_permutation1}
-C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\xi}.
-\end{equation}
-On the other hand, since $\diff_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $\diff_X$ to $g$ as a derivation gives,
-\[
-(\diff_X g) (Y, Z) = \diff_X (g(Y, Z)) - g(\diff_X Y, Z) - g(Y, \diff_X Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
-\]
-Now using $\nabla g \equiv 0$, gives
-\begin{equation}
-\label{eq:cubic_derivation_identity}
-C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (\diff_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
-\end{equation}
-
-Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} we obtain,
-\begin{equation}
-\label{eq:cubic_identity}
-\begin{split} 
--g(\diff_X Y, Z) - g(Y, \diff_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(\diff_Z Y, X) - g(Y, \diff_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
-\end{split}
-\end{equation}
-Since $\diff_X Z = \diff_Z X$ this yields,
-\[
--g(\diff_X Y, Z) = - g(\diff_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
-\]
-When applied to $g(\diff_X Z, Y)$ we obtain
-\[
--g(\diff_Z X, Y) = - g(\diff_X Z, Y) = - g(\diff_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
-\]
-Finally, upon substitution of this identity into equation \eqref{eq:cubic_identity} we complete the proof with,
-\begin{equation}
-\begin{split}
-C(X, Y, Z) &= -g(\diff_Z Y, X) - g(\diff_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(\diff_Z Y, X) - g(\diff_Y Z, X) \\
-&\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi \\
-&= - 2g(\diff_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
-\end{split}
-\end{equation}
-where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
-\end{proof}
-
-The second covariant derivatives of $ \xi$ is given by
-\begin{align}
-\hess\xi(X,Y)&=\D_Y\D_X\xi-\D_{\nabla_YX}\xi\\
-&=-\D_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi.\nonumber
-\end{align}
-
-On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \xi$ is not symmetric:
-\begin{align}
-\widehat{Rm}(X,Y)\xi&=\D^2_{X,Y}\xi-\D^2_{Y,X}\xi\\
-&=\hess\xi(X,Y)-\hess\xi(Y,X)-\D_{\D_YX-\D_XY}\xi-\D_{\nabla_XY-\nabla_YX}\xi\nonumber\\
-&=\hess\xi(X,Y)-\hess\xi(Y,X).\nonumber
-\end{align}
-
-\section{evolution equations}
+\section{Evolution Equations}
 
 
 The aim in this section is to obtain the evolution equation for
@@ -501,5 +389,131 @@ where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 
 \bibliographystyle{amsplain}
 \bibliography{Bibliography.bib}
+
+\section{Structure Equations}
+
+We make use of the theory of affine immersions as described in \cite{MR1311248}.
+
+The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
+\begin{align}\label{gauss equ2}
+\D_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
+\end{align}
+This connection is well defined (i.e. $F_{\ast}(\tilde{\nabla}_Y X)$ is tangent to $F(M)$) since for all $X,Y\in TM$ we have
+\begin{align}
+F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nu - g(X, Y) (F_{\ast}(W) + f \nu) \\
+&= F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W) \nonumber.
+\end{align}
+In other words, $\tilde{\nabla}_Y X$ is the uniquely determined tangential component of $D_Y F_{\ast} X$ in the splitting $F^{\ast} TN \simeq TM \oplus \RR \xi$ where $\RR\xi$ denotes the line bundle over $M$ determined by $\xi$ and $F^{\ast} TN$ denotes the pull-back bundle of $TN$ by $F$.
+
+The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; that is $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$ Define the difference tensor
+\begin{equation}
+\label{eq:difftensor}
+\diff_YX := \tilde{\nabla}_{Y}X - \nabla_{Y}X.
+\end{equation}
+Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $\diff$ is symmetric: $\diff_YX = \diff_XY.$
+
+From (\ref{gauss equ2}) we get,
+\begin{align}\label{gauss equ3}
+\hess F(X,Y):=\D_YF_{\ast}(X)-F_{\ast}(\nabla_YX) = F_{\ast}(\diff_YX) + g(X,Y)\xi.
+\end{align}
+
+Let us recall the \emph{structure equations} of an affine immersion (see the proof of \cite[Section II, Theorem 2.1]{MR1311248} adjusted to include the ambient curvature $\widehat{Rm}$ or \cite[p. 197 equations (N1.6)--(N1.9)]{MR1311248} in the codimension one case):
+
+\begin{align}
+\label{eq:structure1}
+\widehat{Rm} (X, Y) Z =& Rm(X, Y) Z + g(X, Z) A Y - g(Y, Z)A X \\
+&+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \xi \nonumber,\\
+\label{eq:structure2}
+\widehat{Rm} (X, Y) \xi &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\xi.
+\end{align}
+
+The \emph{cubic tensor} is defined by
+\begin{align}
+C(X,Y,Z) = (\tilde{\nabla}_X g) (Y,Z).
+\end{align}
+
+We have the following useful lemma for $C$ (see also \cite[Section II, Proposition 4.1]{MR1311248}):
+
+\begin{lemma}
+\label{lem:cubic_symmetry}
+\[
+C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
+\]
+\end{lemma}
+
+\begin{proof}
+First, since $g$ is symmetric, $C(X, Y, Z) = C(X, Z, Y)$:
+\[
+\begin{split}
+C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z, Y) \\
+&= \tilde{\nabla}_X \left[g(Y, Z) - g(Z, Y)\right] \\
+&\quad - g(\tilde{\nabla}_X Y, Z) - g(Y, \tilde{\nabla}_X Z) + g(\tilde{\nabla}_X Z, Y) + g(Z, \tilde{\nabla}_X Y) \\
+&= 0.
+\end{split}
+\]
+
+But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: using the structure equations,
+\begin{equation}
+\label{eq:cubic_symmetry}
+C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
+\end{equation}
+where the superscript $\xi$ denotes the $\xi$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \xi$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
+\begin{equation}
+\label{eq:cubic_permutation1}
+C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\xi}.
+\end{equation}
+On the other hand, since $\diff_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $\diff_X$ to $g$ as a derivation gives,
+\[
+(\diff_X g) (Y, Z) = \diff_X (g(Y, Z)) - g(\diff_X Y, Z) - g(Y, \diff_X Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
+\]
+Now using $\nabla g \equiv 0$, gives
+\begin{equation}
+\label{eq:cubic_derivation_identity}
+C(X, Y, Z) = (\tilde{\nabla}_X g) (Y, Z) = (\diff_X g) (Y, Z) + (\nabla_X g) (Y, Z) = -g(\diff_X Y, Z) - g(Y, \diff_X Z).
+\end{equation}
+
+Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} we obtain,
+\begin{equation}
+\label{eq:cubic_identity}
+\begin{split} 
+-g(\diff_X Y, Z) - g(Y, \diff_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(\diff_Z Y, X) - g(Y, \diff_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+\end{split}
+\end{equation}
+Since $\diff_X Z = \diff_Z X$ this yields,
+\[
+-g(\diff_X Y, Z) = - g(\diff_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+\]
+When applied to $g(\diff_X Z, Y)$ we obtain
+\[
+-g(\diff_Z X, Y) = - g(\diff_X Z, Y) = - g(\diff_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
+\]
+Finally, upon substitution of this identity into equation \eqref{eq:cubic_identity} we complete the proof with,
+\begin{equation}
+\begin{split}
+C(X, Y, Z) &= -g(\diff_Z Y, X) - g(\diff_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+&= -g(\diff_Z Y, X) - g(\diff_Y Z, X) \\
+&\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi \\
+&= - 2g(\diff_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
+\end{split}
+\end{equation}
+where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
+\end{proof}
+
+The second covariant derivatives of $ \xi$ is given by
+\begin{align}
+\hess\xi(X,Y)&=\D_Y\D_X\xi-\D_{\nabla_YX}\xi\\
+&=-\D_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi.\nonumber
+\end{align}
+
+On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \xi$ is not symmetric:
+\begin{align}
+\widehat{Rm}(X,Y)\xi&=\D^2_{X,Y}\xi-\D^2_{Y,X}\xi\\
+&=\hess\xi(X,Y)-\hess\xi(Y,X)-\D_{\D_YX-\D_XY}\xi-\D_{\nabla_XY-\nabla_YX}\xi\nonumber\\
+&=\hess\xi(X,Y)-\hess\xi(Y,X).\nonumber
+\end{align}
 
 \end{document}
