@@ -1,55 +1,11 @@
 \documentclass{amsart}
 
-\usepackage[ocgcolorlinks,linktoc=all]{hyperref}
-\usepackage{cancel}
-\usepackage{cleveref}
-
-\hypersetup{citecolor=blue,linkcolor=red}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem*{thmA}{Theorem}
-\newtheorem*{thmB}{Theorem}
-\newtheorem*{rem}{Remark}
-\newtheorem*{thmmain}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem*{propmain}{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{xca}[theorem]{Exercise}
-
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
-
-\newcommand{\abs}[1]{\lvert#1\rvert}
-\newcommand{\ip}[2]{\ensuremath{\langle{#1},{#2}\rangle}}
-
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\Rm}{Rm}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\ric}{Ric}
-\DeclareMathOperator{\diff}{K}
-\DeclareMathOperator{\D}{D}
-\DeclareMathOperator{\RR}{\mathbb{R}}
-\DeclareMathOperator{\sphere}{\mathbb{S}}
-\DeclareMathOperator{\sym}{Sym}
-
-\numberwithin{equation}{section}
-
-\newcommand{\blankbox}[2]{%
-  \parbox{\columnwidth}{\centering
-    \setlength{\fboxsep}{0pt}%
-    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
-  }%
-}
+\input{StandardPaper2.tex}
 
 \begin{document}
 
-\title[]
- {}
+\title[Hypersurface Harnack Inequality]
+ {The Harnacak Inequality for Hypersurface Flows in Riemannian and Lorentzian Backgrounds}
 
 \curraddr{}
 \email{}
@@ -67,62 +23,101 @@
 
 \section{Introduction}
 
-Let $(N^{n+1},\ip{}{})$ be a smooth Riemannian or Lorentzian manifold. We record the distinction in \(\sigma\) with \(\sigma = 1\) in the Riemannian case, and \(\sigma = -1\) in the Lorentzian case. Let $M^n$ be a smooth, closed $n$-dimensional manifold.
+Let $(N^{n+1},\bgg)$ be a smooth Riemannian or Lorentzian manifold. We record the distinction in \(\sig\) with \(\sig = 1\) in the Riemannian case, and \(\sig = -1\) in the Lorentzian case. Let $M^n$ be a smooth, closed $n$-dimensional manifold.
 
-Let $F\colon M^n\times [0,T)\to N^{n+1}$ be a smooth, one-parameter family of strictly convex, spacelike embeddings. The term spacelike means that at each \(t\), the induced metric \(g_t = F_t^{\ast} \ip{}{}\) is Riemannian (this condition is vacuous in the \(\sigma = 1\) case). \(F\) is said to be a solution of the $f$-curvature flow if
+Let $F\colon M^n\times [0,T)\to N^{n+1}$ be a smooth, one-parameter family of strictly convex, spacelike embeddings. The term spacelike means that at each \(t\), the induced metric \(\g_t = F_t^{\ast} \bgg\) is Riemannian (this condition is vacuous in the \(\sig = 1\) case). \(F\) is said to be a solution of the $f$-curvature flow if
 \begin{equation}
 \label{eq:flow}
-\partial_tF = \xi,\quad F(\cdot, 0) = F_0(\cdot),
+\partial_tF = \vel,\quad F(\cdot, 0) = F_0(\cdot),
 \end{equation}
-where $\xi $ is a smooth transverse vector field defined by
+where $\vel $ is a smooth transverse vector field defined by
 \begin{equation}
 \label{eq:transverse_vector}
-\xi := -\sigma f\nu + F_{\ast} W, \quad W = -\grad_h f.
+\vel := -\sig f\nor + F_{\ast} \tangvel, \quad \tangvel = \grad_{\sff} f.
 \end{equation}
-Here $f$ is a smooth, positive, strictly increasing, and symmetric function of the principle curvatures, $\nu$ is a smooth unit normal vector field, and $\grad_h f$ is the gradient of $f$ with respect to the second fundamental $h$ induced by $\nu$. Namely
+Here $f$ is a smooth, positive, strictly increasing, and symmetric function of the principle curvatures, $\nor$ is a smooth unit normal vector field, and $\grad_{\sff} f$ is the gradient of $f$ with respect to the second fundamental $\sff$ induced by $\nor$. Namely
 \[
-h(X, \grad_h f) = X(f)
+\sff(X, \grad_{\sff} f) = X(f)
 \]
 for all vectors $X$ tangent to $M$.
 
 The flow \eqref{eq:flow} is equivalent to,
 \[
-\partial_t \tilde{F} = -\sigma f \nu
+\partial_t \tilde{F} = -\sig f \nor
 \]
-by letting \(\phi_t\) denote the flow of \(-W\) and defining \(\tilde{F} (x, t) = \tilde{F}(\varphi_t(x), t)\).
+by letting \(\phi_t\) denote the flow of \(-\tangvel\) and defining \(\tilde{F} (x, t) = \tilde{F}(\varphi_t(x), t)\).
 
 \section{Notation and Conventions}
 
-Let $\bar{g}$ be the induced metric by the immersion. The Gauss formula is given by
-\begin{align}\label{gauss equ}
-\D_YF_{\ast}(X)=F_{\ast}(\bar{\nabla}_YX)+h(X,Y)\nu.
-\end{align}
-Define the non-degenerate metric, referred to here as the \emph{affine metric},
-\begin{align}
-g(X,Y):=\frac{h(X,Y)}{ f }.
-\end{align}
-Then, for any smooth function $\varphi : M \to \RR$, $X(\varphi) = h(X, \grad_h \varphi) = g(X, f \grad_h \varphi)$ implies that, $\grad \varphi = f \grad_h \varphi$ where $\grad$ denotes the gradient with respect to $g$. In particular, $\grad_h f = \grad \ln f$ and we may also write $W = -\grad \ln f$.
-
-Note that
+For the background space \((N, \bgg)\), let \(\bgD\) denote the Levi-Civita connection. We write the second covariant derivative of a tensor \(T\) as,
+\[
+\bgD^2_{X, Y} T = \bgD_X \bgD_Y T - \bgD_{\bgD_X Y} T.
+\]
+We use the curvature tensor conventions,
 \begin{align*}
-\D_X \xi &= \D_X (F_{\ast}(W) + f \nu) \\
-&= \D_X F_{\ast}(W) + X(f)\nu + f \D_X \nu \\
-&= F_{\ast}(\bar{\nabla}_X W) - h(X, \grad_h f) \nu + X(f) \nu + f \D_X \nu \\
-&= F_{\ast} (\bar{\nabla}_X W) + f \D_X \nu,
+\bgRm(X, Y) T &= \bgD^2_{X, Y} T - \bgD^2_{Y, X} T = \bgD_X \bgD_Y T - \bgD_Y \bgD_X T - \bgD_{[X, Y]} T \\
+\bgRm(X, Y, Z, W) &= \bgg[\bgRm(X, Y) Z][W].
 \end{align*}
-which is tangential since $\nu$ has unit length. Thus, we may define an endomorphism of $TM$, the \emph{affine shape operator} $A$ with respect to $\xi$, by
-\begin{align}
-\D_X\xi := -F_{\ast}(A(X))
+
+Let $\g = F_t^{\ast} \bgg$ be the induced metric by the immersion \(F_t\) at time \(t\), with Levi-Civita connection \(\D\). The Gauss formula is given by
+\begin{align}\label{gauss equ}
+\bgD_{F_{\ast} X} F_{\ast} Y = F_{\ast}(\D_X Y) + \sig \sff(X,Y) \nor.
 \end{align}
-for $X\in TM$. Equivalently,
+The Weingarten map (or shape operator), \(\weingarten : TM \to TM\), is defined by,
 \[
-A(X) =- \bar{\nabla}_X W - f F_{\ast}^{-1} \D_X \nu = -\bar{\nabla}_X W + f \mathcal{W} (X)
+\weingarten(X) = -\sig (F_{\ast})^{-1} \bgD_{F_{\ast} X} \nor
 \]
-where $\mathcal{W}$ is the usual Weingarten map (shape operator). We also have the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
+which is tangential since \(\nor\) has unit length. \(\weingarten\) is related to the second fundamental form, \(\sff\) by
 \[
-B(X, Y) = g(A(X), Y).
+\begin{split}
+\sff(X, Y) &= \bgg[F_{\ast} \weingarten(X)][F_{\ast} Y] = \bgg[F_{\ast} X][F_{\ast} \weingarten(Y)] \\
+&= \g(\weingarten(X), Y) = g(X, \weingarten(Y)) \\
+&= \sff(Y, X).
+\end{split}
 \]
-In general, the presence of ambient curvature $\widehat{\Rm}$ implies that $A$ is not self-adjoint with respect to $g$ (see \eqref{eq:structure2} below), and hence $B$ is not symmetric. For this reason, we typically will not use $B$, preferring $g(A(X), Y)$ emphasising the lack of symmetry. We only mention $B$ here to emphasise the lack of symmetry, compared with the usual second fundamental form, $\bar{g}(-\D_{\nu} X, Y)$ which is symmetric, and the Weingarten map $-\D_{\nu} X$ which is thus self-adjoint with respect to $\bar{g}$.
+In other words, \(\sff\) is symmetric, or equivalently, \(\weingarten\) is self-adjoint with respect to \(g\).
+
+Now we have some important observations to make, central to our approach. We have,
+\begin{align*}
+\bgD_{F_{\ast}X} \vel &= \bgD_{F_{\ast}X} (- \sig f \nor + F_{\ast}\tangvel) \\
+&= -\sig X(f) \nor - \sig f \bgD_{F_{\ast}X} \nor + F_{\ast}(\D_X \tangvel) + \sig \sff (X, \grad_{\sff} f) \nor \\
+&= F_{\ast} \left(\sig f \weingarten (X) + \D_X \tangvel\right).
+\end{align*}
+Thus, we may define an endomorphism of $TM$, the \emph{affine shape operator} $\affshape$ with respect to $\vel$, by
+\begin{equation}
+\label{eq:affshape}
+\affshape = \sig f \weingarten + \D \tangvel.
+\end{equation}
+By definition, we then have,
+\[
+\bgD_{F_{\ast} X} \vel = F_{\ast} \affshape(X).
+\]
+On the other hand, for \(X \in TM\) a fixed tangent vector, we have \([F_{\ast} X, \vel] = [F_{\ast} X, F_{\ast} \partial_t] = F_{\ast} [X, \partial_t] = 0\) and hence,
+\[
+\bgD_{\vel} F_{\ast} X = \bgD_{F_{\ast} X} \vel = F_{\ast} \affshape(X)
+\]
+and the left hand side is in fact tensorial in \(X\)!
+
+Define the non-degenerate metric, referred to here as the \emph{affine metric},
+\begin{equation}
+\label{eq:affg}
+\affg := \frac{1}{f} \sff.
+\end{equation}
+Then, for any smooth function $\varphi : M \to \RR$,
+\[
+X(\varphi) = \sff(X, \grad_{\sff} \varphi) = \affg(X, f \grad_{\sff} \varphi)
+\]
+implies that,
+\[
+\affgrad \varphi = f \grad_{\sff} \varphi
+\]
+where $\affgrad$ denotes the gradient with respect to $g$. In particular, $\grad_{\sff} f = \tfrac{1}{f} \affgrad f$ and we may also write $\tangvel = \tfrac{1}{f} \affgrad f$.
+
+We also have the \emph{affine second fundamental form}, a tensor of type $(0, 2)$, by
+\[
+\affsff (X, Y) = \affg(\affshape(X), Y).
+\]
+In general, the presence of ambient curvature $\bgRm$ implies that $\affshape$ is not self-adjoint with respect to $\affg$ (see \eqref{eq:structure2} below), and hence $\affsff$ is not symmetric.
 
 \section{Evolution Equations}
 
@@ -133,25 +128,25 @@ u = \D_t \ln f.
 \]
 We begin with more elementary evolution equations, building up the pieces before the culmination in \cref{lem:dtu}. With such a goal in mind, we express our results in terms of $u$ itself.
 
-Let us just pause to note that in a Euclidean background, $N = \RR^{n+1}$, one may consider the unit normal at time $t$, as map $\nu_t : M \to \sphere^n$, which is a diffeomorphism whenever $F_t(M)$ is convex. The Gauss map parametrisation $\varphi_t: \sphere^n \to \RR^{n+1}$ \cite{MR1296393} is such that $\nu_t(\phi_t(z)) = z$ for all $z \in \sphere^n$ whence $\D_t \nu = 0$. Furthermore, the metric induced on $\sphere^n$ by the embedding $\varphi$ is simply the round metric $\bar{g}$. These two properties provide immense benefit, not only in simplifying the generally long computations associated with differential Harnack inequalities, but also by lending insight into why such long computations yield such a simple, elegant differential Harnack inequality.
+Let us just pause to note that in a Euclidean background, $N = \RR^{n+1}$, one may consider the unit normal at time $t$, as map $\nor_t : M \to \SS^n$, which is a diffeomorphism whenever $F_t(M)$ is convex. The Gauss map parametrisation $\varphi_t: \SS^n \to \RR^{n+1}$ \cite{MR1296393} is such that $\nor_t(\phi_t(z)) = z$ for all $z \in \SS^n$ whence $\D_t \nor = 0$. Furthermore, the metric induced on $\SS^n$ by the embedding $\varphi$ is simply the round metric $\bar{g}$. These two properties provide immense benefit, not only in simplifying the generally long computations associated with differential Harnack inequalities, but also by lending insight into why such long computations yield such a simple, elegant differential Harnack inequality.
 
 The Gauss map parametrisation just described is manifestly Euclidean, and given the utility of such a parametrisation, analogous results in other background spaces should be highly prized. The cornerstone of our approach is recorded in the following lemma, analogous to the Gauss map parametrisation, valid in arbitrary backgrounds.
 
 \begin{lemma}[Gauss Map Parametrisation]
 \label{lem:gaussmap}
 \begin{align}
-\D_t \nu & = 0, \\
+\D_t \nor & = 0, \\
 \D_t \bar{g} &= 0.
 \end{align}
 \end{lemma}
 
 \begin{proof}
-As $\ip{\nu}{\nu} = 1$, $\D_{\xi} \nu$ is tangential, and for any tangent vector $X$,
+As $\ip{\nor}{\nor} = 1$, $\D_{\vel} \nor$ is tangential, and for any tangent vector $X$,
 \[
 \begin{split}
-\ip{\D_{\xi} \nu}{F_{\ast} X} &= D_{\xi} \ip{\nu}{F_{\ast}X} - \ip{\nu}{D_{\xi} F_{\ast} X} \\
-&= -\ip{\nu}{\D_{X}\xi} \\
-&= \ip{\nu}{A(X)} = 0.
+\ip{\D_{\vel} \nor}{F_{\ast} X} &= D_{\vel} \ip{\nor}{F_{\ast}X} - \ip{\nor}{D_{\vel} F_{\ast} X} \\
+&= -\ip{\nor}{\D_{X}\vel} \\
+&= \ip{\nor}{A(X)} = 0.
 \end{split}
 \]
 
@@ -177,23 +172,23 @@ Next, we compute the evolution of the affine metric, $g$.
 \begin{lemma}
 \label{lem:metric}
 \begin{align*}
-(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu}, \\
-(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
+(\D_t h) (X, Y) &= f g(X, A(Y)) + \ip{\widehat{\Rm}(\vel, X) Y}{\nor}, \\
+(\D_t g) (X, Y) &= g(X, A(Y)) - u g(X, Y) + \frac{1}{f} \ip{\widehat{\Rm}(\vel, X) Y}{\nor}.
 \end{align*}
 \end{lemma}
 
 As the left hand side of both equations is symmetric, so too is the right hand side, even though the individual terms are not themselves symmetric.
 
 \begin{proof}
-Using $h(X,Y) = \ip{\D_Y X}{\nu} = -\ip{X}{D_Y \nu}$ and $\D_t\nu = 0$, we calculate
+Using $h(X,Y) = \ip{\D_Y X}{\nor} = -\ip{X}{D_Y \nor}$ and $\D_t\nor = 0$, we calculate
 \[
 \begin{split}
 (\D_t h) (X, Y) &= \D_t (h(X, Y)) - h(\D_t X, Y) - h(X, D_t Y) \\
-&= \ip{\D_t \D_Y X}{\nu} + f g(A(X), Y) + f g(X, A(Y)) \\
-&= \ip{\D_Y \D_{\xi} X}{\nu} + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} + f g(A(X), Y) + f g(X, A(Y))\\
-&= \D_Y \ip{\D_{\xi} X}{\nu} - \ip{\D_{\xi} X}{D_Y \nu} + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= - h(A(X), Y) + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu} \\
-&= fg(X, A(Y)) + \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
+&= \ip{\D_t \D_Y X}{\nor} + f g(A(X), Y) + f g(X, A(Y)) \\
+&= \ip{\D_Y \D_{\vel} X}{\nor} + \ip{\widehat{\Rm}(\vel, X) Y}{\nor} + f g(A(X), Y) + f g(X, A(Y))\\
+&= \D_Y \ip{\D_{\vel} X}{\nor} - \ip{\D_{\vel} X}{D_Y \nor} + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\vel, X) Y}{\nor} \\
+&= - h(A(X), Y) + f g(A(X), Y) + f g(X, A(Y)) + \ip{\widehat{\Rm}(\vel, X) Y}{\nor} \\
+&= fg(X, A(Y)) + \ip{\widehat{\Rm}(\vel, X) Y}{\nor}.
 \end{split}
 \]
 
@@ -201,7 +196,7 @@ The metric now follows easily,
 \[
 \begin{split}
 (\D_t g) (X, Y) &= -\frac{1}{f^2} (\D_t f) h(X, Y) + \frac{1}{f} (\D_t h) (X, Y) \\
-&= -u g(X, Y) + g(X, A(Y)) + \frac{1}{f} \ip{\widehat{\Rm}(\xi, X) Y}{\nu}.
+&= -u g(X, Y) + g(X, A(Y)) + \frac{1}{f} \ip{\widehat{\Rm}(\vel, X) Y}{\nor}.
 \end{split}
 \]
 \end{proof}
@@ -212,13 +207,13 @@ The next lemma contains the remaining essential evolution equations.
 \label{lem:evolutions}
 \begin{align*}
 \D_t \grad \ln f &= \grad u + u \grad \ln f + R(\grad \ln f) \\
-\intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}$ for any vector field $X$,}
-\D_t \xi &= u\xi - \grad u - R(\grad \ln f), \\
+\intertext{where $g(R({\grad \ln f}), X) = \frac{1}{f} \ip{\widehat{\Rm}(\vel, \grad \ln f) \nor}{X}$ for any vector field $X$,}
+\D_t \vel &= u\vel - \grad u - R(\grad \ln f), \\
 (\D_t A)(X) &= A^2(X) + u A(X) + \nabla_X (\grad u) + \diff_X (\grad u) \\
-&\quad - \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)), \\
+&\quad - \widehat{\Rm} (\vel, X) \vel + \D_X (R(\grad \ln f)), \\
 (\D_t B) (X, Y) &= \hess u (X, Y) + g(A(X), A(Y)) + g(A^2(X), Y) - \frac{1}{2} C(Y, X, \grad u) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} - g(\widehat{\Rm}(\xi, X)\xi  + \D_X (R(\grad_h f)), Y) \\
-&\quad + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\xi}.
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\vel, A(X))Y}{\nor} - g(\widehat{\Rm}(\vel, X)\vel  + \D_X (R(\grad_h f)), Y) \\
+&\quad + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\vel}.
 \end{align*}
 \end{lemma}
 
@@ -229,23 +224,23 @@ To compute $\D_t \grad \ln f$, we use the defining equation, $g(\grad \ln f, X) 
 g(\grad u, X) &= g(\grad \D_t \ln f, X) = \D_X \D_t \ln f = \D_t \D_X \ln f \\
 &=  \D_t (g(\grad \ln f, X)) \\
 &= (\D_t g) (\grad \ln f, X)) + g(\D_t \grad \ln f, X) + g(\grad \ln f, \D_t X) \\
-&= -ug(\grad\ln f, X) + g(\grad \ln f, A(X)) + \frac{1}{f}\ip{\widehat{\Rm}(\xi, \grad \ln f)X}{\nu} \\
+&= -ug(\grad\ln f, X) + g(\grad \ln f, A(X)) + \frac{1}{f}\ip{\widehat{\Rm}(\vel, \grad \ln f)X}{\nor} \\
 &\quad  + g(\D_t \grad \ln f, X) - g(\grad \ln f, A(X)) \\
-&= - u g(\grad \ln f, X) + g(\D_t \grad \ln f, X) - \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad_h f)\nu}{X}.
+&= - u g(\grad \ln f, X) + g(\D_t \grad \ln f, X) - \frac{1}{f} \ip{\widehat{\Rm}(\vel, \grad_h f)\nor}{X}.
 \end{split}
 \]
 Rearranging gives,
 \[
-g(\D_t \grad \ln f - u \grad\ln f - \grad u, X) = \frac{1}{f} \ip{\widehat{\Rm}(\xi, \grad \ln f) \nu}{X}.
+g(\D_t \grad \ln f - u \grad\ln f - \grad u, X) = \frac{1}{f} \ip{\widehat{\Rm}(\vel, \grad \ln f) \nor}{X}.
 \]
 Since this is true for any $X$, the desired result follows.
 
-The evolution of $\xi$ follows readily,
+The evolution of $\vel$ follows readily,
 \[
 \begin{split}
-\D_t \xi &= \D_t (-\grad \ln f + f \nu) \\
-& = -\grad u - u \grad \ln f + (f \D_t \ln f) \nu - R(\grad \ln f) \\
-&= u\xi - \grad u - R(\grad \ln f).
+\D_t \vel &= \D_t (-\grad \ln f + f \nor) \\
+& = -\grad u - u \grad \ln f + (f \D_t \ln f) \nor - R(\grad \ln f) \\
+&= u\vel - \grad u - R(\grad \ln f).
 \end{split}
 \]
 
@@ -253,16 +248,16 @@ This allows us to compute,
 \[
 \begin{split}
 (\D_t A)(X) &= \D_t (A(X)) - A(\D_t X) \\
-&= - \D_t \D_X \xi + A^2(X) \\
-&= -\D_X \D_t \xi + A^2(X) - \widehat{\Rm} (\xi, X) \xi \\
-&= -\D_X \left(u\xi - \grad u - R(\grad \ln f)\right) + A^2(X) - \widehat{\Rm} (\xi, X) \xi \\
-&= A^2(X) + u A(X) -(\D_X u)\xi + \D_X (\grad u) - \widehat{\Rm} (\xi, X) \xi + \D_X (R(\grad \ln f)).
+&= - \D_t \D_X \vel + A^2(X) \\
+&= -\D_X \D_t \vel + A^2(X) - \widehat{\Rm} (\vel, X) \vel \\
+&= -\D_X \left(u\vel - \grad u - R(\grad \ln f)\right) + A^2(X) - \widehat{\Rm} (\vel, X) \vel \\
+&= A^2(X) + u A(X) -(\D_X u)\vel + \D_X (\grad u) - \widehat{\Rm} (\vel, X) \vel + \D_X (R(\grad \ln f)).
 \end{split}
 \]
 Then, we observe that by equation \eqref{gauss equ2} defining $\tilde{\nabla}$ we have,
 \[
 \begin{split}
--(\D_X u)\xi + \D_X (\grad u) &= -(\D_X u)\xi + \tilde{\nabla}_X (\grad u) + g(\grad u, X) \xi \\
+-(\D_X u)\vel + \D_X (\grad u) &= -(\D_X u)\vel + \tilde{\nabla}_X (\grad u) + g(\grad u, X) \vel \\
 &= \tilde{\nabla}_X (\grad u) \\
 &= \nabla_X (\grad u) + \diff_X (\grad u).
 \end{split}
@@ -276,18 +271,18 @@ Finally, we have
 &= (\D_t g)(A(X), Y) + g(\D_t(A(X)), Y) + g(A(X), \D_t Y) \\
 &\quad - g(A(\D_tX), Y) - g(A(X), D_t Y) \\
 &= (\D_t g)(A(X), Y) + g((\D_t A)(X), Y) \\
-&= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} \\
+&= g(A(X), A(Y)) - u g(A(X), Y) + \frac{1}{f} \ip{\hat{\Rm} (\vel, A(X))Y}{\nor} \\
 &\quad + g(A^2(X) + u A(X) + \nabla_X \grad u + \diff_X \grad u, Y) \\
-&\quad - g(\widehat{\Rm}(\xi, X)\xi, Y) + g(\D_X (R(\grad \ln f)), Y) \\
+&\quad - g(\widehat{\Rm}(\vel, X)\vel, Y) + g(\D_X (R(\grad \ln f)), Y) \\
 &= g(A(X), A(Y)) + g(A^2(X), Y) + \hess u (X, Y) + g(\diff_x \grad u, Y) \\
-&\quad +\frac{1}{f} \ip{\hat{\Rm} (\xi, A(X))Y}{\nu} + g(\D_X (R(\grad_h f)) - \widehat{\Rm}(\xi, X)\xi, Y) \\
+&\quad +\frac{1}{f} \ip{\hat{\Rm} (\vel, A(X))Y}{\nor} + g(\D_X (R(\grad_h f)) - \widehat{\Rm}(\vel, X)\vel, Y) \\
 \end{split}
 \]
 and the result follows from the symmetry of $\diff$ and \Cref{lem:cubic_symmetry},
 \[
 \begin{split}
 g(\diff_X \grad u, Y) &= g(\diff_{\grad u} X, Y) \\
-&= -\frac{1}{2} C(Y, X, \grad u) + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\xi}.
+&= -\frac{1}{2} C(Y, X, \grad u) + \frac{1}{2} \left[\widehat{\Rm} (Y, X)\grad u +  \widehat{\Rm} (Y, \grad u) X\right]^{\vel}.
 \end{split}
 \]
 \end{proof}
@@ -340,8 +335,8 @@ d_h f(\D_t B) &= d_h f \left(\hess u + g(A(\cdot), A(\cdot)) + g(A^2(\cdot), \cd
 \begin{theorem}
 \[\left\{
   \begin{array}{ll}
-    \partial_t \left(\varphi(\nu)K^pt^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
-    \partial_t \left(\varphi(\nu)K^pt^{\frac{n |p| }{n |p| -1}}\right)<0, & -\frac{1}{n}<p<0.
+    \partial_t \left(\varphi(\nor)K^pt^{\frac{n p }{n p +1}}\right)> 0, & p>0; \\
+    \partial_t \left(\varphi(\nor)K^pt^{\frac{n |p| }{n |p| -1}}\right)<0, & -\frac{1}{n}<p<0.
   \end{array}
 \right.
 \]
@@ -380,7 +375,7 @@ To get the usual Harnack estimate, we note if we define a time-dependent diffeom
 \end{align}
 then $\bar{F}(x,t):=F(\varphi(x,t),t):M^{n}\to R^{n+1}$ satisfies
 \begin{align}
-\partial_t\bar{F}=\bar{K}^{ p }\nu,
+\partial_t\bar{F}=\bar{K}^{ p }\nor,
 \end{align}
 where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 \begin{align}
@@ -394,16 +389,16 @@ where $\bar{K}(x,t):=K(\varphi(x,t),t)$. So we have
 
 We make use of the theory of affine immersions as described in \cite{MR1311248}.
 
-The vector field $\xi$ induces a torsion free connection $\tilde{\nabla}$:
+The vector field $\vel$ induces a torsion free connection $\tilde{\nabla}$:
 \begin{align}\label{gauss equ2}
-\D_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\xi.
+\D_YF_{\ast}(X)=F_{\ast}(\tilde{\nabla}_YX)+g(X,Y)\vel.
 \end{align}
 This connection is well defined (i.e. $F_{\ast}(\tilde{\nabla}_Y X)$ is tangent to $F(M)$) since for all $X,Y\in TM$ we have
 \begin{align}
-F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nu - g(X, Y) (F_{\ast}(W) + f \nu) \\
+F_{\ast}(\tilde{\nabla}_Y X) &= F_{\ast}(\bar{\nabla}_Y X) + h(X, Y) \nor - g(X, Y) (F_{\ast}(W) + f \nor) \\
 &= F_{\ast}(\bar{\nabla}_YX)-g(X,Y)F_{\ast}(W) \nonumber.
 \end{align}
-In other words, $\tilde{\nabla}_Y X$ is the uniquely determined tangential component of $D_Y F_{\ast} X$ in the splitting $F^{\ast} TN \simeq TM \oplus \RR \xi$ where $\RR\xi$ denotes the line bundle over $M$ determined by $\xi$ and $F^{\ast} TN$ denotes the pull-back bundle of $TN$ by $F$.
+In other words, $\tilde{\nabla}_Y X$ is the uniquely determined tangential component of $D_Y F_{\ast} X$ in the splitting $F^{\ast} TN \simeq TM \oplus \RR \vel$ where $\RR\vel$ denotes the line bundle over $M$ determined by $\vel$ and $F^{\ast} TN$ denotes the pull-back bundle of $TN$ by $F$.
 
 The connection $\tilde{\nabla}$ is not necessarily the Levi-Civita connection for $g$. Let $\nabla$ be the Levi-Civita connection for $g$; that is $\nabla$ is the unique torsion free connection satisfying $\nabla g=0.$ Define the difference tensor
 \begin{equation}
@@ -414,7 +409,7 @@ Since both $\tilde{\nabla}$ and $\nabla$ are torsion free, we have $\diff$ is sy
 
 From (\ref{gauss equ2}) we get,
 \begin{align}\label{gauss equ3}
-\hess F(X,Y):=\D_YF_{\ast}(X)-F_{\ast}(\nabla_YX) = F_{\ast}(\diff_YX) + g(X,Y)\xi.
+\hess F(X,Y):=\D_YF_{\ast}(X)-F_{\ast}(\nabla_YX) = F_{\ast}(\diff_YX) + g(X,Y)\vel.
 \end{align}
 
 Let us recall the \emph{structure equations} of an affine immersion (see the proof of \cite[Section II, Theorem 2.1]{MR1311248} adjusted to include the ambient curvature $\widehat{Rm}$ or \cite[p. 197 equations (N1.6)--(N1.9)]{MR1311248} in the codimension one case):
@@ -422,9 +417,9 @@ Let us recall the \emph{structure equations} of an affine immersion (see the pro
 \begin{align}
 \label{eq:structure1}
 \widehat{Rm} (X, Y) Z =& Rm(X, Y) Z + g(X, Z) A Y - g(Y, Z)A X \\
-&+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \xi \nonumber,\\
+&+ \left[(\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_Y g)( X, Z)\right] \vel \nonumber,\\
 \label{eq:structure2}
-\widehat{Rm} (X, Y) \xi &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\xi.
+\widehat{Rm} (X, Y) \vel &= (\tilde{\nabla}_Y A) X - (\tilde{\nabla}_X A) Y + \left[g(AX, Y) - g(X, AY)\right]\vel.
 \end{align}
 
 The \emph{cubic tensor} is defined by
@@ -437,7 +432,7 @@ We have the following useful lemma for $C$ (see also \cite[Section II, Propositi
 \begin{lemma}
 \label{lem:cubic_symmetry}
 \[
-C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}.
+C(X, Y, Z) =  -2g(\diff_Z Y, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\vel}.
 \]
 \end{lemma}
 
@@ -455,12 +450,12 @@ C(X, Y, Z) - C(X, Z, Y) &= (\tilde{\nabla}_X g) (Y, Z) - (\tilde{\nabla}_X g) (Z
 But if $\widehat{Rm} \ne 0$, $C$ may not be symmetric in the first two slots: using the structure equations,
 \begin{equation}
 \label{eq:cubic_symmetry}
-C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\xi},
+C(X, Y, Z) = C(Y, X, Z) + [\widehat{Rm}(X, Y)Z]^{\vel},
 \end{equation}
-where the superscript $\xi$ denotes the $\xi$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \xi$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
+where the superscript $\vel$ denotes the $\vel$ component in the splitting, $F^{\ast} TN \simeq TM \oplus \RR \vel$. Applying the structure equation to $C(Y, X, Z) = C(Y, Z, X)$, we obtain,
 \begin{equation}
 \label{eq:cubic_permutation1}
-C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\xi}.
+C(X, Y, Z) = C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y) Z\right]^{\vel}.
 \end{equation}
 On the other hand, since $\diff_X \varphi = (\tilde{\nabla}_X - \nabla_X) \varphi = 0$ for any smooth function $\varphi$, applying $\diff_X$ to $g$ as a derivation gives,
 \[
@@ -476,44 +471,44 @@ Thus from \eqref{eq:cubic_permutation1}, \eqref{eq:cubic_derivation_identity} we
 \begin{equation}
 \label{eq:cubic_identity}
 \begin{split} 
--g(\diff_X Y, Z) - g(Y, \diff_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
-&= -g(\diff_Z Y, X) - g(Y, \diff_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+-g(\diff_X Y, Z) - g(Y, \diff_X Z) &= C(Z, Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^{\vel} \\
+&= -g(\diff_Z Y, X) - g(Y, \diff_Z X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^{\vel}
 \end{split}
 \end{equation}
 Since $\diff_X Z = \diff_Z X$ this yields,
 \[
--g(\diff_X Y, Z) = - g(\diff_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi
+-g(\diff_X Y, Z) = - g(\diff_Z Y, X) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^{\vel}
 \]
 When applied to $g(\diff_X Z, Y)$ we obtain
 \[
--g(\diff_Z X, Y) = - g(\diff_X Z, Y) = - g(\diff_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi
+-g(\diff_Z X, Y) = - g(\diff_X Z, Y) = - g(\diff_Y Z, X) + \left[\widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^{\vel}
 \]
 Finally, upon substitution of this identity into equation \eqref{eq:cubic_identity} we complete the proof with,
 \begin{equation}
 \begin{split}
-C(X, Y, Z) &= -g(\diff_Z Y, X) - g(\diff_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^\xi \\
+C(X, Y, Z) &= -g(\diff_Z Y, X) - g(\diff_Z X, Y) + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z\right]^{\vel} \\
 &= -g(\diff_Z Y, X) - g(\diff_Y Z, X) \\
-&\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^\xi \\
-&= - 2g(\diff_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\xi}
+&\quad + \left[\widehat{Rm}(Y, Z) X + \widehat{Rm}(X, Y)Z + \widehat{Rm}(Z, Y) X + \widehat{Rm}(X, Z)Y\right]^{\vel} \\
+&= - 2g(\diff_Y Z, X) + \left[\widehat{Rm}(X, Y)Z + \widehat{Rm}(X, Z)Y\right]^{\vel}
 \end{split}
 \end{equation}
 where we used the first anti-symmetry of $\widehat{Rm}$ in the last line.
 \end{proof}
 
-The second covariant derivatives of $ \xi$ is given by
+The second covariant derivatives of $ \vel$ is given by
 \begin{align}
-\hess\xi(X,Y)&=\D_Y\D_X\xi-\D_{\nabla_YX}\xi\\
+\hess\vel(X,Y)&=\D_Y\D_X\vel-\D_{\nabla_YX}\vel\\
 &=-\D_YF_{\ast}(AX)+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi+F_{\ast}(A\nabla_YX)\nonumber\\
-&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\xi.\nonumber
+&=-F_{\ast}(\tilde{\nabla}_{Y}AX)-g(A X,Y)\vel+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}(\nabla_{Y}AX)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\vel+F_{\ast}(A\nabla_YX)\nonumber\\
+&=-F_{\ast}((\nabla_Y A)X)-F_{\ast}(\diff_{Y}AX)-g(A X,Y)\vel.\nonumber
 \end{align}
 
-On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \xi$ is not symmetric:
+On the other hand, we see that if $\widehat{\Rm}$ does not vanish, then $\hess \vel$ is not symmetric:
 \begin{align}
-\widehat{Rm}(X,Y)\xi&=\D^2_{X,Y}\xi-\D^2_{Y,X}\xi\\
-&=\hess\xi(X,Y)-\hess\xi(Y,X)-\D_{\D_YX-\D_XY}\xi-\D_{\nabla_XY-\nabla_YX}\xi\nonumber\\
-&=\hess\xi(X,Y)-\hess\xi(Y,X).\nonumber
+\widehat{Rm}(X,Y)\vel&=\D^2_{X,Y}\vel-\D^2_{Y,X}\vel\\
+&=\hess\vel(X,Y)-\hess\vel(Y,X)-\D_{\D_YX-\D_XY}\vel-\D_{\nabla_XY-\nabla_YX}\vel\nonumber\\
+&=\hess\vel(X,Y)-\hess\vel(Y,X).\nonumber
 \end{align}
 
 \end{document}
