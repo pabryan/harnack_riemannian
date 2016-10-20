@@ -42,10 +42,15 @@ Here $f$ is a smooth, positive, strictly increasing, and symmetric function of t
 for all vectors $X$ tangent to $M$.
 
 The flow \eqref{eq:flow} is equivalent to,
-\[
+\begin{equation}
+\label{eq:flow_standard}
 \partial_t \tilde{F} = -\sig f \nor
-\]
-by letting \(\phi_t\) denote the flow of \(-\tangvel\) and defining \(\tilde{F} (x, t) = \tilde{F}(\varphi_t(x), t)\).
+\end{equation}
+by letting \(\phi_t\) denote the flow of the vector field \(-\tangvel\) on \(M\) and defining \(\tilde{F} (x, t) = \tilde{F}(\varphi_t(x), t)\). We call \(\tilde{F}\) satisfying \eqref{eq:flow_standard} the \emph{standard parametrisation} as in \cite{MR1296393}.
+
+Central to our approach is the flow \eqref{eq:flow} which is a reparametrisation of the flow as usually given in standard parametrisation \eqref{eq:flow_standard}. Let us note that in a Euclidean background, $N = \RR^{n+1}$, one may consider the unit normal at time $t$, as the Gauss map $\nor_t : M \to \SS^n$, which is a diffeomorphism whenever $F_t(M)$ is convex. The Gauss map parametrisation $\varphi_t: \SS^n \to \RR^{n+1}$ \cite{MR1296393} is such that $\nor_t(\phi_t(z)) = z$ for all $z \in \SS^n$ whence $\bgD_t \nor = 0$. Furthermore, the metric induced on $\SS^n$ by the embedding $\varphi$ is simply the canonical, round metric $g_{\operatorname{can}}$. These two properties, a static metric and static normal provide immense benefit, not only in simplifying the generally long computations associated with differential Harnack inequalities, but also by lending insight into why such long computations yield such a simple, elegant differential Harnack inequality.
+
+The Gauss map parametrisation just described is manifestly Euclidean, and given the utility of such a parametrisation, analogous results in other background spaces should be highly prized. The cornerstone of our approach is that the induced metric \(g\) and normal \(\nor\) are static in the parametrisation \eqref{eq:flow}. See \Cref{lem:gaussmap}, analogous to the Gauss map parametrisation, valid in arbitrary backgrounds.
 
 \section{Notation and Conventions}
 
@@ -127,10 +132,6 @@ The aim in this section is to obtain the evolution equation for
 u = \D_t \ln f.
 \]
 We begin with more elementary evolution equations, building up the pieces before the culmination in \cref{lem:dtu}. With such a goal in mind, we express our results in terms of $u$ itself.
-
-Let us just pause to note that in a Euclidean background, $N = \RR^{n+1}$, one may consider the unit normal at time $t$, as map $\nor_t : M \to \SS^n$, which is a diffeomorphism whenever $F_t(M)$ is convex. The Gauss map parametrisation $\varphi_t: \SS^n \to \RR^{n+1}$ \cite{MR1296393} is such that $\nor_t(\phi_t(z)) = z$ for all $z \in \SS^n$ whence $\D_t \nor = 0$. Furthermore, the metric induced on $\SS^n$ by the embedding $\varphi$ is simply the round metric $\bar{g}$. These two properties provide immense benefit, not only in simplifying the generally long computations associated with differential Harnack inequalities, but also by lending insight into why such long computations yield such a simple, elegant differential Harnack inequality.
-
-The Gauss map parametrisation just described is manifestly Euclidean, and given the utility of such a parametrisation, analogous results in other background spaces should be highly prized. The cornerstone of our approach is recorded in the following lemma, analogous to the Gauss map parametrisation, valid in arbitrary backgrounds.
 
 \begin{lemma}[Gauss Map Parametrisation]
 \label{lem:gaussmap}
