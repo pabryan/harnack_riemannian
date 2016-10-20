@@ -52,6 +52,20 @@ Central to our approach is the flow \eqref{eq:flow} which is a reparametrisation
 
 The Gauss map parametrisation just described is manifestly Euclidean, and given the utility of such a parametrisation, analogous results in other background spaces should be highly prized. The cornerstone of our approach is that the induced metric \(g\) and normal \(\nor\) are static in the parametrisation \eqref{eq:flow}. See \Cref{lem:gaussmap}, analogous to the Gauss map parametrisation, valid in arbitrary backgrounds.
 
+Another crucial aspect of our approach is that it also addresses the question of how to determine the appropriate Harnack quantity. The philosophy put forward by Hamilton in \cite{MR1316556,MR1198607} is that equality should be attained on expanding solitons, just as equality in the Li-Yau Harnack inequality \cite{MR834612} is attained by the heat kernel, itself an expanding soliton. Thus Hamilton follows a procedure of differentiating the soliton equation to obtain soliton identities which eventually lead to the appropriate form for the Harnack quantity. In \cite{MR1296393}, Andrews showed that under the Gauss map parametrisation, one may consider the evolution of the support function and apply the Li-Yau approach to determine the Harnack quantity. This is also our approach, although for general backgrounds we don't have the luxury of a suitable support function and so work with the reparametrisation \eqref{eq:flow} directly. Namely, we define
+\begin{equation}
+\label{eq:Q}
+Q = \frac{1}{f} \partial_t f
+\end{equation}
+for the Harnack quantity. As with Andrews, we have a static metric and normal which effectively means we do not need to adjust the Li-Yau Harnack quadratic as did Hamilton. Returning to the standard parametrisation, we find that,
+\[
+\begin{split}
+\tilde{Q} &= \frac{1}{\tilde{f}} \left(\partial_t f(\varphi_t(x), t)\right) = \frac{1}{\tilde{f}} \left(\partial_t \tilde{f} - df \cdot \tangvel\right) \\
+&= \frac{1}{\tilde{f}} \left(\partial_t \tilde{f} - \tilde{\sff}(\grad_{\tilde{\sff}} \tilde{f}, \grad_{\tilde{\sff}} \tilde{f})\right)
+\end{split}
+\]
+which is precisely Hamilton's Harnack quantity.
+
 \section{Notation and Conventions}
 
 For the background space \((N, \bgg)\), let \(\bgD\) denote the Levi-Civita connection. We write the second covariant derivative of a tensor \(T\) as,
@@ -127,11 +141,11 @@ In general, the presence of ambient curvature $\bgRm$ implies that $\affshape$ i
 \section{Evolution Equations}
 
 
-The aim in this section is to obtain the evolution equation for
+The ultimate aim in this section is to obtain the evolution equation for
 \[
-u = \D_t \ln f.
+\tag{\ref{eq:Q} revisited} Q = \frac{1}{f} \partial_t f.
 \]
-We begin with more elementary evolution equations, building up the pieces before the culmination in \cref{lem:dtu}. With such a goal in mind, we express our results in terms of $u$ itself.
+We begin with more elementary evolution equations, building up the pieces before the culmination in \cref{lem:dtu}. With such a goal in mind, we express our results in terms of $Q$ itself which is quite a boon in that we never need to explicitly compute \(\partial_t f\).
 
 \begin{lemma}[Gauss Map Parametrisation]
 \label{lem:gaussmap}
